@@ -1,0 +1,564 @@
+<title>1万人ロードマップ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<style>
+/* Layout: one reading column on a tea-green ground; numbers carry the page, phases read as a dated timeline. */
+:root {
+  --bg: #f2f5f0;
+  --surface: #fbfcfa;
+  --ink: #1c2921;
+  --ink-2: #44544a;
+  --muted: #66766b;
+  --line: #d6dfd3;
+  --accent: #1d6a47;
+  --accent-soft: #e0ede4;
+  --gold: #8a5f00;
+  --s-ig: #12895a;
+  --s-th: #4a6fd0;
+  --s-line: #c47a00;
+  --f-display: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  --f-body: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121814; --surface: #1a221d; --ink: #e6ede8; --ink-2: #bdcac1; --muted: #93a398;
+    --line: #2c3930; --accent: #7cc79f; --accent-soft: #1e3227; --gold: #e0b45c;
+    --s-ig: #34a372; --s-th: #6a8de6; --s-line: #c98500; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121814; --surface: #1a221d; --ink: #e6ede8; --ink-2: #bdcac1; --muted: #93a398;
+  --line: #2c3930; --accent: #7cc79f; --accent-soft: #1e3227; --gold: #e0b45c;
+  --s-ig: #34a372; --s-th: #6a8de6; --s-line: #c98500; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--f-body); font-size: 15px; line-height: 1.8;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px;
+}
+.wrap { max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.35; }
+h1 { font-size: clamp(30px, 6vw, 44px); font-weight: 700; }
+h2 { font-size: 24px; font-weight: 700; }
+h3 { font-size: 17px; font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font-size: 12px; letter-spacing: .12em; color: var(--accent); font-weight: 700; }
+.lead { font-size: 17px; color: var(--ink-2); max-width: 40em; }
+.meta { font-size: 13px; color: var(--muted); }
+section { display: flex; flex-direction: column; gap: 20px; }
+.sec-head { display: flex; flex-direction: column; gap: 6px; }
+.sec-head p { color: var(--ink-2); max-width: 44em; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* header */
+header { display: flex; flex-direction: column; gap: 14px; }
+
+/* goal */
+.goal { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 28px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 28px; }
+.goal-num { display: flex; flex-direction: column; gap: 4px; }
+.goal-num .big { font-family: var(--f-display); font-size: clamp(52px, 11vw, 76px); font-weight: 700; line-height: 1.05; color: var(--accent); font-variant-numeric: tabular-nums; }
+.goal-num .big small { font-size: .38em; margin-left: 4px; color: var(--ink); }
+.split { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.split-row { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.sw { width: 12px; height: 12px; border-radius: 3px; flex: none; }
+.sw.ig { background: var(--s-ig); } .sw.th { background: var(--s-th); } .sw.line { background: var(--s-line); }
+.split-row b { margin-left: auto; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.howcount { font-size: 13px; color: var(--ink-2); background: var(--accent-soft); border-radius: 10px; padding: 12px 14px; }
+.goal-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border-radius: 10px; overflow: hidden; align-self: start; }
+.goal-list div { background: var(--surface); padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; }
+.goal-list dt { font-size: 12px; color: var(--muted); }
+.goal-list dd { margin: 0; font-family: var(--f-display); font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.goal-list dd span { font-family: var(--f-body); font-size: 12px; font-weight: 500; color: var(--ink-2); margin-left: 2px; }
+
+/* flow */
+.flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; align-items: stretch; gap: 8px; }
+.node { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.node .t { font-weight: 700; font-size: 14px; }
+.node .d { font-size: 12.5px; color: var(--ink-2); line-height: 1.6; }
+.node.key { border-color: var(--accent); background: var(--accent-soft); }
+.arrow { align-self: center; color: var(--muted); font-size: 18px; }
+.pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.pillar { display: flex; flex-direction: column; gap: 8px; padding-top: 14px; border-top: 2px solid var(--ink); }
+.pillar p, .pillar li { font-size: 14px; color: var(--ink-2); }
+.pillar ul { margin: 0; padding-left: 1.1em; }
+.tag { display: inline-block; font-size: 11px; letter-spacing: .06em; font-weight: 700; color: var(--accent); }
+
+/* chart */
+.chart-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 18px 12px; display: flex; flex-direction: column; gap: 10px; position: relative; }
+.chart-top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.chart-scroll { overflow-x: auto; }
+#chart { display: block; width: 100%; min-width: 560px; height: auto; }
+#chart text { font-family: var(--f-body); }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); font-size: 12.5px; line-height: 1.6; padding: 8px 10px; border-radius: 8px; white-space: nowrap; font-variant-numeric: tabular-nums; z-index: 2; }
+.tip b { font-weight: 700; }
+.pace { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.pace div { border-left: 2px solid var(--line); padding-left: 12px; font-size: 13px; color: var(--ink-2); }
+.pace b { display: block; font-family: var(--f-display); font-size: 20px; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+/* tables */
+.tbl-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+th, td { padding: 9px 12px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; position: sticky; left: 0; background: var(--surface); }
+thead th { font-size: 12px; color: var(--muted); font-weight: 500; vertical-align: bottom; line-height: 1.4; }
+thead th b { display: block; color: var(--ink); font-size: 13px; }
+tbody tr:last-child td { border-bottom: 0; }
+tr.total td { font-weight: 700; color: var(--accent); background: var(--accent-soft); }
+tr.total td:first-child { background: var(--accent-soft); }
+tr.sub td:first-child { padding-left: 26px; color: var(--ink-2); }
+tr.grp td { font-size: 11.5px; color: var(--muted); letter-spacing: .08em; padding-top: 14px; text-align: left; }
+td.ms { font-weight: 700; }
+.note { font-size: 13px; color: var(--ink-2); }
+
+/* phases */
+.phases { display: flex; flex-direction: column; gap: 0; }
+.phase { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 24px; padding: 22px 0; border-top: 1px solid var(--line); }
+.phase:last-child { border-bottom: 1px solid var(--line); }
+.ph-when { display: flex; flex-direction: column; gap: 4px; }
+.ph-no { font-size: 12px; color: var(--muted); letter-spacing: .08em; }
+.ph-date { font-size: 13px; color: var(--ink-2); }
+.ph-target { margin-top: 6px; font-family: var(--f-display); font-size: 22px; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+.ph-target small { font-family: var(--f-body); font-size: 12px; color: var(--muted); font-weight: 500; display: block; }
+.ph-body { display: flex; flex-direction: column; gap: 10px; }
+.ph-body ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 4px; }
+.ph-body li { font-size: 14.5px; }
+.ph-body li b { font-weight: 700; }
+
+/* routine + insta */
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.box { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+.box ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: var(--ink-2); }
+.ratio { display: flex; height: 10px; border-radius: 5px; overflow: hidden; gap: 2px; }
+.ratio i { display: block; height: 100%; }
+.routine { list-style: none; padding: 0 !important; }
+.routine li { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed var(--line); padding-bottom: 6px; color: var(--ink) !important; }
+.routine li span { color: var(--ink-2); text-align: right; }
+
+/* calculator */
+.calc { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 18px; }
+.fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 13px; color: var(--ink-2); line-height: 1.5; }
+.field .in { display: flex; align-items: center; gap: 6px; }
+.field input { width: 100%; font: inherit; font-size: 16px; font-variant-numeric: tabular-nums; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); }
+.field input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.example { font-size: 12px; color: var(--gold); font-weight: 700; }
+.calc-out { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.calc-out div { background: var(--accent-soft); border-radius: 10px; padding: 14px; }
+.calc-out span { font-size: 12.5px; color: var(--ink-2); }
+.calc-out b { display: block; font-family: var(--f-display); font-size: 26px; color: var(--accent); font-variant-numeric: tabular-nums; }
+
+/* checklist */
+.check { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.check label { display: flex; gap: 12px; align-items: flex-start; padding: 10px 12px; border-radius: 10px; cursor: pointer; }
+.check label:hover { background: var(--surface); }
+.check input { margin-top: 6px; width: 18px; height: 18px; accent-color: var(--accent); flex: none; }
+.check input:checked + span { color: var(--muted); text-decoration: line-through; }
+.rules { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
+
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+details summary { cursor: pointer; padding: 16px 20px; font-weight: 700; }
+details summary:focus-visible { outline: 2px solid var(--accent); border-radius: 14px; }
+details .tbl-wrap { border: 0; border-top: 1px solid var(--line); border-radius: 0 0 14px 14px; }
+footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; display: flex; flex-direction: column; gap: 4px; }
+
+@media (max-width: 760px) {
+  .goal { grid-template-columns: 1fr; padding: 20px; }
+  .flow { grid-template-columns: 1fr; }
+  .arrow { transform: rotate(90deg); justify-self: center; }
+  .pillars, .two, .fields, .pace { grid-template-columns: 1fr; }
+  .phase { grid-template-columns: 1fr; gap: 10px; }
+}
+@media (max-width: 420px) { .goal-list { grid-template-columns: 1fr; } .calc-out { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+
+<header>
+  <span class="eyebrow">2026年11月スタート → 2028年10月末ゴール</span>
+  <h1>1万人ロードマップ</h1>
+  <p class="lead">「誰でも、人より少し知っていることがある」。その小さなお役立ちを持ち寄るつながりを、2年で1万人に。そこからAiNAを通して、関わった人も私も収入を得られる循環をつくる計画です。</p>
+  <p class="meta">波多江 希さん｜作成 2026年10月31日｜毎月末に数字を記録し、3ヶ月ごとに見直す前提の目標です</p>
+</header>
+
+<section aria-labelledby="goal-h">
+  <div class="sec-head">
+    <span class="eyebrow">2年後のゴール｜2028年10月末</span>
+    <h2 id="goal-h">つながっている人、合計1万人</h2>
+  </div>
+  <div class="goal">
+    <div class="goal-num">
+      <span class="meta">つながり総数</span>
+      <span class="big">10,000<small>人</small></span>
+      <div class="split">
+        <div class="split-row"><i class="sw ig"></i>Instagram（親子×AIアカウント）<b>4,500人</b></div>
+        <div class="split-row"><i class="sw th"></i>Threads<b>4,500人</b></div>
+        <div class="split-row"><i class="sw line"></i>LINE（公式LINE＋オープンチャット）<b>1,000人</b></div>
+      </div>
+      <p class="howcount" style="margin-top:14px"><b>数え方：</b>毎月末に3つの数字を足すだけ。同じ人がInstagramとLINEの両方にいても、それぞれ1人と数えます。0人スタートで計算しているので、今のフォロワー数があれば教えてください。数字を引き直します。</p>
+    </div>
+    <dl class="goal-list">
+      <div><dt>お役立ちお茶会・ランチ会</dt><dd>90<span>回</span> / 800<span>人</span></dd></div>
+      <div><dt>自分で会を開く仲間（ホスト）</dt><dd>10<span>人</span></dd></div>
+      <div><dt>親子AI体験会（福岡・リアル）</dt><dd>120<span>組</span></dd></div>
+      <div><dt>AiNAの個別相談</dt><dd>180<span>人</span></dd></div>
+      <div><dt>AiNAのAI講座を受講</dt><dd>60<span>人</span></dd></div>
+      <div><dt>AiNAで収入が出はじめた仲間</dt><dd>20<span>人</span></dd></div>
+      <div><dt>企業へのAI提案</dt><dd>60<span>社</span></dd></div>
+      <div><dt>企業案件の成約</dt><dd>12<span>社</span></dd></div>
+    </dl>
+  </div>
+</section>
+
+<section aria-labelledby="flow-h">
+  <div class="sec-head">
+    <span class="eyebrow">しくみ</span>
+    <h2 id="flow-h">3つの取り組みが1本の流れになる</h2>
+    <p>SNSで出会い、LINEでつながり、リアルの会で信頼が生まれ、その先にAiNAがあります。1万人は「入口」の数、収入は「その先」で生まれます。</p>
+  </div>
+  <div class="flow" role="list">
+    <div class="node" role="listitem"><span class="t">Threads・Instagram</span><span class="d">お役立ちの呼びかけ、親子×AIの発信、私の想い</span></div>
+    <span class="arrow" aria-hidden="true">→</span>
+    <div class="node key" role="listitem"><span class="t">LINE</span><span class="d">つながりの受け皿。会と体験会の案内はここから</span></div>
+    <span class="arrow" aria-hidden="true">→</span>
+    <div class="node" role="listitem"><span class="t">リアルの場</span><span class="d">お役立ちお茶会・ランチ会、親子AI体験会</span></div>
+    <span class="arrow" aria-hidden="true">→</span>
+    <div class="node" role="listitem"><span class="t">AiNA</span><span class="d">AI講座で学ぶ、案件で稼ぐ、企業へ提案する</span></div>
+  </div>
+  <div class="pillars">
+    <div class="pillar">
+      <span class="tag">柱1</span>
+      <h3>Threads × お役立ちお茶会</h3>
+      <p>毎月最低1回、Threadsでお茶会・ランチ会を呼びかけます。趣旨は「お役立ち」。漫画に詳しい、腸活に詳しい。誰でも人より少し知っていることを持ち寄り、教え合う会です。人脈づくりが目的の会にはしません。</p>
+    </div>
+    <div class="pillar">
+      <span class="tag">柱2</span>
+      <h3>Instagram（AIアカウント）</h3>
+      <p>アカウント設計シートどおり、テーマは「親子の絆が深まるアカウント」。教育×AI×親子コミュニケーション×思春期の子育て。小学生〜思春期の子を持つ親に届け、「AIの魔法の杖」としてブランディング。ゆくゆく福岡のリアル教室へ。</p>
+    </div>
+    <div class="pillar">
+      <span class="tag">柱3</span>
+      <h3>AiNAでの循環</h3>
+      <p>「親がまずAIを体験する」入口としてAiNAのAI講座を紹介。学んだ人は案件で収入を得て、企業にはAIを絡めた提案をし、取れた案件を学んだ仲間に回します。個人も企業も私も得をする形です。</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="ms-h">
+  <div class="sec-head">
+    <span class="eyebrow">逆算</span>
+    <h2 id="ms-h">何ヶ月後に何人？マイルストーン</h2>
+    <p>前回の計画（半年100人 → 1年500人 → 1年半3,000人 → 2年1万人）は、最後の1年で9,500人増やす形でした。今回は前半から数字を置き、毎月の積み上げで届く形にしています。</p>
+  </div>
+  <div class="chart-card">
+    <div class="chart-top">
+      <h3>つながり総数の伸び（月末時点）</h3>
+      <div class="legend" aria-hidden="true">
+        <span><i class="sw ig"></i>Instagram</span>
+        <span><i class="sw th"></i>Threads</span>
+        <span><i class="sw line"></i>LINE</span>
+      </div>
+    </div>
+    <div class="chart-scroll"><svg id="chart" viewBox="0 0 720 300" role="img" aria-label="つながり総数の月別目標。3ヶ月後600人、6ヶ月後1,500人、9ヶ月後2,700人、1年後4,000人、1年半後6,800人、2年後10,000人。"></svg></div>
+    <div class="tip" id="tip" hidden></div>
+  </div>
+  <div class="pace">
+    <div><b>1日 約8人</b>最初の半年（1,500人 ÷ 181日）</div>
+    <div><b>1日 約14人</b>半年〜1年（2,500人 ÷ 184日）</div>
+    <div><b>1日 約16人</b>2年目（6,000人 ÷ 366日）</div>
+  </div>
+  <div class="tbl-wrap">
+    <table><thead><tr><th>指標</th><th><b>3ヶ月後</b>2027年1月末</th><th><b>6ヶ月後</b>2027年4月末</th><th><b>9ヶ月後</b>2027年7月末</th><th><b>1年後</b>2027年10月末</th><th><b>1年半後</b>2028年4月末</th><th><b>2年後</b>2028年10月末</th></tr></thead><tbody>
+<tr class="total"><td>★ つながり総数（人）</td><td>600</td><td>1,500</td><td>2,700</td><td>4,000</td><td>6,800</td><td>10,000</td></tr>
+<tr class="sub"><td>Instagram</td><td>250</td><td>600</td><td>1,100</td><td>1,700</td><td>3,000</td><td>4,500</td></tr>
+<tr class="sub"><td>Threads</td><td>300</td><td>750</td><td>1,350</td><td>1,900</td><td>3,100</td><td>4,500</td></tr>
+<tr class="sub"><td>LINE</td><td>50</td><td>150</td><td>250</td><td>400</td><td>700</td><td>1,000</td></tr>
+<tr class="grp"><td colspan="7">リアルの場</td></tr>
+<tr><td>お茶会・ランチ会 累計回数</td><td>3</td><td>9</td><td>18</td><td>28</td><td>52</td><td>90</td></tr>
+<tr><td>お茶会・ランチ会 延べ参加（人）</td><td>12</td><td>50</td><td>110</td><td>200</td><td>400</td><td>800</td></tr>
+<tr><td>会を開く仲間・ホスト（人）</td><td>0</td><td>1</td><td>2</td><td>3</td><td>5</td><td>10</td></tr>
+<tr><td>親子AI体験会 累計（組）</td><td>0</td><td>5</td><td>15</td><td>30</td><td>70</td><td>120</td></tr>
+<tr class="grp"><td colspan="7">AiNA・収入</td></tr>
+<tr><td>AiNA 個別相談 累計（人）</td><td>6</td><td>15</td><td>30</td><td>50</td><td>100</td><td>180</td></tr>
+<tr><td>AiNA AI講座 受講 累計（人）</td><td>2</td><td>5</td><td>10</td><td>15</td><td>35</td><td>60</td></tr>
+<tr><td>AiNAで収入が出た仲間（人）</td><td>0</td><td>1</td><td>2</td><td>4</td><td>10</td><td>20</td></tr>
+<tr><td>企業 提案 累計（社）</td><td>2</td><td>6</td><td>12</td><td>20</td><td>40</td><td>60</td></tr>
+<tr><td>企業 成約 累計（社）</td><td>0</td><td>1</td><td>2</td><td>4</td><td>8</td><td>12</td></tr>
+</tbody></table>
+  </div>
+  <p class="note">数字はすべて「その月末までの累計」。AiNAと企業の数字は、収入につながる行動の目安です。</p>
+</section>
+
+<section aria-labelledby="ph-h">
+  <div class="sec-head">
+    <span class="eyebrow">行動計画</span>
+    <h2 id="ph-h">5つのフェーズでやること</h2>
+    <p>フォロワー数は自分で決められませんが、投稿数・開催数・声をかける人数は自分で決められます。各フェーズの太字が「必ず守る行動の数字」です。</p>
+  </div>
+  <div class="phases">
+    <div class="phase">
+      <div class="ph-when"><span class="ph-no">フェーズ1｜1〜3ヶ月目</span><h3>土台づくり</h3><span class="ph-date">2026年11月〜2027年1月</span><span class="ph-target">600人<small>2027年1月末の目標</small></span></div>
+      <div class="ph-body"><ul>
+        <li>Threadsは<b>毎日2投稿</b>。11月中に第1回お役立ちお茶会を呼びかける</li>
+        <li>お茶会は<b>月1回・3〜5人</b>の少人数から。初回は凛花ちゃんとタッグ</li>
+        <li>Instagramのプロフィールを設計シートどおりに整え、<b>リール週3本＋カルーセル週1本</b>、ストーリーズは毎日</li>
+        <li>ストーリーズの質問箱で「子どもとAI、何が不安？」を集める（<b>30件</b>）。そのまま投稿ネタにする</li>
+        <li>公式LINE（入口）とオープンチャット（会の参加者用）をつくり、両SNSのプロフィールにリンク</li>
+        <li>AiNAの話は<b>月2人</b>に。企業は身近な経営者に<b>月1社</b>話を聞くところから</li>
+      </ul></div>
+    </div>
+    <div class="phase">
+      <div class="ph-when"><span class="ph-no">フェーズ2｜4〜6ヶ月目</span><h3>定着させる</h3><span class="ph-date">2027年2月〜4月</span><span class="ph-target">1,500人<small>2027年4月末の目標</small></span></div>
+      <div class="ph-body"><ul>
+        <li>会を<b>月2回</b>に（リアル1回＋オンライン1回）。1回6人前後</li>
+        <li>参加者の持ち寄りネタをThreadsでレポートし、次の呼びかけにつなげる</li>
+        <li>4月までに<b>第1回 親子AI体験会</b>を福岡で開く（3〜5組）</li>
+        <li>Instagramは反応の良い型（保存が多い投稿）を見つけて、その型を増やす</li>
+        <li>AiNAの個別相談は<b>月3人</b>。企業提案は<b>月1〜2社</b></li>
+      </ul></div>
+    </div>
+    <div class="phase">
+      <div class="ph-when"><span class="ph-no">フェーズ3｜7〜12ヶ月目</span><h3>広がりをつくる</h3><span class="ph-date">2027年5月〜10月</span><span class="ph-target">4,000人<small>2027年10月末の目標（7月末 2,700人）</small></span></div>
+      <div class="ph-body"><ul>
+        <li>「次回、10分だけプチ講師をしませんか？」のバトンリレーを始め、<b>初めての派生会</b>（仲間が開く会）を生む</li>
+        <li>会は<b>月3回</b>（自分2回＋仲間1回）</li>
+        <li>親子AI体験会を<b>月1回の定期開催</b>にする</li>
+        <li>10月に<b>1周年お役立ち交流会</b>（30人規模）</li>
+        <li>AiNAの個別相談は<b>月5〜7人</b>。企業提案は<b>月2〜3社</b></li>
+      </ul></div>
+    </div>
+    <div class="phase">
+      <div class="ph-when"><span class="ph-no">フェーズ4｜13〜18ヶ月目</span><h3>加速する</h3><span class="ph-date">2027年11月〜2028年4月</span><span class="ph-target">6,800人<small>2028年4月末の目標</small></span></div>
+      <div class="ph-body"><ul>
+        <li>会は<b>月4回</b>（自分2回＋ホスト2回）。ホストは5人に</li>
+        <li>オンラインのお役立ち会で、福岡以外の人ともつながる</li>
+        <li>Instagramは伸びた型にしぼって<b>週4〜5本</b>に増やす</li>
+        <li>AiNAの個別相談は<b>月8人</b>。企業提案は<b>月3社</b></li>
+      </ul></div>
+    </div>
+    <div class="phase">
+      <div class="ph-when"><span class="ph-no">フェーズ5｜19〜24ヶ月目</span><h3>1万人へ</h3><span class="ph-date">2028年5月〜10月</span><span class="ph-target">10,000人<small>2028年10月末のゴール</small></span></div>
+      <div class="ph-body"><ul>
+        <li>会は<b>月6回以上</b>。ホスト10人が各地で開く形に</li>
+        <li>10月に<b>2周年イベント</b>（100人規模、AiNAと合同）</li>
+        <li>AiNAの個別相談は<b>月13人</b>。企業提案は<b>月3〜4社</b></li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="rt-h">
+  <div class="sec-head">
+    <span class="eyebrow">毎週のこと</span>
+    <h2 id="rt-h">ルーティンとInstagramの発信設計</h2>
+  </div>
+  <div class="two">
+    <div class="box">
+      <h3>1週間のルーティン（フェーズ1〜3）</h3>
+      <ul class="routine">
+        <li>Threads投稿 <span>毎日2本（週14本）</span></li>
+        <li>お茶会の呼びかけ <span>月1回以上＋開催レポ</span></li>
+        <li>Instagramリール <span>週3本</span></li>
+        <li>Instagramカルーセル <span>週1本</span></li>
+        <li>ストーリーズ <span>毎日（質問箱・アンケート）</span></li>
+        <li>LINE配信 <span>週1回</span></li>
+        <li>AiNAの話をする <span>週1人以上</span></li>
+        <li>数字の記録 <span>月末に1回</span></li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Instagramは「通常7：サービス3」</h3>
+      <div class="ratio" aria-hidden="true"><i style="flex:7;background:var(--s-ig)"></i><i style="flex:3;background:var(--s-th)"></i></div>
+      <ul>
+        <li><b>通常の発信（7割）</b>：思春期の子を持つ親へ。Z世代の流行り・トレンド、子どもがママに教えているシチュエーション動画、毎日の声かけ・質問ネタ。ここでAIは裏方</li>
+        <li><b>サービスの発信（3割）</b>：AIに不安な小学生の親へ。「AIって危険？」「使わせて大丈夫？」に答え、「使わせる・使わせない」ではなく「どう使うか」を考えられる親へ。私の想い、体験会の案内もここ</li>
+        <li><b>見る数字</b>：フォロワー数、保存数、プロフィールからのLINE登録数</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="calc-h">
+  <div class="sec-head">
+    <span class="eyebrow">収入の見込み</span>
+    <h2 id="calc-h">AiNAの単価を入れると、収入の目安が出ます</h2>
+    <p>上のマイルストーンの人数（講座受講60人・企業成約12社）で計算します。<span class="example">入っている金額は仮の数字です。</span>AiNAの実際の金額に書きかえてください。</p>
+  </div>
+  <form class="calc" id="calc" novalidate>
+    <div class="fields">
+      <div class="field"><label for="fee-ref">AI講座の紹介フィー（1人あたり）</label><div class="in"><input id="fee-ref" type="number" inputmode="numeric" min="0" step="1000" value="30000"><span>円</span></div></div>
+      <div class="field"><label for="fee-biz">企業案件の営業フィー（1社あたり）</label><div class="in"><input id="fee-biz" type="number" inputmode="numeric" min="0" step="1000" value="100000"><span>円</span></div></div>
+      <div class="field"><label for="fee-rec">毎月続けて入る額（受講者1人あたり・なければ0）</label><div class="in"><input id="fee-rec" type="number" inputmode="numeric" min="0" step="100" value="0"><span>円</span></div></div>
+    </div>
+    <div class="calc-out">
+      <div><span>2年目後半（2028年5〜10月）の月収目安</span><b id="out-month">-</b></div>
+      <div><span>2年間の合計</span><b id="out-total">-</b></div>
+    </div>
+    <p class="note" id="out-note"></p>
+  </form>
+</section>
+
+<section aria-labelledby="rv-h">
+  <div class="sec-head">
+    <span class="eyebrow">見直し</span>
+    <h2 id="rv-h">ズレたときのルール</h2>
+  </div>
+  <ol class="rules">
+    <li>毎月末、Instagram・Threads・LINEの数字と、会の参加人数を「月次進捗管理シート」に記録する</li>
+    <li>3ヶ月ごと（1月末・4月末・7月末・10月末）に、上のマイルストーンと比べる</li>
+    <li>2ヶ月続けて目標の70%に届かなければ、まず行動の数字（投稿数・開催数）を守れているか確認。守れていたら、投稿の型や呼びかけ文を変える</li>
+    <li>120%を超えたら、次のマイルストーンを前倒しする</li>
+  </ol>
+</section>
+
+<section aria-labelledby="nov-h">
+  <div class="sec-head">
+    <span class="eyebrow">最初の一歩</span>
+    <h2 id="nov-h">2026年11月にやること</h2>
+  </div>
+  <ul class="check" id="check">
+    <li><label><input type="checkbox" id="c1"><span>今のフォロワー数（Instagram・Threads）とLINE登録数を記録する</span></label></li>
+    <li><label><input type="checkbox" id="c2"><span>公式LINEとオープンチャットをつくり、両SNSのプロフィールにリンクを貼る</span></label></li>
+    <li><label><input type="checkbox" id="c3"><span>Threadsで第1回お役立ちお茶会を呼びかける（11月下旬・3〜5人）</span></label></li>
+    <li><label><input type="checkbox" id="c4"><span>Instagramのプロフィールを設計シートどおりに整え、最初の4週分（リール12本・カルーセル4本）の企画を出す</span></label></li>
+    <li><label><input type="checkbox" id="c5"><span>ストーリーズに「子どもとAI、何が不安？」の質問箱を出す</span></label></li>
+    <li><label><input type="checkbox" id="c6"><span>AiNAの話を2人にする。身近な経営者1社に話を聞く</span></label></li>
+  </ul>
+</section>
+
+<details>
+  <summary>月ごとの目標（24ヶ月分の表）</summary>
+  <div class="tbl-wrap">
+    <table><thead><tr><th>月</th><th>つながり総数</th><th>Instagram</th><th>Threads</th><th>LINE</th><th>その月の会（回）</th><th>その月の参加（人）</th><th>AiNA相談 累計</th><th>AiNA受講 累計</th><th>企業提案 累計</th><th>企業成約 累計</th></tr></thead><tbody>
+<tr><td>2026年11月（1）</td><td>200</td><td>83</td><td>100</td><td>17</td><td>1</td><td>4</td><td>2</td><td>1</td><td>1</td><td>0</td></tr>
+<tr><td>2026年12月（2）</td><td>400</td><td>167</td><td>200</td><td>33</td><td>1</td><td>4</td><td>4</td><td>1</td><td>1</td><td>0</td></tr>
+<tr><td>2027年1月（3）</td><td class="ms">600</td><td class="ms">250</td><td class="ms">300</td><td class="ms">50</td><td class="ms">1</td><td class="ms">4</td><td class="ms">6</td><td class="ms">2</td><td class="ms">2</td><td class="ms">0</td></tr>
+<tr><td>2027年2月（4）</td><td>900</td><td>367</td><td>450</td><td>83</td><td>2</td><td>12</td><td>9</td><td>3</td><td>3</td><td>0</td></tr>
+<tr><td>2027年3月（5）</td><td>1,200</td><td>483</td><td>600</td><td>117</td><td>2</td><td>13</td><td>12</td><td>4</td><td>5</td><td>1</td></tr>
+<tr><td>2027年4月（6）</td><td class="ms">1,500</td><td class="ms">600</td><td class="ms">750</td><td class="ms">150</td><td class="ms">2</td><td class="ms">13</td><td class="ms">15</td><td class="ms">5</td><td class="ms">6</td><td class="ms">1</td></tr>
+<tr><td>2027年5月（7）</td><td>1,900</td><td>767</td><td>950</td><td>183</td><td>3</td><td>20</td><td>20</td><td>7</td><td>8</td><td>1</td></tr>
+<tr><td>2027年6月（8）</td><td>2,300</td><td>933</td><td>1,150</td><td>217</td><td>3</td><td>20</td><td>25</td><td>8</td><td>10</td><td>2</td></tr>
+<tr><td>2027年7月（9）</td><td class="ms">2,700</td><td class="ms">1,100</td><td class="ms">1,350</td><td class="ms">250</td><td class="ms">3</td><td class="ms">20</td><td class="ms">30</td><td class="ms">10</td><td class="ms">12</td><td class="ms">2</td></tr>
+<tr><td>2027年8月（10）</td><td>3,133</td><td>1,300</td><td>1,533</td><td>300</td><td>3</td><td>20</td><td>37</td><td>12</td><td>15</td><td>3</td></tr>
+<tr><td>2027年9月（11）</td><td>3,567</td><td>1,500</td><td>1,717</td><td>350</td><td>3</td><td>20</td><td>43</td><td>13</td><td>17</td><td>3</td></tr>
+<tr><td>2027年10月（12）</td><td class="ms">4,000</td><td class="ms">1,700</td><td class="ms">1,900</td><td class="ms">400</td><td class="ms">4</td><td class="ms">50</td><td class="ms">50</td><td class="ms">15</td><td class="ms">20</td><td class="ms">4</td></tr>
+<tr><td>2027年11月（13）</td><td>4,467</td><td>1,917</td><td>2,100</td><td>450</td><td>4</td><td>33</td><td>58</td><td>18</td><td>23</td><td>5</td></tr>
+<tr><td>2027年12月（14）</td><td>4,933</td><td>2,133</td><td>2,300</td><td>500</td><td>4</td><td>33</td><td>67</td><td>22</td><td>27</td><td>5</td></tr>
+<tr><td>2028年1月（15）</td><td>5,400</td><td>2,350</td><td>2,500</td><td>550</td><td>4</td><td>33</td><td>75</td><td>25</td><td>30</td><td>6</td></tr>
+<tr><td>2028年2月（16）</td><td>5,867</td><td>2,567</td><td>2,700</td><td>600</td><td>4</td><td>33</td><td>83</td><td>28</td><td>33</td><td>7</td></tr>
+<tr><td>2028年3月（17）</td><td>6,333</td><td>2,783</td><td>2,900</td><td>650</td><td>4</td><td>34</td><td>92</td><td>32</td><td>37</td><td>7</td></tr>
+<tr><td>2028年4月（18）</td><td class="ms">6,800</td><td class="ms">3,000</td><td class="ms">3,100</td><td class="ms">700</td><td class="ms">4</td><td class="ms">34</td><td class="ms">100</td><td class="ms">35</td><td class="ms">40</td><td class="ms">8</td></tr>
+<tr><td>2028年5月（19）</td><td>7,333</td><td>3,250</td><td>3,333</td><td>750</td><td>6</td><td>50</td><td>113</td><td>39</td><td>43</td><td>9</td></tr>
+<tr><td>2028年6月（20）</td><td>7,867</td><td>3,500</td><td>3,567</td><td>800</td><td>6</td><td>50</td><td>127</td><td>43</td><td>47</td><td>9</td></tr>
+<tr><td>2028年7月（21）</td><td>8,400</td><td>3,750</td><td>3,800</td><td>850</td><td>6</td><td>50</td><td>140</td><td>48</td><td>50</td><td>10</td></tr>
+<tr><td>2028年8月（22）</td><td>8,933</td><td>4,000</td><td>4,033</td><td>900</td><td>6</td><td>50</td><td>153</td><td>52</td><td>53</td><td>11</td></tr>
+<tr><td>2028年9月（23）</td><td>9,467</td><td>4,250</td><td>4,267</td><td>950</td><td>6</td><td>50</td><td>167</td><td>56</td><td>57</td><td>11</td></tr>
+<tr><td>2028年10月（24）</td><td class="ms">10,000</td><td class="ms">4,500</td><td class="ms">4,500</td><td class="ms">1,000</td><td class="ms">8</td><td class="ms">150</td><td class="ms">180</td><td class="ms">60</td><td class="ms">60</td><td class="ms">12</td></tr>
+</tbody></table>
+  </div>
+</details>
+
+<footer>
+  <span>もとにした資料：2年間目標設定ロードマップ、お役立ちお茶会 超実践ロードマップ、アカウント設計シート（AIアカウント）</span>
+  <span>Instagramの設定は、前回のロードマップの「理念発信」ではなく、アカウント設計シート（親子×AI）に合わせています。</span>
+</footer>
+
+</div>
+
+<script>
+const MONTHS = [{"m": 1, "label": "2026年11月", "ig": 83, "th": 100, "line": 17, "total": 200, "enroll": 1, "won": 0}, {"m": 2, "label": "2026年12月", "ig": 167, "th": 200, "line": 33, "total": 400, "enroll": 1, "won": 0}, {"m": 3, "label": "2027年1月", "ig": 250, "th": 300, "line": 50, "total": 600, "enroll": 2, "won": 0}, {"m": 4, "label": "2027年2月", "ig": 367, "th": 450, "line": 83, "total": 900, "enroll": 3, "won": 0}, {"m": 5, "label": "2027年3月", "ig": 483, "th": 600, "line": 117, "total": 1200, "enroll": 4, "won": 1}, {"m": 6, "label": "2027年4月", "ig": 600, "th": 750, "line": 150, "total": 1500, "enroll": 5, "won": 1}, {"m": 7, "label": "2027年5月", "ig": 767, "th": 950, "line": 183, "total": 1900, "enroll": 7, "won": 1}, {"m": 8, "label": "2027年6月", "ig": 933, "th": 1150, "line": 217, "total": 2300, "enroll": 8, "won": 2}, {"m": 9, "label": "2027年7月", "ig": 1100, "th": 1350, "line": 250, "total": 2700, "enroll": 10, "won": 2}, {"m": 10, "label": "2027年8月", "ig": 1300, "th": 1533, "line": 300, "total": 3133, "enroll": 12, "won": 3}, {"m": 11, "label": "2027年9月", "ig": 1500, "th": 1717, "line": 350, "total": 3567, "enroll": 13, "won": 3}, {"m": 12, "label": "2027年10月", "ig": 1700, "th": 1900, "line": 400, "total": 4000, "enroll": 15, "won": 4}, {"m": 13, "label": "2027年11月", "ig": 1917, "th": 2100, "line": 450, "total": 4467, "enroll": 18, "won": 5}, {"m": 14, "label": "2027年12月", "ig": 2133, "th": 2300, "line": 500, "total": 4933, "enroll": 22, "won": 5}, {"m": 15, "label": "2028年1月", "ig": 2350, "th": 2500, "line": 550, "total": 5400, "enroll": 25, "won": 6}, {"m": 16, "label": "2028年2月", "ig": 2567, "th": 2700, "line": 600, "total": 5867, "enroll": 28, "won": 7}, {"m": 17, "label": "2028年3月", "ig": 2783, "th": 2900, "line": 650, "total": 6333, "enroll": 32, "won": 7}, {"m": 18, "label": "2028年4月", "ig": 3000, "th": 3100, "line": 700, "total": 6800, "enroll": 35, "won": 8}, {"m": 19, "label": "2028年5月", "ig": 3250, "th": 3333, "line": 750, "total": 7333, "enroll": 39, "won": 9}, {"m": 20, "label": "2028年6月", "ig": 3500, "th": 3567, "line": 800, "total": 7867, "enroll": 43, "won": 9}, {"m": 21, "label": "2028年7月", "ig": 3750, "th": 3800, "line": 850, "total": 8400, "enroll": 48, "won": 10}, {"m": 22, "label": "2028年8月", "ig": 4000, "th": 4033, "line": 900, "total": 8933, "enroll": 52, "won": 11}, {"m": 23, "label": "2028年9月", "ig": 4250, "th": 4267, "line": 950, "total": 9467, "enroll": 56, "won": 11}, {"m": 24, "label": "2028年10月", "ig": 4500, "th": 4500, "line": 1000, "total": 10000, "enroll": 60, "won": 12}];
+const fmt = n => n.toLocaleString('ja-JP');
+
+(function drawChart() {
+  const svg = document.getElementById('chart');
+  const tip = document.getElementById('tip');
+  const card = svg.closest('.chart-card');
+  const W = 720, H = 300, L = 52, R = 10, T = 26, B = 40;
+  const pw = W - L - R, ph = H - T - B, max = 10000;
+  const y = v => T + ph - (v / max) * ph;
+  const ns = 'http://www.w3.org/2000/svg';
+  const el = (tag, attrs, text) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (text != null) e.textContent = text; svg.appendChild(e); return e; };
+  for (let v = 0; v <= max; v += 2500) {
+    el('line', { x1: L, x2: W - R, y1: y(v), y2: y(v), stroke: 'var(--line)', 'stroke-width': 1 });
+    el('text', { x: L - 8, y: y(v) + 4, 'text-anchor': 'end', 'font-size': 11, fill: 'var(--muted)' }, fmt(v));
+  }
+  const step = pw / MONTHS.length, bw = step - 6;
+  const milestones = { 3: '27/1', 6: '27/4', 9: '27/7', 12: '27/10', 18: '28/4', 24: '28/10' };
+  MONTHS.forEach((d, i) => {
+    const x = L + i * step + 3;
+    const segs = [['ig', 'var(--s-ig)'], ['th', 'var(--s-th)'], ['line', 'var(--s-line)']];
+    let base = 0;
+    segs.forEach(([k, c], si) => {
+      const v = d[k];
+      const top = y(base + v), bottom = y(base);
+      const gap = si === 0 ? 0 : 2;
+      const h = Math.max(0, bottom - top - gap);
+      if (si === segs.length - 1) {
+        const r = Math.min(4, h, bw / 2);
+        const yt = bottom - gap - h;
+        el('path', { d: `M${x},${bottom - gap} V${yt + r} Q${x},${yt} ${x + r},${yt} H${x + bw - r} Q${x + bw},${yt} ${x + bw},${yt + r} V${bottom - gap} Z`, fill: c });
+      } else {
+        el('rect', { x, y: bottom - gap - h, width: bw, height: h, fill: c });
+      }
+      base += v;
+    });
+    if (milestones[d.m]) {
+      el('text', { x: x + bw / 2, y: y(d.total) - 7, 'text-anchor': 'middle', 'font-size': 11.5, 'font-weight': 700, fill: 'var(--ink)' }, fmt(d.total));
+      el('text', { x: x + bw / 2, y: H - B + 18, 'text-anchor': 'middle', 'font-size': 11, fill: 'var(--ink-2)' }, milestones[d.m]);
+    }
+    const hit = el('rect', { x: L + i * step, y: T, width: step, height: ph, fill: 'transparent', tabindex: 0, 'aria-label': `${d.label} 合計${fmt(d.total)}人` });
+    const show = () => {
+      tip.innerHTML = `<b>${d.label}（${d.m}ヶ月目）</b><br>合計 <b>${fmt(d.total)}人</b><br>Instagram ${fmt(d.ig)} / Threads ${fmt(d.th)} / LINE ${fmt(d.line)}`;
+      tip.hidden = false;
+      const sr = svg.getBoundingClientRect(), cr = card.getBoundingClientRect();
+      const scale = sr.width / W;
+      let left = sr.left - cr.left + (L + i * step + step / 2) * scale + 10;
+      const tw = tip.offsetWidth;
+      if (left + tw > cr.width - 8) left = left - tw - 20;
+      tip.style.left = Math.max(8, left) + 'px';
+      tip.style.top = (sr.top - cr.top + 30) + 'px';
+    };
+    hit.addEventListener('mouseenter', show); hit.addEventListener('focus', show);
+    hit.addEventListener('mouseleave', () => tip.hidden = true); hit.addEventListener('blur', () => tip.hidden = true);
+  });
+  el('text', { x: L, y: H - 6, 'font-size': 11, fill: 'var(--muted)' }, '年/月（2026年11月スタート）');
+})();
+
+(function calc() {
+  const ids = ['fee-ref', 'fee-biz', 'fee-rec'];
+  const inputs = ids.map(id => document.getElementById(id));
+  try { const s = JSON.parse(localStorage.getItem('roadmap-fees') || 'null'); if (s) inputs.forEach((inp, i) => { if (s[i] != null) inp.value = s[i]; }); } catch (e) {}
+  const yen = n => '約' + Math.round(n).toLocaleString('ja-JP') + '円';
+  const run = () => {
+    const [ref, biz, rec] = inputs.map(i => Math.max(0, Number(i.value) || 0));
+    let total = 0, prevE = 0, prevW = 0;
+    MONTHS.forEach(d => { total += (d.enroll - prevE) * ref + (d.won - prevW) * biz + d.enroll * rec; prevE = d.enroll; prevW = d.won; });
+    const last6 = MONTHS.slice(18);
+    const e0 = MONTHS[17].enroll, w0 = MONTHS[17].won, e1 = MONTHS[23].enroll, w1 = MONTHS[23].won;
+    const recAvg = last6.reduce((s, d) => s + d.enroll, 0) / 6 * rec;
+    const month = ((e1 - e0) * ref + (w1 - w0) * biz) / 6 + recAvg;
+    document.getElementById('out-month').textContent = yen(month);
+    document.getElementById('out-total').textContent = yen(total);
+    document.getElementById('out-note').textContent = `2年目後半は、受講紹介 月約${((e1 - e0) / 6).toFixed(1)}人・企業成約 月約${((w1 - w0) / 6).toFixed(1)}社のペースで計算しています。目標月収が決まれば、そこから必要な人数を逆算できます。`;
+    try { localStorage.setItem('roadmap-fees', JSON.stringify(inputs.map(i => i.value))); } catch (e) {}
+  };
+  inputs.forEach(i => i.addEventListener('input', run));
+  document.getElementById('calc').addEventListener('submit', e => e.preventDefault());
+  run();
+})();
+
+(function checklist() {
+  const boxes = [...document.querySelectorAll('#check input')];
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem('roadmap-nov') || '{}') || {}; } catch (e) {}
+  boxes.forEach(b => { b.checked = !!saved[b.id]; b.addEventListener('change', () => { saved[b.id] = b.checked; try { localStorage.setItem('roadmap-nov', JSON.stringify(saved)); } catch (e) {} }); });
+})();
+</script>
