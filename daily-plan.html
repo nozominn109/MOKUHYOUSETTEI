@@ -1,0 +1,418 @@
+<title>希の毎日TODO</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<style>
+/* Layout: phone-first. Today's checklist opens the page; the plan behind it (timetable, weekly rhythm, roles) follows in one column. */
+:root {
+  --bg: #f2f5f0;
+  --surface: #fbfcfa;
+  --ink: #1c2921;
+  --ink-2: #44544a;
+  --muted: #66766b;
+  --line: #d6dfd3;
+  --accent: #1d6a47;
+  --accent-soft: #e0ede4;
+  --gold: #8a5f00;
+  --gold-soft: #f6ecd6;
+  --dot: #12895a;
+  --f-display: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  --f-body: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121814; --surface: #1a221d; --ink: #e6ede8; --ink-2: #bdcac1; --muted: #93a398;
+    --line: #2c3930; --accent: #7cc79f; --accent-soft: #1e3227; --gold: #e0b45c; --gold-soft: #2f2816; --dot: #34a372; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121814; --surface: #1a221d; --ink: #e6ede8; --ink-2: #bdcac1; --muted: #93a398;
+  --line: #2c3930; --accent: #7cc79f; --accent-soft: #1e3227; --gold: #e0b45c; --gold-soft: #2f2816; --dot: #34a372; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--f-body); font-size: 15px; line-height: 1.75;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 64px;
+}
+.wrap { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 52px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.35; }
+h1 { font-size: clamp(28px, 6vw, 38px); }
+h2 { font-size: 22px; }
+h3 { font-size: 16px; }
+p { margin: 0; }
+.eyebrow { font-size: 12px; letter-spacing: .12em; color: var(--accent); font-weight: 700; }
+.lead { color: var(--ink-2); max-width: 38em; }
+.meta { font-size: 13px; color: var(--muted); }
+section { display: flex; flex-direction: column; gap: 16px; }
+.sec-head { display: flex; flex-direction: column; gap: 6px; }
+.sec-head p { color: var(--ink-2); }
+header { display: flex; flex-direction: column; gap: 12px; }
+.nums { font-variant-numeric: tabular-nums; }
+
+/* today */
+.today { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.day-nav { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.day-nav button { font: inherit; font-size: 13px; color: var(--ink-2); background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.day-nav button:focus-visible, .mode button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.day-title { text-align: center; display: flex; flex-direction: column; }
+.day-title b { font-family: var(--f-display); font-size: 22px; }
+.day-title span { font-size: 12.5px; color: var(--muted); }
+.week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.week div { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 11.5px; color: var(--muted); }
+.week i { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid var(--line); display: block; }
+.week div.done i { background: var(--dot); border-color: var(--dot); }
+.week div.cur span { color: var(--ink); font-weight: 700; }
+.mode { display: flex; gap: 6px; background: var(--bg); border-radius: 999px; padding: 4px; border: 1px solid var(--line); }
+.mode button { flex: 1; font: inherit; font-size: 13px; border: 0; background: transparent; color: var(--ink-2); padding: 6px 10px; border-radius: 999px; cursor: pointer; }
+.mode button[aria-pressed="true"] { background: var(--accent); color: var(--surface); font-weight: 700; }
+.tasks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.tasks li { border-top: 1px solid var(--line); }
+.tasks li:first-child { border-top: 0; }
+.tasks label { display: grid; grid-template-columns: 22px 52px minmax(0, 1fr); gap: 10px; align-items: start; padding: 11px 2px; cursor: pointer; }
+.tasks input { width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--accent); }
+.tasks .t { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.tasks .x { display: flex; flex-direction: column; gap: 2px; }
+.tasks .x small { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+.tasks input:checked ~ .x > span { color: var(--muted); text-decoration: line-through; }
+.badge { font-style: normal; display: inline-block; font-size: 11px; font-weight: 700; color: var(--gold); background: var(--gold-soft); border-radius: 4px; padding: 0 6px; margin-right: 6px; vertical-align: 1px; }
+.progress { font-size: 13px; color: var(--ink-2); display: flex; justify-content: space-between; gap: 8px; }
+.saved { font-size: 12px; color: var(--muted); }
+
+/* timeline */
+.tl { display: flex; flex-direction: column; border-left: 2px solid var(--line); margin-left: 6px; }
+.tl div { position: relative; padding: 0 0 16px 20px; display: flex; flex-direction: column; gap: 2px; }
+.tl div::before { content: ""; position: absolute; left: -7px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--surface); border: 2px solid var(--line); }
+.tl div.on::before { background: var(--accent); border-color: var(--accent); }
+.tl b { font-size: 14px; font-variant-numeric: tabular-nums; }
+.tl span { font-size: 14px; color: var(--ink-2); }
+.tl .min { font-size: 12px; color: var(--accent); font-weight: 700; }
+.sum { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.sum div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; font-size: 12.5px; color: var(--ink-2); }
+.sum b { display: block; font-family: var(--f-display); font-size: 20px; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+/* tables */
+.tbl-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+thead th { font-size: 12px; color: var(--muted); font-weight: 500; }
+tbody tr:last-child td { border-bottom: 0; }
+td:first-child { font-weight: 700; white-space: nowrap; }
+td small { display: block; color: var(--muted); font-size: 12.5px; }
+
+/* roles */
+.roles { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+.role { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.role.me { border-color: var(--accent); }
+.role ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: var(--ink-2); }
+.role ul b { color: var(--ink); }
+.cant { font-size: 13px; color: var(--ink-2); background: var(--gold-soft); border-radius: 10px; padding: 12px 14px; }
+.flow { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 8px; }
+.flow li b { display: block; }
+.flow li span { color: var(--ink-2); font-size: 14px; }
+.rules { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 8px; }
+.rules li span { display: block; color: var(--ink-2); font-size: 14px; }
+footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
+@media (max-width: 640px) { .roles, .sum { grid-template-columns: 1fr; } .today { padding: 16px; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+
+<header>
+  <span class="eyebrow">1万人ロードマップを毎日の行動に</span>
+  <h1>希の毎日TODO</h1>
+  <p class="lead">平日は朝の50分とすき間の40分、日曜に2時間。考える作業は朝と日曜だけにして、仕事で疲れた夜は返信だけにします。下書きはClaudeが用意するので、希は「撮る・出す・人と話す」に集中します。</p>
+</header>
+
+<section aria-labelledby="today-h">
+  <h2 id="today-h" class="eyebrow">今日やること</h2>
+  <div class="today">
+    <div class="day-nav">
+      <button type="button" id="prev" aria-label="前の日">‹ 前の日</button>
+      <div class="day-title"><b id="day-label">-</b><span id="day-type">-</span></div>
+      <button type="button" id="next" aria-label="次の日">次の日 ›</button>
+    </div>
+    <div class="week" id="week" aria-label="この週のできた日"></div>
+    <div class="mode" role="group" aria-label="表示の切りかえ">
+      <button type="button" id="m-full" aria-pressed="true">ふつうの日</button>
+      <button type="button" id="m-min" aria-pressed="false">忙しい日（5分）</button>
+    </div>
+    <ul class="tasks" id="tasks"></ul>
+    <div class="progress"><span id="prog">-</span><span class="saved">チェックはこの端末に保存されます</span></div>
+  </div>
+</section>
+
+<section aria-labelledby="tt-h">
+  <div class="sec-head">
+    <span class="eyebrow">平日の時間割</span>
+    <h2 id="tt-h">夜は考えない。朝に作って、すき間で出す</h2>
+    <p>22時に寝て5時に起きます。最初の1週間（11月2日〜8日）は5時30分起きで体を慣らします。</p>
+  </div>
+  <div class="tl">
+    <div class="on"><b>21:30</b><span>スマホを置く。明日の服を出しておく</span></div>
+    <div class="on"><b>22:00</b><span>寝る</span></div>
+    <div class="on"><b>5:00</b><span>起きる。水を飲んで顔を洗う</span></div>
+    <div class="on"><b>5:10〜5:50</b><span>朝の集中タイム40分。曜日ごとに決まったメイン作業を1つだけ</span></div>
+    <div class="on"><b>5:50〜6:00</b><span>Threadsを2本セット（予約か1本投稿）、ストーリーズ1本</span><span class="min">忙しい日もここだけはやる</span></div>
+    <div><b>6:00〜7:10</b><span>いつもの朝の支度</span></div>
+    <div><b>7:10〜8:30</b><span>車通勤。運転に集中。AIや子育ての音声を聞く。ネタを思いついたら、画面を見ずにSiriで声のメモだけ</span></div>
+    <div class="on"><b>8:30〜8:45</b><span>会社でひと息。コメントといいねを返し、他の人の投稿に5件コメントする（つながりづくり）</span></div>
+    <div class="on"><b>昼休み15分</b><span>Threadsの2本目を出す。DMに返信</span></div>
+    <div><b>17:30〜</b><span>仕事終わり。2日に1回ピラティス</span></div>
+    <div class="on"><b>帰宅後10分</b><span>コメント・DM・LINEに返信するだけ。新しく考える作業はしない</span></div>
+  </div>
+  <div class="sum">
+    <div><b>平日 約1時間30分</b>朝50分＋すき間40分</div>
+    <div><b>日曜 約2時間</b>確認・まとめ撮り・予約</div>
+    <div><b>週 約9.5時間</b>お茶会の日は別に2時間</div>
+  </div>
+</section>
+
+<section aria-labelledby="wk-h">
+  <div class="sec-head">
+    <span class="eyebrow">1週間</span>
+    <h2 id="wk-h">曜日ごとに「朝の集中タイム」でやること</h2>
+    <p>毎朝「何をやろう」と迷う時間をなくすため、曜日で固定します。素材と台本は日曜にそろっています。</p>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>曜日</th><th>メイン作業</th></tr></thead>
+      <tbody>
+        <tr><td>月</td><td>リール①を編集して投稿<small>日曜に撮った素材とClaudeの台本で</small></td></tr>
+        <tr><td>火</td><td>カルーセルをCanvaで作って投稿<small>文章はClaudeが用意。Canvaのテンプレートに流し込むだけ</small></td></tr>
+        <tr><td>水</td><td>リール②を編集して投稿</td></tr>
+        <tr><td>木</td><td>つながりの日<small>AiNAを1人に個別に案内する／LINE配信を送る／第2木曜は経営者1社にアポの連絡</small></td></tr>
+        <tr><td>金</td><td>リール③を編集して投稿</td></tr>
+        <tr><td>土</td><td>休む日<small>月1回（第3土曜）はお役立ちお茶会・ランチ会の日</small></td></tr>
+        <tr><td>日</td><td>準備の日（約2時間）<small>Claudeの来週分を確認して直す20分／リール3本をまとめ撮り60分／予約投稿20分／来週の予定確認10分</small></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="mo-h">
+  <div class="sec-head">
+    <span class="eyebrow">1ヶ月</span>
+    <h2 id="mo-h">お茶会を中心にした月のリズム</h2>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>いつ</th><th>やること</th></tr></thead>
+      <tbody>
+        <tr><td>第1月曜</td><td>Threadsでお茶会・ランチ会を呼びかける。お店を予約する<small>呼びかけ文はClaudeが作る</small></td></tr>
+        <tr><td>第2水曜</td><td>申込者にLINEで当日の案内を送る</td></tr>
+        <tr><td>第2木曜</td><td>身近な経営者1社にアポの連絡（企業）</td></tr>
+        <tr><td>第3金曜</td><td>前日のリマインドを送る</td></tr>
+        <tr><td>第3土曜</td><td>お役立ちお茶会・ランチ会（10:00〜11:30）<small>終わったらスマホに3行メモ：誰が何を持ち寄ったか／印象に残った話／次も来たい人</small></td></tr>
+        <tr><td>その次の月曜</td><td>開催レポをThreadsに投稿<small>3行メモをClaudeに送れば文章になる</small></td></tr>
+        <tr><td>最後の日曜</td><td>今月の数字をKPI管理表に記録し、Claudeに貼って振り返る（15分）</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="role-h">
+  <div class="sec-head">
+    <span class="eyebrow">役割分担</span>
+    <h2 id="role-h">Claudeは下書きと考える作業、希は人と向き合う作業</h2>
+  </div>
+  <div class="roles">
+    <div class="role">
+      <h3>Claudeがやること</h3>
+      <ul>
+        <li><b>毎週の投稿案一式</b>：Threads 14本、リール台本3本（シーン・セリフ・テロップ・キャプション）、カルーセル1本の文章、ストーリーズの質問ネタ7個、LINE配信文1本</li>
+        <li><b>お茶会</b>：呼びかけ文、申込者への案内、前日リマインド、当日の進行表、3行メモからの開催レポ</li>
+        <li><b>AiNA</b>：相手別の案内メッセージ（ママ友・会社の人・お茶会の参加者）、フリープランの説明、よくある質問への答え、紹介する仲間向けの説明</li>
+        <li><b>企業</b>：ヒアリングシートと提案のたたき台</li>
+        <li><b>月末</b>：数字から達成率を出し、来月の直し方を提案</li>
+        <li><b>いつでも</b>：DMやコメントの返し方、ネタ切れの相談</li>
+      </ul>
+    </div>
+    <div class="role me">
+      <h3>希がやること（希にしかできないこと）</h3>
+      <ul>
+        <li><b>撮る・編集する・投稿する</b>：顔・声・手元が出るもの</li>
+        <li><b>返信と交流</b>：コメントとDMへの返信、他の人の投稿へのコメント</li>
+        <li><b>お茶会</b>：お店選び、当日の進行、参加者との会話</li>
+        <li><b>AiNA</b>：1人ひとりへの個別の案内</li>
+        <li><b>企業</b>：経営者に会って話を聞く</li>
+        <li><b>記録</b>：月末にフォロワー数などを数えて記録する</li>
+        <li><b>生活</b>：22時に寝て、5時に起きる</li>
+      </ul>
+    </div>
+  </div>
+  <p class="cant">Claudeは、SNSへの投稿、DMの送信、フォロワー数の確認はできません。数字や反応は希が貼ってくれれば、それをもとに考えます。このチャットに戻ってきてもらえれば、これまでの計画を前提に続けられます。</p>
+</section>
+
+<section aria-labelledby="cyc-h">
+  <div class="sec-head">
+    <span class="eyebrow">Claudeとのやりとり</span>
+    <h2 id="cyc-h">毎週の流れ</h2>
+  </div>
+  <ol class="flow">
+    <li><b>土曜の夜か日曜の朝：「来週分お願い」と送る</b><span>先週反応がよかった投稿、来週の予定（お茶会など）、話したいことがあれば一言そえる。Claudeが来週分を一式つくる</span></li>
+    <li><b>日曜：確認して直す → まとめ撮り → 予約</b><span>自分の言葉に直すところだけ直す。完璧を目指さない</span></li>
+    <li><b>お茶会のあと：3行メモを送る</b><span>開催レポと、参加者へのお礼メッセージにする</span></li>
+    <li><b>月末：数字を貼る</b><span>Instagram・Threads・LINEの数、会の参加人数、AiNAの登録数。達成率と来月の直し方を返す</span></li>
+  </ol>
+</section>
+
+<section aria-labelledby="ph-h">
+  <div class="sec-head">
+    <span class="eyebrow">この先</span>
+    <h2 id="ph-h">フェーズが進んだら増えることと、時間のつくり方</h2>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>時期</th><th>増えること</th><th>時間のつくり方</th></tr></thead>
+      <tbody>
+        <tr><td>フェーズ1<small>〜2027年1月</small></td><td>このページのとおり</td><td>-</td></tr>
+        <tr><td>フェーズ2<small>2027年2〜4月</small></td><td>会が月2回（1回はオンライン）、AiNAの案内が週2〜3人、親子AI体験会の準備</td><td>オンライン会は日曜の朝に。AiNAの案内は木曜の朝と昼休みに</td></tr>
+        <tr><td>フェーズ3<small>2027年5〜10月</small></td><td>AiNAの案内が週5人、体験会が月1回、紹介する仲間のサポート</td><td>リール編集をAiNAで学んだ仲間にお願いし、朝の時間を案内に回す</td></tr>
+        <tr><td>フェーズ4〜5<small>2027年11月〜</small></td><td>会は月4〜6回、仲間が30人に</td><td>会はホストの仲間が開き、自分は月2回に。案内と仲間のサポートが中心</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="ru-h">
+  <div class="sec-head">
+    <span class="eyebrow">続けるために</span>
+    <h2 id="ru-h">なんとなく1日が過ぎないための6つのルール</h2>
+  </div>
+  <ol class="rules">
+    <li><b>ゼロの日をつくらない</b><span>忙しい日、疲れた日は「最低ライン」だけ。Threads 1本とストーリーズ1本で5分</span></li>
+    <li><b>夜は考えない</b><span>帰宅後は返信だけ。考える作業は朝と日曜に寄せる</span></li>
+    <li><b>迷う時間をなくす</b><span>何を出すかは日曜に決まっている。朝は開いて出すだけ</span></li>
+    <li><b>完璧より投稿</b><span>40分で終わらなければ、その時点のものを出す</span></li>
+    <li><b>寝る時間が先</b><span>22時に寝られなかった日は5時起きにこだわらない。その日は最低ラインだけ</span></li>
+    <li><b>週1日は休む</b><span>お茶会のない土曜は完全にオフ</span></li>
+  </ol>
+</section>
+
+<footer>もとにした計画：1万人ロードマップ（2026年11月〜2028年10月）のフェーズ1の行動目標。曜日や時間が合わなくなったら、Claudeに言えば組み直します。</footer>
+
+</div>
+
+<script>
+const MAIN = {
+  1: ['リール①を編集して投稿', '日曜に撮った素材とClaudeの台本で'],
+  2: ['カルーセルをCanvaで作って投稿', '文章はClaudeが用意。テンプレートに流し込むだけ'],
+  3: ['リール②を編集して投稿', ''],
+  4: ['つながりの日：AiNAを1人に個別に案内する／LINE配信を送る', '案内メッセージはClaudeのテンプレートを使う'],
+  5: ['リール③を編集して投稿', ''],
+};
+const START = {
+  '2026-11-01': [['設定', '目覚ましを5:30に、21:30に「スマホを置く」のリマインダーをセットする'], ['Claude', 'Claudeに「来週分お願い」と送り、最初の1週間分の投稿案をつくる']],
+  '2026-11-02': [['記録', '今のフォロワー数（Instagram・Threads）とLINE登録数を記録する'], ['開始', 'ストーリーズに「子どもとAI、何が不安？」の質問箱を出す']],
+  '2026-11-03': [['文化の日', '休みなら：公式LINEとオープンチャットをつくり、両SNSのプロフィールにリンクを貼る'], ['文化の日', '休みなら：Instagramのプロフィールを設計シートどおりに整える／お茶会のお店を探す']],
+  '2026-11-04': [['お茶会', 'Threadsで第1回お役立ちお茶会（11月21日・土）を呼びかける']],
+  '2026-11-08': [['切りかえ', '明日から5:00起き。目覚ましを5:00に変える']],
+  '2026-11-12': [['企業', '身近な経営者1社に、話を聞きたいと連絡する']],
+  '2026-11-18': [['お茶会', '申込者にLINEで当日の案内を送る']],
+  '2026-11-20': [['お茶会', '明日のお茶会の前日リマインドを送る']],
+  '2026-11-21': [['お茶会', '第1回お役立ちお茶会（10:00〜）。凛華ちゃんとタッグ'], ['お茶会', '終わったら3行メモをClaudeに送る']],
+  '2026-11-23': [['お茶会', '開催レポをThreadsに投稿する（Claudeがメモから作成）']],
+  '2026-11-29': [['月末', '11月の数字をKPI管理表に記録し、Claudeに貼って振り返る']],
+};
+const key = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+const nth = d => Math.ceil(d.getDate() / 7);
+const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+const DOW = ['日', '月', '火', '水', '木', '金', '土'];
+
+function specials(d) {
+  const k = key(d);
+  if (k < '2026-12-01') return START[k] || [];
+  const out = [], w = d.getDay(), n = nth(d);
+  if (w === 1 && n === 1) out.push(['お茶会', 'Threadsでお茶会・ランチ会を呼びかける。お店を予約する']);
+  if (w === 3 && n === 2) out.push(['お茶会', '申込者にLINEで当日の案内を送る']);
+  if (w === 4 && n === 2) out.push(['企業', '身近な経営者1社にアポの連絡']);
+  if (w === 5 && n === 3) out.push(['お茶会', '明日のお茶会の前日リマインドを送る']);
+  if (w === 6 && n === 3) out.push(['お茶会', 'お役立ちお茶会・ランチ会（10:00〜）'], ['お茶会', '終わったら3行メモをClaudeに送る']);
+  if (w === 1 && nth(addDays(d, -2)) === 3) out.push(['お茶会', '開催レポをThreadsに投稿する（Claudeがメモから作成）']);
+  if (w === 0 && addDays(d, 7).getMonth() !== d.getMonth()) out.push(['月末', '今月の数字をKPI管理表に記録し、Claudeに貼って振り返る']);
+  return out;
+}
+
+function tasksFor(d) {
+  const w = d.getDay(), early = key(d) < '2026-11-09';
+  const sp = specials(d).map((s, i) => ({ id: 'sp' + i, time: '今日', text: s[1], badge: s[0], min: true }));
+  let list;
+  if (w >= 1 && w <= 5) {
+    list = [
+      { id: 'wake', time: early ? '5:30' : '5:00', text: '起きる', note: early ? '最初の1週間は5:30で体を慣らす' : '' },
+      { id: 'main', time: early ? '5:35' : '5:10', text: MAIN[w][0], note: (early ? '30分' : '40分') + (MAIN[w][1] ? '。' + MAIN[w][1] : '') },
+      { id: 'th1', time: early ? '6:05' : '5:50', text: 'Threadsを2本セット＋ストーリーズ1本', note: '予約できなければ1本投稿して、2本目は昼に', min: true },
+      { id: 'am', time: '8:30', text: 'コメントといいねを返す。他の人の投稿に5件コメント', note: '15分' },
+      { id: 'lunch', time: '昼', text: 'Threadsの2本目を出す。DMに返信', note: '15分' },
+      { id: 'eve', time: '帰宅後', text: 'コメント・DM・LINEに返信するだけ', note: '10分。考える作業はしない' },
+      { id: 'sleep', time: '21:30', text: 'スマホを置く → 22:00に寝る', note: '' },
+    ];
+  } else if (w === 6) {
+    const party = nth(d) === 3 || key(d) === '2026-11-21';
+    list = [
+      { id: 'th1', time: '朝', text: 'Threads 1本＋ストーリーズ1本', note: '日曜に予約済みならチェックだけ', min: true },
+      { id: 'rest', time: '一日', text: party ? 'お茶会のあとは休む' : '完全オフ。休むのも計画のうち', note: '' },
+    ];
+  } else {
+    list = [
+      { id: 'cl', time: '朝', text: 'Claudeの来週分の投稿案を確認して直す', note: '20分。まだなら「来週分お願い」と送る' },
+      { id: 'shoot', time: '午前', text: 'リール3本をまとめ撮り', note: '60分。台本を見ながら' },
+      { id: 'sched', time: '午前', text: 'ThreadsとInstagramを予約投稿する', note: '20分', min: true },
+      { id: 'plan', time: '午前', text: '来週の予定を確認する', note: '10分。AiNAで案内する相手、お茶会の準備' },
+    ];
+  }
+  return [...sp, ...list];
+}
+
+const state = { date: new Date(), mode: 'full' };
+const load = k => { try { return JSON.parse(localStorage.getItem('todo:' + k) || '{}') || {}; } catch (e) { return {}; } };
+const save = (k, v) => { try { localStorage.setItem('todo:' + k, JSON.stringify(v)); } catch (e) {} };
+try { const m = localStorage.getItem('todo-mode'); if (m) state.mode = m; } catch (e) {}
+
+function render() {
+  const d = state.date, k = key(d), w = d.getDay();
+  document.getElementById('day-label').textContent = `${d.getMonth() + 1}月${d.getDate()}日（${DOW[w]}）`;
+  const type = w === 0 ? '準備の日' : w === 6 ? ((nth(d) === 3 || k === '2026-11-21') ? 'お茶会の日' : '休む日') : '平日｜' + MAIN[w][0].split('：')[0].replace(/を編集して投稿|をCanvaで作って投稿/, '');
+  document.getElementById('day-type').textContent = (key(new Date()) === k ? '今日・' : '') + type;
+  document.getElementById('m-full').setAttribute('aria-pressed', state.mode === 'full');
+  document.getElementById('m-min').setAttribute('aria-pressed', state.mode === 'min');
+  const checked = load(k);
+  let tasks = tasksFor(d);
+  if (state.mode === 'min') tasks = tasks.filter(t => t.min);
+  const ul = document.getElementById('tasks');
+  ul.innerHTML = '';
+  tasks.forEach(t => {
+    const li = document.createElement('li');
+    const id = `c-${k}-${t.id}`;
+    li.innerHTML = `<label for="${id}"><input type="checkbox" id="${id}"><span class="t">${t.time}</span><span class="x"><span>${t.badge ? `<i class="badge">${t.badge}</i>` : ''}${t.text}</span>${t.note ? `<small>${t.note}</small>` : ''}</span></label>`;
+    const box = li.querySelector('input');
+    box.checked = !!checked[t.id];
+    box.addEventListener('change', () => { const c = load(k); c[t.id] = box.checked; save(k, c); render(); });
+    ul.appendChild(li);
+  });
+  const done = tasks.filter(t => checked[t.id]).length;
+  document.getElementById('prog').textContent = `${tasks.length}個中 ${done}個できた` + (done === tasks.length && tasks.length ? '。今日はここまでで十分' : '');
+  const mon = addDays(d, -((w + 6) % 7));
+  const wk = document.getElementById('week');
+  wk.innerHTML = '';
+  for (let i = 0; i < 7; i++) {
+    const x = addDays(mon, i), c = load(key(x));
+    const div = document.createElement('div');
+    if (Object.values(c).some(Boolean)) div.classList.add('done');
+    if (key(x) === k) div.classList.add('cur');
+    div.innerHTML = `<i></i><span>${DOW[x.getDay()]}</span>`;
+    div.title = `${x.getMonth() + 1}/${x.getDate()}`;
+    wk.appendChild(div);
+  }
+}
+document.getElementById('prev').addEventListener('click', () => { state.date = addDays(state.date, -1); render(); });
+document.getElementById('next').addEventListener('click', () => { state.date = addDays(state.date, 1); render(); });
+document.getElementById('m-full').addEventListener('click', () => { state.mode = 'full'; try { localStorage.setItem('todo-mode', 'full'); } catch (e) {} render(); });
+document.getElementById('m-min').addEventListener('click', () => { state.mode = 'min'; try { localStorage.setItem('todo-mode', 'min'); } catch (e) {} render(); });
+render();
+</script>
