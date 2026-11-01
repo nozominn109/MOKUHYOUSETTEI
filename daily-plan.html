@@ -116,6 +116,12 @@ td small { display: block; color: var(--muted); font-size: 12.5px; }
 .rules { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 8px; }
 .rules li span { display: block; color: var(--ink-2); font-size: 14px; }
 footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
+.prompts { display: flex; flex-direction: column; gap: 10px; }
+.prompt { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+.p-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; font-size: 14px; }
+.prompt p { font-size: 14px; color: var(--ink-2); user-select: all; }
+.copy { flex: none; font: inherit; font-size: 13px; color: var(--accent); background: var(--accent-soft); border: 0; border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+.copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 @media (max-width: 640px) { .roles, .sum { grid-template-columns: 1fr; } .today { padding: 16px; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
@@ -159,11 +165,11 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
     <div class="on"><b>5:10〜5:50</b><span>朝の集中タイム40分。曜日ごとに決まったメイン作業を1つだけ</span></div>
     <div class="on"><b>5:50〜6:00</b><span>Threadsを2本セット（予約か1本投稿）、ストーリーズ1本</span><span class="min">忙しい日もここだけはやる</span></div>
     <div><b>6:00〜7:10</b><span>いつもの朝の支度</span></div>
-    <div class="on"><b>7:10〜8:30</b><span>車通勤＝勉強の時間。地政学のYouTube（藤井厳喜さんなど）やAIの話を音声で聞く。家を出る前に再生をセットし、運転中は画面に触らない。ネタを思いついたらSiriで声のメモだけ</span></div>
+    <div class="on"><b>7:10〜8:30</b><span>車通勤＝勉強の時間。行きは地政学のYouTube（藤井厳喜さんなど）の本編、帰りはNotebookLMの音声解説を聞く。家を出る前に再生をセットし、運転中は画面に触らない。ネタを思いついたらSiriで声のメモだけ</span></div>
     <div class="on"><b>8:30〜8:45</b><span>会社でひと息。コメントといいねを返し、他の人の投稿に5件コメントする（つながりづくり）</span></div>
     <div class="on"><b>昼休み15分</b><span>Threadsの2本目を出す。DMに返信</span></div>
     <div><b>17:30〜</b><span>仕事終わり。2日に1回ピラティス。帰りの車も勉強の時間</span></div>
-    <div class="on"><b>帰宅後10分</b><span>コメント・DM・LINEに返信するだけ。新しく考える作業はしない。最後に新着動画を「後で見る」に入れる（2分）</span></div>
+    <div class="on"><b>帰宅後10分</b><span>コメント・DM・LINEに返信するだけ。新しく考える作業はしない。最後に新着動画を「後で見る」とNotebookLMに振り分ける（2分）</span></div>
   </div>
   <div class="sum">
     <div><b>平日 約1時間30分</b>朝50分＋すき間40分</div>
@@ -218,28 +224,59 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
 <section aria-labelledby="info-h">
   <div class="sec-head">
     <span class="eyebrow">情報収集</span>
-    <h2 id="info-h">番組を3段階に分けて、通勤で聞き切る</h2>
-    <p>通勤の往復は1日約2時間40分。1.5倍速なら約4時間分を聞けます。世界情勢や地政学の情報収集は車の中で終わらせて、朝の集中タイムと夜の時間は使いません。</p>
+    <h2 id="info-h">本編はAだけ。残りはNotebookLMの音声で聞く</h2>
+    <p>通勤は往復で1日約2時間40分。好きな番組（A）は本編を行きの車で聞き、それ以外（B・C）はNotebookLMに入れて、要約した音声を帰りの車で聞きます。何本あっても、帰りの20分ほどで聞き終わります。</p>
   </div>
   <div class="tbl-wrap">
     <table>
       <thead><tr><th>段階</th><th>番組</th><th>聞き方</th></tr></thead>
       <tbody>
-        <tr><td>A 毎回聞く<small>世界情勢の柱</small></td><td>及川幸久 THE CORE（有料の2Uも）、藤井厳喜、藤原直哉</td><td>新着が出たら全部「後で見る」へ。行きの車で聞く</td></tr>
-        <tr><td>B タイトルで選ぶ</td><td>伊木ひろし、ナイキマン（NMS）、山田敏宏（スパイチャンネル）、めいろま由美</td><td>気になるテーマの回だけ。週に2〜3本。帰りの車で</td></tr>
-        <tr><td>C 週に1本まで</td><td>JoeTakayama 仮想通貨チャンネル、哲理学チャンネル さとうみつろう</td><td>帰りの車か週末に。気分転換も兼ねて</td></tr>
+        <tr><td>A 本編で聞く<small>世界情勢の柱</small></td><td>及川幸久 THE CORE（有料の2Uも）、藤井厳喜、藤原直哉</td><td>YouTubeの「後で見る」へ。行きの車で1.5倍速</td></tr>
+        <tr><td>B 音声の要約で聞く</td><td>伊木ひろし、ナイキマン（NMS）、山田敏宏（スパイチャンネル）、めいろま由美</td><td>NotebookLMへ。帰りの車で音声解説を聞く</td></tr>
+        <tr><td>C 音声の要約で聞く</td><td>JoeTakayama 仮想通貨チャンネル、哲理学チャンネル さとうみつろう</td><td>NotebookLMへ。気になる回だけ本編も</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="meta">分け方は仮です。大事な順に入れかえてください。Aは3つまでにします。</p>
+  <p class="meta">分け方は仮です。大事な順に入れかえてください。有料の2Uのような限定公開の動画はNotebookLMに入れられないので、本編で聞きます。</p>
+
+  <h3>3者の役割</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>だれ</th><th>やること</th></tr></thead>
+      <tbody>
+        <tr><td>NotebookLM</td><td>動画の文字起こしを読み、要約や音声解説にする<small>入れた動画に書いてあることだけで答え、どの動画のどこかを示してくれる</small></td></tr>
+        <tr><td>Claude</td><td>番組をまたいで整理する<small>背景の説明、番組ごとの見方の違い、確かめたほうがいい点、希の生活や活動（親子×AI・AiNA）とのつながり、NotebookLMへの指示文づくり</small></td></tr>
+        <tr><td>希</td><td>動画を振り分けて入れる、聞く、気づきを声のメモに残す</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>1週間の流れ</h3>
   <ol class="flow">
-    <li><b>「後で見る」を1本の列にする</b><span>帰宅後に2分、新着のタイトルだけ見て入れる。動画はそこでは見ない</span></li>
-    <li><b>通勤で順番に流す</b><span>1.5倍速。行きはA、帰りはBとC。家を出る前に再生をセットし、運転中は画面に触らない</span></li>
-    <li><b>気づきはSiriで声のメモ</b><span>「Hey Siri、メモ」。1本につき一言でいい</span></li>
-    <li><b>Xは「リスト」だけ見る</b><span>情報用のアカウントを1つのリストにまとめ、おすすめのタイムラインは開かない。帰宅後15分まで</span></li>
-    <li><b>日曜にClaudeと学びノート</b><span>1週間の声メモと、特に気になった動画の文字起こしを送る。文字起こしは、パソコンのYouTubeで動画の説明欄の「文字起こしを表示」からコピーできる。Claudeが「何が起きたか・なぜ・日本や家族への影響」で整理し、番組ごとの見方の違いや、公式発表で確かめたほうがいい点も並べる</span></li>
+    <li><b>準備（最初に1回）：月ごとのノートブックをつくる</b><span>スマホにNotebookLMのアプリを入れ、「世界情勢 2026年11月」のように月ごとに1冊つくる。1冊に入れられる数には上限があるので、月で分ける</span></li>
+    <li><b>帰宅後2分：新着を振り分ける</b><span>AはYouTubeの「後で見る」へ。B・CはYouTubeアプリの共有ボタンから、NotebookLMのその月のノートへ。どちらも動画はそこでは見ない</span></li>
+    <li><b>行きの車：Aの本編を聞く</b><span>家を出る前に「後で見る」の再生をセット。運転中は画面に触らない</span></li>
+    <li><b>水曜の夜と日曜：音声解説をつくる</b><span>NotebookLMで下の「音声解説の指示文」を貼って作成。次の帰りの車で聞く</span></li>
+    <li><b>Xの気になる投稿</b><span>リストだけを見る。残したい投稿は文章をコピーして、NotebookLMに「コピーしたテキスト」で追加</span></li>
+    <li><b>日曜：学びノートにする（10分）</b><span>NotebookLMに「週のまとめの指示文」を貼り、出てきたまとめと声メモをClaudeに送る。Claudeが背景・見方の違い・確かめる点・自分への影響を足して、学びノートにする</span></li>
   </ol>
-  <p class="cant">ClaudeはYouTubeの動画を直接見られません（この環境からはYouTubeにつながらないことを確かめました）。文字起こしか声メモを貼ってもらえれば、1時間の動画も3分で読める要約にします。世界情勢の話は自分の学びとして持ち、親子×AIの発信には「AIと世界の動き（AIの規制、仕事の変わり方など）」の話だけ使うのがおすすめです。</p>
+
+  <h3>そのまま貼れる指示文</h3>
+  <div class="prompts">
+    <div class="prompt">
+      <div class="p-head"><b>① 音声解説の指示文（NotebookLMの音声解説の「カスタマイズ」に貼る）</b><button type="button" class="copy" data-target="p1">コピー</button></div>
+      <p id="p1">日本語で、20分以内にまとめてください。聞き手は、仕事をしながら世界情勢を勉強している人です。今週追加したソースから大事なニュースを3つに絞り、それぞれ「何が起きたか」「なぜ起きたか」「日本の暮らしや子どもの将来への影響」の順に話してください。番組によって見方が違うところは、どの番組がどう言っているかがわかるように紹介してください。</p>
+    </div>
+    <div class="prompt">
+      <div class="p-head"><b>② 週のまとめの指示文（NotebookLMのチャットに貼る）</b><button type="button" class="copy" data-target="p2">コピー</button></div>
+      <p id="p2">今週追加したソースをもとに、次の形でまとめてください。1. 大事なトピックを5つ（それぞれ2〜3行）。2. トピックごとに、どの番組がどう言っているか。3. 番組の間で意見が分かれているところ。4. 来週も追いかけたほうがいいこと。番組名を必ず書いてください。</p>
+    </div>
+    <div class="prompt">
+      <div class="p-head"><b>③ Claudeへの送り方（日曜）</b><button type="button" class="copy" data-target="p3">コピー</button></div>
+      <p id="p3">今週の学びノートをお願いします。下にNotebookLMのまとめと、今週の声メモを貼ります。背景の説明、番組ごとの見方の違い、確かめたほうがいい点、私の生活や活動（親子×AI・AiNA）に関係することを整理してください。（ここにNotebookLMのまとめと声メモを貼る）</p>
+    </div>
+  </div>
+  <p class="cant">音声解説やまとめは要約なので、聞き違いや抜けもあります。お金に関わる判断（仮想通貨など）は、元の動画や公式の発表で確かめてください。ClaudeはYouTubeを直接見られないので、動画はNotebookLMに読ませて、その結果をClaudeに渡す分担にしています。世界情勢の話は自分の学びとして持ち、親子×AIの発信には「AIと世界の動き（AIの規制、仕事の変わり方など）」の話だけ使うのがおすすめです。</p>
 </section>
 
 <section aria-labelledby="role-h">
@@ -256,7 +293,7 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
         <li><b>AiNA</b>：相手別の案内メッセージ（ママ友・会社の人・お茶会の参加者）、フリープランの説明、よくある質問への答え、紹介する仲間向けの説明</li>
         <li><b>企業</b>：ヒアリングシートと提案のたたき台</li>
         <li><b>月末</b>：数字から達成率を出し、来月の直し方を提案</li>
-        <li><b>情報収集</b>：文字起こしの要約、週1回の学びノート、ニュースの背景の解説、番組ごとの見方の違いの整理</li>
+        <li><b>情報収集</b>：NotebookLMのまとめから週1回の学びノート、ニュースの背景の解説、番組ごとの見方の違いの整理、NotebookLMへの指示文</li>
         <li><b>いつでも</b>：DMやコメントの返し方、ネタ切れの相談</li>
       </ul>
     </div>
@@ -285,7 +322,7 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
   <ol class="flow">
     <li><b>土曜の夜か日曜の朝：「来週分お願い」と送る</b><span>先週反応がよかった投稿、来週の予定（お茶会など）、話したいことがあれば一言そえる。Claudeが来週分を一式つくる</span></li>
     <li><b>日曜：確認して直す → まとめ撮り → 予約</b><span>自分の言葉に直すところだけ直す。完璧を目指さない</span></li>
-    <li><b>日曜の午後：声メモと文字起こしを送る</b><span>今週の学びノートにまとめて返す</span></li>
+    <li><b>日曜の午後：NotebookLMのまとめと声メモを送る</b><span>今週の学びノートにまとめて返す</span></li>
     <li><b>お茶会のあと：3行メモを送る</b><span>開催レポと、参加者へのお礼メッセージにする</span></li>
     <li><b>月末：数字を貼る</b><span>Instagram・Threads・LINEの数、会の参加人数、AiNAの登録数。達成率と来月の直し方を返す</span></li>
   </ol>
@@ -378,11 +415,12 @@ function tasksFor(d) {
       { id: 'wake', time: early ? '5:30' : '5:00', text: '起きる', note: early ? '最初の1週間は5:30で体を慣らす' : '' },
       { id: 'main', time: early ? '5:35' : '5:10', text: MAIN[w][0], note: (early ? '30分' : '40分') + (MAIN[w][1] ? '。' + MAIN[w][1] : '') },
       { id: 'th1', time: early ? '6:05' : '5:50', text: 'Threadsを2本セット＋ストーリーズ1本', note: '予約できなければ1本投稿して、2本目は昼に', min: true },
-      { id: 'study', time: '7:10', text: '通勤中に地政学・AIの音声で勉強', note: '出発前に再生をセット。運転中は画面に触らない' },
+      { id: 'study', time: '7:10', text: '通勤中に勉強：行きはAの本編、帰りはNotebookLMの音声解説', note: '出発前に再生をセット。運転中は画面に触らない' },
       { id: 'am', time: '8:30', text: 'コメントといいねを返す。他の人の投稿に5件コメント', note: '15分' },
       { id: 'lunch', time: '昼', text: 'Threadsの2本目を出す。DMに返信', note: '15分' },
       { id: 'eve', time: '帰宅後', text: 'コメント・DM・LINEに返信するだけ', note: '10分。考える作業はしない' },
-      { id: 'queue', time: '帰宅後', text: '新着動画のタイトルを見て「後で見る」に入れる', note: '2分。動画はここでは見ない。明日の通勤で流す' },
+      { id: 'queue', time: '帰宅後', text: '新着動画を振り分ける：Aは「後で見る」、B・CはNotebookLMへ', note: '2分。YouTubeアプリの共有ボタンから。動画はここでは見ない' },
+      ...(w === 3 ? [{ id: 'nlm', time: '帰宅後', text: 'NotebookLMで音声解説をつくる', note: '指示文①を貼って作成。明日の帰りの車で聞く' }] : []),
       { id: 'sleep', time: '21:30', text: 'スマホを置く → 22:00に寝る', note: '' },
     ];
   } else if (w === 6) {
@@ -397,7 +435,8 @@ function tasksFor(d) {
       { id: 'shoot', time: '午前', text: 'リール3本をまとめ撮り', note: '60分。台本を見ながら' },
       { id: 'sched', time: '午前', text: 'ThreadsとInstagramを予約投稿する', note: '20分', min: true },
       { id: 'plan', time: '午前', text: '来週の予定を確認する', note: '10分。AiNAで案内する相手、お茶会の準備' },
-      { id: 'learn', time: '午後', text: '今週の声メモと気になった動画の文字起こしをClaudeに送る', note: '10分。学びノートにまとめてもらう' },
+      { id: 'nlm', time: '午後', text: 'NotebookLMで音声解説をつくり、週のまとめを出す', note: '指示文①と②を貼る。音声は明日の帰りの車で' },
+      { id: 'learn', time: '午後', text: 'NotebookLMのまとめと声メモをClaudeに送る', note: '10分。指示文③で。学びノートにしてもらう' },
     ];
   }
   return [...sp, ...list];
@@ -449,4 +488,10 @@ document.getElementById('next').addEventListener('click', () => { state.date = a
 document.getElementById('m-full').addEventListener('click', () => { state.mode = 'full'; try { localStorage.setItem('todo-mode', 'full'); } catch (e) {} render(); });
 document.getElementById('m-min').addEventListener('click', () => { state.mode = 'min'; try { localStorage.setItem('todo-mode', 'min'); } catch (e) {} render(); });
 render();
+document.querySelectorAll('.copy').forEach(btn => btn.addEventListener('click', () => {
+  const el = document.getElementById(btn.dataset.target);
+  const done = () => { btn.textContent = 'コピーしました'; setTimeout(() => { btn.textContent = 'コピー'; }, 1800); };
+  const fallback = () => { const r = document.createRange(); r.selectNodeContents(el); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); btn.textContent = '選択したのでコピーしてください'; };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(el.textContent).then(done, fallback); else fallback();
+}));
 </script>
