@@ -116,6 +116,7 @@ td small { display: block; color: var(--muted); font-size: 12.5px; }
 .rules { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 8px; }
 .rules li span { display: block; color: var(--ink-2); font-size: 14px; }
 footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
+.box ol { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: var(--ink-2); }
 .prompts { display: flex; flex-direction: column; gap: 10px; }
 .prompt { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
 .p-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; font-size: 14px; }
@@ -165,7 +166,7 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
     <div class="on"><b>5:10〜5:50</b><span>朝の集中タイム40分。曜日ごとに決まったメイン作業を1つだけ</span></div>
     <div class="on"><b>5:50〜6:00</b><span>Threadsを2本セット（予約か1本投稿）、ストーリーズ1本</span><span class="min">忙しい日もここだけはやる</span></div>
     <div><b>6:00〜7:10</b><span>いつもの朝の支度</span></div>
-    <div class="on"><b>7:10〜8:30</b><span>車通勤＝勉強の時間。行きは地政学のYouTube（藤井厳喜さんなど）の本編、帰りはNotebookLMの音声解説と、週1〜2本は藤本美貴さんのお悩み相談（ネタ集め）を聞く。家を出る前に再生をセットし、運転中は画面に触らない。ネタを思いついたらSiriで声のメモだけ</span></div>
+    <div class="on"><b>7:10〜8:30</b><span>車通勤＝勉強の時間。行きは地政学のYouTube（藤井厳喜さんなど）の本編、帰りはNotebookLMの音声解説と、週1〜2本は藤本美貴さんのお悩み相談（ネタ集め）を聞く。家を出る前に再生をセットし、運転中は画面に触らない。ネタを思いついたら「Hey Siri、ネタ帳」で声のネタ帳に入れるだけ</span></div>
     <div class="on"><b>8:30〜8:45</b><span>会社でひと息。コメントといいねを返し、他の人の投稿に5件コメントする（つながりづくり）</span></div>
     <div class="on"><b>昼休み15分</b><span>Threadsの2本目を出す。DMに返信</span></div>
     <div><b>17:30〜</b><span>仕事終わり。2日に1回ピラティス。帰りの車も勉強の時間</span></div>
@@ -239,7 +240,33 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
       </tbody>
     </table>
   </div>
-  <p class="meta">ネタ帳はスマホのメモに1つつくるだけで十分です。声メモやスクショは、たまったときにこのチャットへ送っておけば、土曜の夜の投稿案づくりで優先して使います。</p>
+  <p class="meta">ネタ帳は、運転中でも声だけで入れられる「声のネタ帳」にします。たまった中身は、土曜の19時までにこのチャットへ貼れば、その夜の投稿案づくりで優先して使います。</p>
+
+  <h3 id="voice">声のネタ帳のつくり方（iPhone）</h3>
+  <div class="two">
+    <div class="box">
+      <h3>方法A　今すぐ使える：リマインダー</h3>
+      <ul>
+        <li>リマインダーアプリで「ネタ帳」という名前のリストをつくる</li>
+        <li>運転中は「Hey Siri、ネタ帳に『反抗期の娘が返事をしない』を追加して」と話すだけ</li>
+        <li>iPhoneがロック中でも動く。ネタが1件ずつ分かれてたまる</li>
+        <li>送るときは、Macのリマインダーで「ネタ帳」を開き、全部選んでコピー</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>方法B　おすすめ：ショートカット（設定5分）</h3>
+      <p class="meta">「Hey Siri、ネタ帳」→ Siri「どんなネタ？」→ 話す → メモアプリの「ネタ帳」に日付つきで書き足される</p>
+      <ol>
+        <li>メモアプリで新しいメモをつくり、1行目に「ネタ帳」と書く</li>
+        <li>ショートカットアプリで「＋」を押し、名前を「ネタ帳」にする</li>
+        <li>アクション「入力を要求」を追加し、質問を「どんなネタ？」にする</li>
+        <li>アクション「テキスト」を追加し、中に「現在の日付」と「指定入力」を並べて入れる</li>
+        <li>アクション「メモに追加」を追加し、メモを「ネタ帳」、追加する内容を4のテキストにする</li>
+        <li>設定 → Siri で、声でSiriを呼び出す設定と「ロック中にSiriを許可」をオンにする</li>
+      </ol>
+    </div>
+  </div>
+  <p class="meta">方法Bは、止めた車でiPhoneをロックしたまま一度試してください。ロック解除を求められたら、運転中は方法Aを使います。CarPlayの車なら、ハンドルの音声ボタンでもSiriを呼べます。運転中は画面を見ず、声だけで使います。</p>
 
   <h3>Claudeが悩みを投稿に変える5つの型</h3>
   <div class="tbl-wrap">
@@ -358,7 +385,7 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
     <h2 id="cyc-h">毎週の流れ</h2>
   </div>
   <ol class="flow">
-    <li><b>平日：ネタ帳がたまったら送っておく（任意）</b><span>声メモ、スクショ、先週反応がよかった投稿、来週の予定（お茶会など）。一言でいい</span></li>
+    <li><b>土曜の19時まで：声のネタ帳を貼って送る（1分）</b><span>スクショ、先週反応がよかった投稿、来週の予定（お茶会など）もあれば一緒に。一言でいい</span></li>
     <li><b>土曜19:47：Claudeが自動で来週分をつくる</b><span>知恵袋のネタ集めと、希が送ったネタ帳をもとに、Threads・リール台本・カルーセル・ストーリーズ・LINEを一式つくって、このチャットに届ける</span></li>
     <li><b>日曜：確認して直す → まとめ撮り → 予約</b><span>自分の言葉に直すところだけ直す。完璧を目指さない</span></li>
     <li><b>日曜の午後：NotebookLMのまとめと声メモを送る</b><span>今週の学びノートにまとめて返す</span></li>
@@ -466,6 +493,7 @@ function tasksFor(d) {
     const party = nth(d) === 3 || key(d) === '2026-11-21';
     list = [
       { id: 'th1', time: '朝', text: 'Threads 1本＋ストーリーズ1本', note: '日曜に予約済みならチェックだけ', min: true },
+      { id: 'send', time: '19時まで', text: '声のネタ帳の中身をコピーしてClaudeに送る', note: '1分。19:47からの投稿案づくりで優先して使う。送ったら中身を消す' },
       { id: 'rest', time: '一日', text: party ? 'お茶会のあとは休む' : '完全オフ。休むのも計画のうち', note: '' },
     ];
   } else {
