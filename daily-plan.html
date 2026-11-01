@@ -543,6 +543,7 @@ const EXTRA = {
   '2026-11-03': [['台本', '午前：4本（別に・AI大丈夫・夕飯・勉強しなさい）の台本に感情を盛り込む'], ['制作', '午後：4本を作り、11/3〜11/6の20:00に予約する'], ['プロフィール', '第1話と紹介リールをプロフィールに固定する。LINEができたら、自己紹介の最後の行を「👇LINEで先行案内」にしてリンクを貼る'], ['設定', 'Instagramの設定を5つ確認する：共有と再利用（シェアをオン）／ストーリーズをアーカイブに保存／リールをグリッドに表示／公開アカウントと検索エンジンへの表示／アカウントステータス（15分）']],
   '2026-11-05': [['ネタ', '凛華ちゃんや若い人に、今よく使う言葉を3つ聞く（11/11のショート用）']],
 };
+const OFFDAYS = { '2026-11-03': '文化の日でお休み', '2026-11-12': 'ランチ会のため仕事はお休み' };
 const inNov = k => k >= '2026-11-02' && k <= '2026-11-30';
 const key = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 const nth = d => Math.ceil(d.getDate() / 7);
@@ -574,7 +575,14 @@ function tasksFor(d) {
   const w = d.getDay(), early = false;
   const sp = specials(d).map((s, i) => ({ id: 'sp' + i, time: '今日', text: s[1], badge: s[0], min: true }));
   let list;
-  if (w >= 1 && w <= 5) {
+  if (w >= 1 && w <= 5 && OFFDAYS[key(d)]) {
+    list = [
+      { id: 'th1', time: '朝', text: 'Threads（MUSUBI）を2本セット＋ストーリーズ1本', note: 'ThreadsはAIに触れない腸活講師のアカウント', min: true },
+      ...(key(d) === '2026-11-12' ? [{ id: 'prep', time: '午前', text: 'ランチ会の準備', note: 'お店の予約の確認、話す腸活ネタを1つ、参加者の名前の確認' }] : []),
+      { id: 'eve', time: '夜', text: 'コメント・DM・LINEに返信する', note: '10分' },
+      { id: 'sleep', time: '21:30', text: 'スマホを置く → 22:00に寝る', note: '' },
+    ];
+  } else if (w >= 1 && w <= 5) {
     list = [
       { id: 'wake', time: early ? '5:30' : '5:00', text: '起きる', note: early ? '最初の1週間は5:30で体を慣らす' : '' },
       inNov(key(d)) && [1, 3, 5].includes(w) ? { id: 'main', time: '5:10', text: '田中家の下ごしらえ：次に作る分の動画をKlingで生成しておく', note: '40分。台本は田中家のセッションで決めたもの' } : { id: 'main', time: early ? '5:35' : '5:10', text: MAIN[w][0], note: (early ? '30分' : '40分') + (MAIN[w][1] ? '。' + MAIN[w][1] : '') },
@@ -615,7 +623,7 @@ try { const m = localStorage.getItem('todo-mode'); if (m) state.mode = m; } catc
 function render() {
   const d = state.date, k = key(d), w = d.getDay();
   document.getElementById('day-label').textContent = `${d.getMonth() + 1}月${d.getDate()}日（${DOW[w]}）`;
-  const type = inNov(k) && w >= 1 && w <= 5 ? '11月の毎日リール｜平日' : inNov(k) ? '11月の毎日リール｜制作の日' : w === 0 ? '準備の日' : w === 6 ? ((nth(d) === 3 && k >= '2026-12-01') ? 'お茶会の日' : '休む日') : '平日｜' + MAIN[w][0].split('：')[0].replace(/を編集して投稿|をCanvaで作って投稿/, '');
+  const type = OFFDAYS[k] ? OFFDAYS[k] : inNov(k) && w >= 1 && w <= 5 ? '11月の毎日リール｜平日' : inNov(k) ? '11月の毎日リール｜制作の日' : w === 0 ? '準備の日' : w === 6 ? ((nth(d) === 3 && k >= '2026-12-01') ? 'お茶会の日' : '休む日') : '平日｜' + MAIN[w][0].split('：')[0].replace(/を編集して投稿|をCanvaで作って投稿/, '');
   document.getElementById('day-type').textContent = (key(new Date()) === k ? '今日・' : '') + type;
   document.getElementById('m-full').setAttribute('aria-pressed', state.mode === 'full');
   document.getElementById('m-min').setAttribute('aria-pressed', state.mode === 'min');
