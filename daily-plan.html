@@ -159,10 +159,10 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
     <div class="on"><b>5:10〜5:50</b><span>朝の集中タイム40分。曜日ごとに決まったメイン作業を1つだけ</span></div>
     <div class="on"><b>5:50〜6:00</b><span>Threadsを2本セット（予約か1本投稿）、ストーリーズ1本</span><span class="min">忙しい日もここだけはやる</span></div>
     <div><b>6:00〜7:10</b><span>いつもの朝の支度</span></div>
-    <div><b>7:10〜8:30</b><span>車通勤。運転に集中。AIや子育ての音声を聞く。ネタを思いついたら、画面を見ずにSiriで声のメモだけ</span></div>
+    <div class="on"><b>7:10〜8:30</b><span>車通勤＝勉強の時間。地政学のYouTube（藤井厳喜さんなど）やAIの話を音声で聞く。家を出る前に再生をセットし、運転中は画面に触らない。ネタを思いついたらSiriで声のメモだけ</span></div>
     <div class="on"><b>8:30〜8:45</b><span>会社でひと息。コメントといいねを返し、他の人の投稿に5件コメントする（つながりづくり）</span></div>
     <div class="on"><b>昼休み15分</b><span>Threadsの2本目を出す。DMに返信</span></div>
-    <div><b>17:30〜</b><span>仕事終わり。2日に1回ピラティス</span></div>
+    <div><b>17:30〜</b><span>仕事終わり。2日に1回ピラティス。帰りの車も勉強の時間</span></div>
     <div class="on"><b>帰宅後10分</b><span>コメント・DM・LINEに返信するだけ。新しく考える作業はしない</span></div>
   </div>
   <div class="sum">
@@ -282,7 +282,7 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
 <section aria-labelledby="ru-h">
   <div class="sec-head">
     <span class="eyebrow">続けるために</span>
-    <h2 id="ru-h">なんとなく1日が過ぎないための6つのルール</h2>
+    <h2 id="ru-h">なんとなく1日が過ぎないための7つのルール</h2>
   </div>
   <ol class="rules">
     <li><b>ゼロの日をつくらない</b><span>忙しい日、疲れた日は「最低ライン」だけ。Threads 1本とストーリーズ1本で5分</span></li>
@@ -291,6 +291,7 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
     <li><b>完璧より投稿</b><span>40分で終わらなければ、その時点のものを出す</span></li>
     <li><b>寝る時間が先</b><span>22時に寝られなかった日は5時起きにこだわらない。その日は最低ラインだけ</span></li>
     <li><b>週1日は休む</b><span>お茶会のない土曜は完全にオフ</span></li>
+    <li><b>情報を見る時間を決める</b><span>地政学の勉強は通勤の車内で聞く。Xを見るのは帰宅後の返信のあと15分まで。見続けて22時に寝られない日をつくらない</span></li>
   </ol>
 </section>
 
@@ -347,6 +348,7 @@ function tasksFor(d) {
       { id: 'wake', time: early ? '5:30' : '5:00', text: '起きる', note: early ? '最初の1週間は5:30で体を慣らす' : '' },
       { id: 'main', time: early ? '5:35' : '5:10', text: MAIN[w][0], note: (early ? '30分' : '40分') + (MAIN[w][1] ? '。' + MAIN[w][1] : '') },
       { id: 'th1', time: early ? '6:05' : '5:50', text: 'Threadsを2本セット＋ストーリーズ1本', note: '予約できなければ1本投稿して、2本目は昼に', min: true },
+      { id: 'study', time: '7:10', text: '通勤中に地政学・AIの音声で勉強', note: '出発前に再生をセット。運転中は画面に触らない' },
       { id: 'am', time: '8:30', text: 'コメントといいねを返す。他の人の投稿に5件コメント', note: '15分' },
       { id: 'lunch', time: '昼', text: 'Threadsの2本目を出す。DMに返信', note: '15分' },
       { id: 'eve', time: '帰宅後', text: 'コメント・DM・LINEに返信するだけ', note: '10分。考える作業はしない' },
