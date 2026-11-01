@@ -18,6 +18,7 @@ ThreadsはAIのアカウントとは別の、腸活講師のアカウント「MU
 
 ## 希について
 - MUSUBIのInstagram：@hakko.happy.nozomi（https://www.instagram.com/hakko.happy.nozomi/）。Threadsのプロフィールのリンクはここにする
+- MUSUBIのThreads：@hakko.happy.nozomi（https://www.threads.com/@hakko.happy.nozomi）。Instagramバッジはオン
 - 名乗り方：「腸活講座の講師をしている、腸活愛好家のNOZOMIです」（名刺の肩書きも「腸活愛好家」）
 - 腸活講座の会場：姪浜のコミュニティプラザgokant。自己紹介の文字数に収まらないため、プロフィールにも投稿にも入れない（希が決定）
 - 何をしている人かは、プロフィールやInstagramを見ればわかるので、投稿で説明しすぎない
