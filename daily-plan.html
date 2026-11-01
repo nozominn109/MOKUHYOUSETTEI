@@ -578,7 +578,7 @@ function tasksFor(d) {
     list = [
       { id: 'wake', time: early ? '5:30' : '5:00', text: '起きる', note: early ? '最初の1週間は5:30で体を慣らす' : '' },
       inNov(key(d)) && [1, 3, 5].includes(w) ? { id: 'main', time: '5:10', text: '田中家の下ごしらえ：次に作る分の動画をKlingで生成しておく', note: '40分。台本は田中家のセッションで決めたもの' } : { id: 'main', time: early ? '5:35' : '5:10', text: MAIN[w][0], note: (early ? '30分' : '40分') + (MAIN[w][1] ? '。' + MAIN[w][1] : '') },
-      { id: 'th1', time: early ? '6:05' : '5:50', text: 'Threadsを2本セット＋ストーリーズ1本', note: '予約できなければ1本投稿して、2本目は昼に', min: true },
+      { id: 'th1', time: early ? '6:05' : '5:50', text: 'Threads（MUSUBI）を2本セット＋ストーリーズ1本', note: 'ThreadsはAIに触れない腸活講師のアカウント。予約できなければ1本投稿して、2本目は昼に', min: true },
       { id: 'study', time: '7:10', text: '通勤中に勉強：行きはAの本編、帰りはNotebookLMの音声解説', note: '週1〜2本は帰りに藤本美貴さんのお悩み相談（ネタ集め）。出発前に再生をセットし、運転中は画面に触らない' },
       { id: 'am', time: '8:30', text: 'コメントといいねを返す。他の人の投稿に5件コメント', note: '15分' },
       { id: 'lunch', time: '昼', text: 'Threadsの2本目を出す。DMに返信', note: '15分' },
