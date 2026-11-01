@@ -169,6 +169,17 @@ details summary:focus-visible { outline: 2px solid var(--accent); border-radius:
 details .tbl-wrap { border: 0; border-top: 1px solid var(--line); border-radius: 0 0 14px 14px; }
 footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; display: flex; flex-direction: column; gap: 4px; }
 
+.inc-goal { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 2px; }
+.inc-big { font-family: var(--f-display); font-size: 34px; font-weight: 700; color: var(--accent); line-height: 1.2; }
+.inc-big small { font-size: .45em; margin-left: 4px; color: var(--ink); }
+.inc-sub { font-size: 13px; color: var(--ink-2); }
+.fields.f2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.calc-out.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.inc-chart { display: block; width: 100%; min-width: 560px; height: auto; }
+.inc-chart text { font-family: var(--f-body); }
+td.sum { font-weight: 700; color: var(--accent); }
+.plan-tbl td small { color: var(--muted); margin-right: 6px; }
+.assume { margin: 0; padding-left: 1.1em; font-size: 13px; color: var(--ink-2); display: flex; flex-direction: column; gap: 2px; }
 @media (max-width: 760px) {
   .goal { grid-template-columns: 1fr; padding: 20px; }
   .flow { grid-template-columns: 1fr; }
@@ -176,6 +187,7 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
   .pillars, .two, .fields, .pace { grid-template-columns: 1fr; }
   .phase { grid-template-columns: 1fr; gap: 10px; }
 }
+@media (max-width: 760px) { .fields.f2, .calc-out.c3 { grid-template-columns: 1fr; } }
 @media (max-width: 420px) { .goal-list { grid-template-columns: 1fr; } .calc-out { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
@@ -203,17 +215,22 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
         <div class="split-row"><i class="sw th"></i>Threads<b>4,500人</b></div>
         <div class="split-row"><i class="sw line"></i>LINE（公式LINE＋オープンチャット）<b>1,000人</b></div>
       </div>
-      <p class="howcount" style="margin-top:14px"><b>数え方：</b>毎月末に3つの数字を足すだけ。同じ人がInstagramとLINEの両方にいても、それぞれ1人と数えます。0人スタートで計算しているので、今のフォロワー数があれば教えてください。数字を引き直します。</p>
+      <p class="howcount" style="margin-top:14px"><b>数え方：</b>毎月末に3つの数字を足すだけ。同じ人がInstagramとLINEの両方にいても、それぞれ1人と数えます。今いる知り合い中心のフォロワーは数えず、0人スタートで計算しています。</p>
+      <div class="inc-goal">
+        <span class="meta">2年後の月収</span>
+        <span class="inc-big">50万円<small>以上</small></span>
+        <span class="inc-sub">最低ライン。夢は200万円。このロードマップどおりに進むと、2028年6月に50万円を超え、10月は約60万円です。</span>
+      </div>
     </div>
     <dl class="goal-list">
       <div><dt>お役立ちお茶会・ランチ会</dt><dd>90<span>回</span> / 800<span>人</span></dd></div>
       <div><dt>自分で会を開く仲間（ホスト）</dt><dd>10<span>人</span></dd></div>
       <div><dt>親子AI体験会（福岡・リアル）</dt><dd>120<span>組</span></dd></div>
-      <div><dt>AiNAの個別相談</dt><dd>180<span>人</span></dd></div>
-      <div><dt>AiNAのAI講座を受講</dt><dd>60<span>人</span></dd></div>
-      <div><dt>AiNAで収入が出はじめた仲間</dt><dd>20<span>人</span></dd></div>
-      <div><dt>企業へのAI提案</dt><dd>60<span>社</span></dd></div>
-      <div><dt>企業案件の成約</dt><dd>12<span>社</span></dd></div>
+      <div><dt>AiNAフリープラン登録</dt><dd>600<span>人</span></dd></div>
+      <div><dt>AiNA有料会員（あなたの紹介）</dt><dd>150<span>人</span></dd></div>
+      <div><dt>紹介する仲間（サブアフィリエイト）</dt><dd>30<span>人</span></dd></div>
+      <div><dt>チーム全体の有料会員</dt><dd>900<span>人</span></dd></div>
+      <div><dt>企業へのAI提案 → 成約</dt><dd>60<span>社</span> → 12<span>社</span></dd></div>
     </dl>
   </div>
 </section>
@@ -231,7 +248,7 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
     <span class="arrow" aria-hidden="true">→</span>
     <div class="node" role="listitem"><span class="t">リアルの場</span><span class="d">お役立ちお茶会・ランチ会、親子AI体験会</span></div>
     <span class="arrow" aria-hidden="true">→</span>
-    <div class="node" role="listitem"><span class="t">AiNA</span><span class="d">AI講座で学ぶ、案件で稼ぐ、企業へ提案する</span></div>
+    <div class="node" role="listitem"><span class="t">AiNA</span><span class="d">無料で登録 → 講座で学ぶ → 紹介・案件で稼ぐ。企業へも提案</span></div>
   </div>
   <div class="pillars">
     <div class="pillar">
@@ -247,7 +264,7 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
     <div class="pillar">
       <span class="tag">柱3</span>
       <h3>AiNAでの循環</h3>
-      <p>「親がまずAIを体験する」入口としてAiNAのAI講座を紹介。学んだ人は案件で収入を得て、企業にはAIを絡めた提案をし、取れた案件を学んだ仲間に回します。個人も企業も私も得をする形です。</p>
+      <p>「親がまずAIを体験する」入口として、まず無料のフリープランに登録してもらい、学びたい人は有料プランへ。学んだ人は案件や紹介で収入を得て、紹介する仲間になります。企業にはAIを絡めた提案をし、取れた案件を仲間に回します。</p>
     </div>
   </div>
 </section>
@@ -287,14 +304,17 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
 <tr><td>会を開く仲間・ホスト（人）</td><td>0</td><td>1</td><td>2</td><td>3</td><td>5</td><td>10</td></tr>
 <tr><td>親子AI体験会 累計（組）</td><td>0</td><td>5</td><td>15</td><td>30</td><td>70</td><td>120</td></tr>
 <tr class="grp"><td colspan="7">AiNA・収入</td></tr>
-<tr><td>AiNA 個別相談 累計（人）</td><td>6</td><td>15</td><td>30</td><td>50</td><td>100</td><td>180</td></tr>
-<tr><td>AiNA AI講座 受講 累計（人）</td><td>2</td><td>5</td><td>10</td><td>15</td><td>35</td><td>60</td></tr>
-<tr><td>AiNAで収入が出た仲間（人）</td><td>0</td><td>1</td><td>2</td><td>4</td><td>10</td><td>20</td></tr>
+<tr><td>AiNA フリープラン登録 累計（人）</td><td>10</td><td>40</td><td>90</td><td>160</td><td>360</td><td>600</td></tr>
+<tr><td>AiNA 有料会員・あなたの紹介（人）</td><td>3</td><td>10</td><td>22</td><td>40</td><td>90</td><td>150</td></tr>
+<tr><td>紹介する仲間（人）</td><td>0</td><td>2</td><td>5</td><td>10</td><td>18</td><td>30</td></tr>
+<tr><td>仲間経由の有料会員（人）</td><td>0</td><td>2</td><td>10</td><td>30</td><td>130</td><td>250</td></tr>
+<tr><td>2〜4段階先の有料会員（人）</td><td>0</td><td>0</td><td>2</td><td>15</td><td>150</td><td>500</td></tr>
 <tr><td>企業 提案 累計（社）</td><td>2</td><td>6</td><td>12</td><td>20</td><td>40</td><td>60</td></tr>
 <tr><td>企業 成約 累計（社）</td><td>0</td><td>1</td><td>2</td><td>4</td><td>8</td><td>12</td></tr>
+<tr class="total"><td>月収の目安（円）</td><td>19,140</td><td>51,150</td><td>114,290</td><td>204,380</td><td>412,610</td><td>605,550</td></tr>
 </tbody></table>
   </div>
-  <p class="note">数字はすべて「その月末までの累計」。AiNAと企業の数字は、収入につながる行動の目安です。</p>
+  <p class="note">数字はすべて「その月末までの累計」（月収だけはその月の金額）。月収は、有料会員のうちエキスパートプランを選ぶ人を3割として計算しています。</p>
 </section>
 
 <section aria-labelledby="ph-h">
@@ -308,11 +328,11 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
       <div class="ph-when"><span class="ph-no">フェーズ1｜1〜3ヶ月目</span><h3>土台づくり</h3><span class="ph-date">2026年11月〜2027年1月</span><span class="ph-target">600人<small>2027年1月末の目標</small></span></div>
       <div class="ph-body"><ul>
         <li>Threadsは<b>毎日2投稿</b>。11月中に第1回お役立ちお茶会を呼びかける</li>
-        <li>お茶会は<b>月1回・3〜5人</b>の少人数から。初回は凛花ちゃんとタッグ</li>
+        <li>お茶会は<b>月1回・3〜5人</b>の少人数から。初回は凛華ちゃんとタッグ</li>
         <li>Instagramのプロフィールを設計シートどおりに整え、<b>リール週3本＋カルーセル週1本</b>、ストーリーズは毎日</li>
         <li>ストーリーズの質問箱で「子どもとAI、何が不安？」を集める（<b>30件</b>）。そのまま投稿ネタにする</li>
         <li>公式LINE（入口）とオープンチャット（会の参加者用）をつくり、両SNSのプロフィールにリンク</li>
-        <li>AiNAの話は<b>月2人</b>に。企業は身近な経営者に<b>月1社</b>話を聞くところから</li>
+        <li>AiNAは<b>月4人</b>に個別に案内し、フリープラン登録<b>月3人</b>・有料<b>月1人</b>。企業は身近な経営者に<b>月1社</b>話を聞くところから</li>
       </ul></div>
     </div>
     <div class="phase">
@@ -322,7 +342,8 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
         <li>参加者の持ち寄りネタをThreadsでレポートし、次の呼びかけにつなげる</li>
         <li>4月までに<b>第1回 親子AI体験会</b>を福岡で開く（3〜5組）</li>
         <li>Instagramは反応の良い型（保存が多い投稿）を見つけて、その型を増やす</li>
-        <li>AiNAの個別相談は<b>月3人</b>。企業提案は<b>月1〜2社</b></li>
+        <li>AiNAの案内は<b>月10人</b>、有料<b>月2〜3人</b>。有料になった人の中から<b>紹介する仲間を2人</b>つくり、紹介のしかたを一緒にやる</li>
+        <li>企業提案は<b>月1〜2社</b></li>
       </ul></div>
     </div>
     <div class="phase">
@@ -332,7 +353,8 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
         <li>会は<b>月3回</b>（自分2回＋仲間1回）</li>
         <li>親子AI体験会を<b>月1回の定期開催</b>にする</li>
         <li>10月に<b>1周年お役立ち交流会</b>（30人規模）</li>
-        <li>AiNAの個別相談は<b>月5〜7人</b>。企業提案は<b>月2〜3社</b></li>
+        <li>AiNAの案内は<b>月20人</b>、有料<b>月5人</b>。紹介する仲間は<b>10人</b>に。仲間向けの勉強会を<b>月1回</b></li>
+        <li>企業提案は<b>月2〜3社</b>。1年後の月収目安は<b>約20万円</b></li>
       </ul></div>
     </div>
     <div class="phase">
@@ -341,7 +363,8 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
         <li>会は<b>月4回</b>（自分2回＋ホスト2回）。ホストは5人に</li>
         <li>オンラインのお役立ち会で、福岡以外の人ともつながる</li>
         <li>Instagramは伸びた型にしぼって<b>週4〜5本</b>に増やす</li>
-        <li>AiNAの個別相談は<b>月8人</b>。企業提案は<b>月3社</b></li>
+        <li>AiNAの案内は<b>月30人</b>、有料<b>月8人</b>。紹介する仲間は<b>18人</b>に</li>
+        <li>企業提案は<b>月3社</b>。1年半後の月収目安は<b>約41万円</b></li>
       </ul></div>
     </div>
     <div class="phase">
@@ -349,7 +372,8 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
       <div class="ph-body"><ul>
         <li>会は<b>月6回以上</b>。ホスト10人が各地で開く形に</li>
         <li>10月に<b>2周年イベント</b>（100人規模、AiNAと合同）</li>
-        <li>AiNAの個別相談は<b>月13人</b>。企業提案は<b>月3〜4社</b></li>
+        <li>AiNAの案内は<b>月40人</b>、有料<b>月10人</b>。紹介する仲間は<b>30人</b>に</li>
+        <li>企業提案は<b>月3〜4社</b>。<b>2028年6月に月収50万円</b>を超え、10月は約60万円</li>
       </ul></div>
     </div>
   </div>
@@ -370,7 +394,7 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
         <li>Instagramカルーセル <span>週1本</span></li>
         <li>ストーリーズ <span>毎日（質問箱・アンケート）</span></li>
         <li>LINE配信 <span>週1回</span></li>
-        <li>AiNAの話をする <span>週1人以上</span></li>
+        <li>AiNAを個別に案内 <span>週1人 → 週5人</span></li>
         <li>数字の記録 <span>月末に1回</span></li>
       </ul>
     </div>
@@ -386,25 +410,74 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
   </div>
 </section>
 
-<section aria-labelledby="calc-h">
+<section aria-labelledby="inc-h">
   <div class="sec-head">
-    <span class="eyebrow">収入の見込み</span>
-    <h2 id="calc-h">AiNAの単価を入れると、収入の目安が出ます</h2>
-    <p>上のマイルストーンの人数（講座受講60人・企業成約12社）で計算します。<span class="example">入っている金額は仮の数字です。</span>AiNAの実際の金額に書きかえてください。</p>
+    <span class="eyebrow">月収の逆算</span>
+    <h2 id="inc-h">月収50万円から逆算する</h2>
+    <p>AiNAアフィリエイトの今のランク「オパール」の報酬率で計算しています。月収は「その月に新しく入会した人の入会時の報酬」と「続けている人の毎月の報酬」の合計です。</p>
   </div>
-  <form class="calc" id="calc" novalidate>
-    <div class="fields">
-      <div class="field"><label for="fee-ref">AI講座の紹介フィー（1人あたり）</label><div class="in"><input id="fee-ref" type="number" inputmode="numeric" min="0" step="1000" value="30000"><span>円</span></div></div>
-      <div class="field"><label for="fee-biz">企業案件の営業フィー（1社あたり）</label><div class="in"><input id="fee-biz" type="number" inputmode="numeric" min="0" step="1000" value="100000"><span>円</span></div></div>
-      <div class="field"><label for="fee-rec">毎月続けて入る額（受講者1人あたり・なければ0）</label><div class="in"><input id="fee-rec" type="number" inputmode="numeric" min="0" step="100" value="0"><span>円</span></div></div>
+
+  <h3>1人あたり、いくら入るか（オパール）</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>誰が紹介したか</th><th><b>入会時</b>メンバー 33,000円</th><th><b>入会時</b>エキスパート 99,000円</th><th><b>毎月</b>月額 5,500円</th></tr></thead>
+      <tbody>
+        <tr><td>あなた（入会金30%・月額20%）</td><td>9,900円</td><td>29,700円</td><td>1,100円</td></tr>
+        <tr><td>仲間＝サブアフィリエイト（15%・5%）</td><td>4,950円</td><td>14,850円</td><td>275円</td></tr>
+        <tr><td>2段階先のパートナー（5%・2%）</td><td>1,650円</td><td>4,950円</td><td>110円</td></tr>
+        <tr><td>3〜4段階先のパートナー（月額2%）</td><td>-</td><td>-</td><td>110円</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">フリープラン（0円）の人は報酬の対象外です。エキスパートの年間契約は入会金が12回払いなので、入会時の報酬も12ヶ月に分かれて入ります（合計は同じ）。</p>
+
+  <h3>2028年10月の月収の内訳</h3>
+  <div class="tbl-wrap"><table class="plan-tbl" id="plan-tbl"></table></div>
+
+  <div class="calc" id="calc">
+    <div class="chart-top">
+      <h3>月収の伸び（目安）</h3>
+      <span class="meta">点線が50万円の最低ライン</span>
     </div>
-    <div class="calc-out">
-      <div><span>2年目後半（2028年5〜10月）の月収目安</span><b id="out-month">-</b></div>
+    <div class="chart-scroll"><svg class="inc-chart" id="inc-chart" viewBox="0 0 720 260" role="img" aria-label="月収目安の月別の伸び"></svg></div>
+    <div class="fields f2">
+      <div class="field"><label for="exp-rate">有料会員のうち、エキスパートを選ぶ人の割合</label><div class="in"><input id="exp-rate" type="number" inputmode="numeric" min="0" max="100" step="5" value="30"><span>%</span></div></div>
+      <div class="field"><label for="fee-biz">企業案件の報酬（1件あたり・わかったら入力）</label><div class="in"><input id="fee-biz" type="number" inputmode="numeric" min="0" step="10000" value="0"><span>円</span></div></div>
+    </div>
+    <div class="calc-out c3">
+      <div><span>2028年10月の月収目安</span><b id="out-month">-</b></div>
+      <div><span>50万円を超える月</span><b id="out-cross">-</b></div>
       <div><span>2年間の合計</span><b id="out-total">-</b></div>
     </div>
-    <p class="note" id="out-note"></p>
-  </form>
+    <ul class="assume">
+      <li>途中でやめる人は入れていません。やめる人が出る分、紹介の数は余裕をもって進めてください</li>
+      <li>2段階先の入会金（5%）は計算に入れていません。入った分は上乗せです</li>
+      <li>オパールの報酬率が続く前提です（オパールは運営による個別設定のランクです）</li>
+      <li id="out-stock"></li>
+    </ul>
+  </div>
+
+  <div class="two">
+    <div class="box">
+      <h3>最低ライン50万円に必要なこと</h3>
+      <ul>
+        <li>あなたの紹介で有料会員<b>150人</b>（2年目は月10人ペース）</li>
+        <li>紹介する仲間を<b>30人</b>に育て、仲間経由の有料会員<b>250人</b></li>
+        <li>2〜4段階先まで広がって<b>500人</b></li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>夢の200万円に必要なこと</h3>
+      <ul>
+        <li>あなたの紹介で有料会員<b>400人</b>（月30人ペース）</li>
+        <li>紹介する仲間を<b>100人</b>に。仲間経由の有料会員<b>1,000人</b>（月70人ペース）</li>
+        <li>2〜4段階先まで広がって<b>3,000人</b></li>
+        <li>最低ラインの約3.4倍の規模です。まず2年で50万円を確実に超え、3年目に200万円を狙う順番をおすすめします</li>
+      </ul>
+    </div>
+  </div>
 </section>
+
 
 <section aria-labelledby="rv-h">
   <div class="sec-head">
@@ -430,51 +503,51 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
     <li><label><input type="checkbox" id="c3"><span>Threadsで第1回お役立ちお茶会を呼びかける（11月下旬・3〜5人）</span></label></li>
     <li><label><input type="checkbox" id="c4"><span>Instagramのプロフィールを設計シートどおりに整え、最初の4週分（リール12本・カルーセル4本）の企画を出す</span></label></li>
     <li><label><input type="checkbox" id="c5"><span>ストーリーズに「子どもとAI、何が不安？」の質問箱を出す</span></label></li>
-    <li><label><input type="checkbox" id="c6"><span>AiNAの話を2人にする。身近な経営者1社に話を聞く</span></label></li>
+    <li><label><input type="checkbox" id="c6"><span>AiNAを4人に案内し、3人にフリープランへ登録してもらう。身近な経営者1社に話を聞く</span></label></li>
   </ul>
 </section>
 
 <details>
   <summary>月ごとの目標（24ヶ月分の表）</summary>
   <div class="tbl-wrap">
-    <table><thead><tr><th>月</th><th>つながり総数</th><th>Instagram</th><th>Threads</th><th>LINE</th><th>その月の会（回）</th><th>その月の参加（人）</th><th>AiNA相談 累計</th><th>AiNA受講 累計</th><th>企業提案 累計</th><th>企業成約 累計</th></tr></thead><tbody>
-<tr><td>2026年11月（1）</td><td>200</td><td>83</td><td>100</td><td>17</td><td>1</td><td>4</td><td>2</td><td>1</td><td>1</td><td>0</td></tr>
-<tr><td>2026年12月（2）</td><td>400</td><td>167</td><td>200</td><td>33</td><td>1</td><td>4</td><td>4</td><td>1</td><td>1</td><td>0</td></tr>
-<tr><td>2027年1月（3）</td><td class="ms">600</td><td class="ms">250</td><td class="ms">300</td><td class="ms">50</td><td class="ms">1</td><td class="ms">4</td><td class="ms">6</td><td class="ms">2</td><td class="ms">2</td><td class="ms">0</td></tr>
-<tr><td>2027年2月（4）</td><td>900</td><td>367</td><td>450</td><td>83</td><td>2</td><td>12</td><td>9</td><td>3</td><td>3</td><td>0</td></tr>
-<tr><td>2027年3月（5）</td><td>1,200</td><td>483</td><td>600</td><td>117</td><td>2</td><td>13</td><td>12</td><td>4</td><td>5</td><td>1</td></tr>
-<tr><td>2027年4月（6）</td><td class="ms">1,500</td><td class="ms">600</td><td class="ms">750</td><td class="ms">150</td><td class="ms">2</td><td class="ms">13</td><td class="ms">15</td><td class="ms">5</td><td class="ms">6</td><td class="ms">1</td></tr>
-<tr><td>2027年5月（7）</td><td>1,900</td><td>767</td><td>950</td><td>183</td><td>3</td><td>20</td><td>20</td><td>7</td><td>8</td><td>1</td></tr>
-<tr><td>2027年6月（8）</td><td>2,300</td><td>933</td><td>1,150</td><td>217</td><td>3</td><td>20</td><td>25</td><td>8</td><td>10</td><td>2</td></tr>
-<tr><td>2027年7月（9）</td><td class="ms">2,700</td><td class="ms">1,100</td><td class="ms">1,350</td><td class="ms">250</td><td class="ms">3</td><td class="ms">20</td><td class="ms">30</td><td class="ms">10</td><td class="ms">12</td><td class="ms">2</td></tr>
-<tr><td>2027年8月（10）</td><td>3,133</td><td>1,300</td><td>1,533</td><td>300</td><td>3</td><td>20</td><td>37</td><td>12</td><td>15</td><td>3</td></tr>
-<tr><td>2027年9月（11）</td><td>3,567</td><td>1,500</td><td>1,717</td><td>350</td><td>3</td><td>20</td><td>43</td><td>13</td><td>17</td><td>3</td></tr>
-<tr><td>2027年10月（12）</td><td class="ms">4,000</td><td class="ms">1,700</td><td class="ms">1,900</td><td class="ms">400</td><td class="ms">4</td><td class="ms">50</td><td class="ms">50</td><td class="ms">15</td><td class="ms">20</td><td class="ms">4</td></tr>
-<tr><td>2027年11月（13）</td><td>4,467</td><td>1,917</td><td>2,100</td><td>450</td><td>4</td><td>33</td><td>58</td><td>18</td><td>23</td><td>5</td></tr>
-<tr><td>2027年12月（14）</td><td>4,933</td><td>2,133</td><td>2,300</td><td>500</td><td>4</td><td>33</td><td>67</td><td>22</td><td>27</td><td>5</td></tr>
-<tr><td>2028年1月（15）</td><td>5,400</td><td>2,350</td><td>2,500</td><td>550</td><td>4</td><td>33</td><td>75</td><td>25</td><td>30</td><td>6</td></tr>
-<tr><td>2028年2月（16）</td><td>5,867</td><td>2,567</td><td>2,700</td><td>600</td><td>4</td><td>33</td><td>83</td><td>28</td><td>33</td><td>7</td></tr>
-<tr><td>2028年3月（17）</td><td>6,333</td><td>2,783</td><td>2,900</td><td>650</td><td>4</td><td>34</td><td>92</td><td>32</td><td>37</td><td>7</td></tr>
-<tr><td>2028年4月（18）</td><td class="ms">6,800</td><td class="ms">3,000</td><td class="ms">3,100</td><td class="ms">700</td><td class="ms">4</td><td class="ms">34</td><td class="ms">100</td><td class="ms">35</td><td class="ms">40</td><td class="ms">8</td></tr>
-<tr><td>2028年5月（19）</td><td>7,333</td><td>3,250</td><td>3,333</td><td>750</td><td>6</td><td>50</td><td>113</td><td>39</td><td>43</td><td>9</td></tr>
-<tr><td>2028年6月（20）</td><td>7,867</td><td>3,500</td><td>3,567</td><td>800</td><td>6</td><td>50</td><td>127</td><td>43</td><td>47</td><td>9</td></tr>
-<tr><td>2028年7月（21）</td><td>8,400</td><td>3,750</td><td>3,800</td><td>850</td><td>6</td><td>50</td><td>140</td><td>48</td><td>50</td><td>10</td></tr>
-<tr><td>2028年8月（22）</td><td>8,933</td><td>4,000</td><td>4,033</td><td>900</td><td>6</td><td>50</td><td>153</td><td>52</td><td>53</td><td>11</td></tr>
-<tr><td>2028年9月（23）</td><td>9,467</td><td>4,250</td><td>4,267</td><td>950</td><td>6</td><td>50</td><td>167</td><td>56</td><td>57</td><td>11</td></tr>
-<tr><td>2028年10月（24）</td><td class="ms">10,000</td><td class="ms">4,500</td><td class="ms">4,500</td><td class="ms">1,000</td><td class="ms">8</td><td class="ms">150</td><td class="ms">180</td><td class="ms">60</td><td class="ms">60</td><td class="ms">12</td></tr>
+    <table><thead><tr><th>月</th><th>つながり総数</th><th>Instagram</th><th>Threads</th><th>LINE</th><th>その月の会（回）</th><th>その月の参加（人）</th><th>AiNA無料登録</th><th>有料・あなたの紹介</th><th>チーム有料合計</th><th>月収目安（円）</th><th>企業提案</th><th>企業成約</th></tr></thead><tbody>
+<tr><td>2026年11月（1）</td><td>200</td><td>83</td><td>100</td><td>17</td><td>1</td><td>4</td><td>3</td><td>1</td><td>1</td><td>16,940</td><td>1</td><td>0</td></tr>
+<tr><td>2026年12月（2）</td><td>400</td><td>167</td><td>200</td><td>33</td><td>1</td><td>4</td><td>7</td><td>2</td><td>2</td><td>18,040</td><td>1</td><td>0</td></tr>
+<tr><td>2027年1月（3）</td><td class="ms">600</td><td class="ms">250</td><td class="ms">300</td><td class="ms">50</td><td class="ms">1</td><td class="ms">4</td><td class="ms">10</td><td class="ms">3</td><td class="ms">3</td><td class="ms">19,140</td><td class="ms">2</td><td class="ms">0</td></tr>
+<tr><td>2027年2月（4）</td><td>900</td><td>367</td><td>450</td><td>83</td><td>2</td><td>12</td><td>20</td><td>5</td><td>6</td><td>45,375</td><td>3</td><td>0</td></tr>
+<tr><td>2027年3月（5）</td><td>1,200</td><td>483</td><td>600</td><td>117</td><td>2</td><td>13</td><td>30</td><td>8</td><td>9</td><td>56,595</td><td>5</td><td>1</td></tr>
+<tr><td>2027年4月（6）</td><td class="ms">1,500</td><td class="ms">600</td><td class="ms">750</td><td class="ms">150</td><td class="ms">2</td><td class="ms">13</td><td class="ms">40</td><td class="ms">10</td><td class="ms">12</td><td class="ms">51,150</td><td class="ms">6</td><td class="ms">1</td></tr>
+<tr><td>2027年5月（7）</td><td>1,900</td><td>767</td><td>950</td><td>183</td><td>3</td><td>20</td><td>57</td><td>14</td><td>20</td><td>104,005</td><td>8</td><td>1</td></tr>
+<tr><td>2027年6月（8）</td><td>2,300</td><td>933</td><td>1,150</td><td>217</td><td>3</td><td>20</td><td>73</td><td>18</td><td>26</td><td>101,035</td><td>10</td><td>2</td></tr>
+<tr><td>2027年7月（9）</td><td class="ms">2,700</td><td class="ms">1,100</td><td class="ms">1,350</td><td class="ms">250</td><td class="ms">3</td><td class="ms">20</td><td class="ms">90</td><td class="ms">22</td><td class="ms">34</td><td class="ms">114,290</td><td class="ms">12</td><td class="ms">2</td></tr>
+<tr><td>2027年8月（10）</td><td>3,133</td><td>1,300</td><td>1,533</td><td>300</td><td>3</td><td>20</td><td>113</td><td>28</td><td>51</td><td>186,615</td><td>15</td><td>3</td></tr>
+<tr><td>2027年9月（11）</td><td>3,567</td><td>1,500</td><td>1,717</td><td>350</td><td>3</td><td>20</td><td>137</td><td>34</td><td>68</td><td>187,495</td><td>17</td><td>3</td></tr>
+<tr><td>2027年10月（12）</td><td class="ms">4,000</td><td class="ms">1,700</td><td class="ms">1,900</td><td class="ms">400</td><td class="ms">4</td><td class="ms">50</td><td class="ms">160</td><td class="ms">40</td><td class="ms">85</td><td class="ms">204,380</td><td class="ms">20</td><td class="ms">4</td></tr>
+<tr><td>2027年11月（13）</td><td>4,467</td><td>1,917</td><td>2,100</td><td>450</td><td>4</td><td>33</td><td>193</td><td>48</td><td>133</td><td>331,265</td><td>23</td><td>5</td></tr>
+<tr><td>2027年12月（14）</td><td>4,933</td><td>2,133</td><td>2,300</td><td>500</td><td>4</td><td>33</td><td>227</td><td>57</td><td>180</td><td>355,905</td><td>27</td><td>5</td></tr>
+<tr><td>2028年1月（15）</td><td>5,400</td><td>2,350</td><td>2,500</td><td>550</td><td>4</td><td>33</td><td>260</td><td>65</td><td>227</td><td>363,880</td><td>30</td><td>6</td></tr>
+<tr><td>2028年2月（16）</td><td>5,867</td><td>2,567</td><td>2,700</td><td>600</td><td>4</td><td>33</td><td>293</td><td>73</td><td>275</td><td>379,885</td><td>33</td><td>7</td></tr>
+<tr><td>2028年3月（17）</td><td>6,333</td><td>2,783</td><td>2,900</td><td>650</td><td>4</td><td>34</td><td>327</td><td>82</td><td>323</td><td>404,635</td><td>37</td><td>7</td></tr>
+<tr><td>2028年4月（18）</td><td class="ms">6,800</td><td class="ms">3,000</td><td class="ms">3,100</td><td class="ms">700</td><td class="ms">4</td><td class="ms">34</td><td class="ms">360</td><td class="ms">90</td><td class="ms">370</td><td class="ms">412,610</td><td class="ms">40</td><td class="ms">8</td></tr>
+<tr><td>2028年5月（19）</td><td>7,333</td><td>3,250</td><td>3,333</td><td>750</td><td>6</td><td>50</td><td>400</td><td>100</td><td>458</td><td>490,930</td><td>43</td><td>9</td></tr>
+<tr><td>2028年6月（20）</td><td>7,867</td><td>3,500</td><td>3,567</td><td>800</td><td>6</td><td>50</td><td>440</td><td>110</td><td>547</td><td>513,920</td><td>47</td><td>9</td></tr>
+<tr><td>2028年7月（21）</td><td>8,400</td><td>3,750</td><td>3,800</td><td>850</td><td>6</td><td>50</td><td>480</td><td>120</td><td>635</td><td>536,800</td><td>50</td><td>10</td></tr>
+<tr><td>2028年8月（22）</td><td>8,933</td><td>4,000</td><td>4,033</td><td>900</td><td>6</td><td>50</td><td>520</td><td>130</td><td>723</td><td>559,680</td><td>53</td><td>11</td></tr>
+<tr><td>2028年9月（23）</td><td>9,467</td><td>4,250</td><td>4,267</td><td>950</td><td>6</td><td>50</td><td>560</td><td>140</td><td>812</td><td>582,670</td><td>57</td><td>11</td></tr>
+<tr><td>2028年10月（24）</td><td class="ms">10,000</td><td class="ms">4,500</td><td class="ms">4,500</td><td class="ms">1,000</td><td class="ms">8</td><td class="ms">150</td><td class="ms">600</td><td class="ms">150</td><td class="ms">900</td><td class="ms">605,550</td><td class="ms">60</td><td class="ms">12</td></tr>
 </tbody></table>
   </div>
 </details>
 
 <footer>
-  <span>もとにした資料：2年間目標設定ロードマップ、お役立ちお茶会 超実践ロードマップ、アカウント設計シート（AIアカウント）</span>
+  <span>もとにした資料：2年間目標設定ロードマップ、お役立ちお茶会 超実践ロードマップ、アカウント設計シート（AIアカウント）、AiNAアフィリエイト「ランク・報酬プラン」（2026年11月1日時点・オパール）</span>
   <span>Instagramの設定は、前回のロードマップの「理念発信」ではなく、アカウント設計シート（親子×AI）に合わせています。</span>
 </footer>
 
 </div>
 
 <script>
-const MONTHS = [{"m": 1, "label": "2026年11月", "ig": 83, "th": 100, "line": 17, "total": 200, "enroll": 1, "won": 0}, {"m": 2, "label": "2026年12月", "ig": 167, "th": 200, "line": 33, "total": 400, "enroll": 1, "won": 0}, {"m": 3, "label": "2027年1月", "ig": 250, "th": 300, "line": 50, "total": 600, "enroll": 2, "won": 0}, {"m": 4, "label": "2027年2月", "ig": 367, "th": 450, "line": 83, "total": 900, "enroll": 3, "won": 0}, {"m": 5, "label": "2027年3月", "ig": 483, "th": 600, "line": 117, "total": 1200, "enroll": 4, "won": 1}, {"m": 6, "label": "2027年4月", "ig": 600, "th": 750, "line": 150, "total": 1500, "enroll": 5, "won": 1}, {"m": 7, "label": "2027年5月", "ig": 767, "th": 950, "line": 183, "total": 1900, "enroll": 7, "won": 1}, {"m": 8, "label": "2027年6月", "ig": 933, "th": 1150, "line": 217, "total": 2300, "enroll": 8, "won": 2}, {"m": 9, "label": "2027年7月", "ig": 1100, "th": 1350, "line": 250, "total": 2700, "enroll": 10, "won": 2}, {"m": 10, "label": "2027年8月", "ig": 1300, "th": 1533, "line": 300, "total": 3133, "enroll": 12, "won": 3}, {"m": 11, "label": "2027年9月", "ig": 1500, "th": 1717, "line": 350, "total": 3567, "enroll": 13, "won": 3}, {"m": 12, "label": "2027年10月", "ig": 1700, "th": 1900, "line": 400, "total": 4000, "enroll": 15, "won": 4}, {"m": 13, "label": "2027年11月", "ig": 1917, "th": 2100, "line": 450, "total": 4467, "enroll": 18, "won": 5}, {"m": 14, "label": "2027年12月", "ig": 2133, "th": 2300, "line": 500, "total": 4933, "enroll": 22, "won": 5}, {"m": 15, "label": "2028年1月", "ig": 2350, "th": 2500, "line": 550, "total": 5400, "enroll": 25, "won": 6}, {"m": 16, "label": "2028年2月", "ig": 2567, "th": 2700, "line": 600, "total": 5867, "enroll": 28, "won": 7}, {"m": 17, "label": "2028年3月", "ig": 2783, "th": 2900, "line": 650, "total": 6333, "enroll": 32, "won": 7}, {"m": 18, "label": "2028年4月", "ig": 3000, "th": 3100, "line": 700, "total": 6800, "enroll": 35, "won": 8}, {"m": 19, "label": "2028年5月", "ig": 3250, "th": 3333, "line": 750, "total": 7333, "enroll": 39, "won": 9}, {"m": 20, "label": "2028年6月", "ig": 3500, "th": 3567, "line": 800, "total": 7867, "enroll": 43, "won": 9}, {"m": 21, "label": "2028年7月", "ig": 3750, "th": 3800, "line": 850, "total": 8400, "enroll": 48, "won": 10}, {"m": 22, "label": "2028年8月", "ig": 4000, "th": 4033, "line": 900, "total": 8933, "enroll": 52, "won": 11}, {"m": 23, "label": "2028年9月", "ig": 4250, "th": 4267, "line": 950, "total": 9467, "enroll": 56, "won": 11}, {"m": 24, "label": "2028年10月", "ig": 4500, "th": 4500, "line": 1000, "total": 10000, "enroll": 60, "won": 12}];
+const MONTHS = [{"m": 1, "label": "2026年11月", "ig": 83, "th": 100, "line": 17, "total": 200, "direct": 1, "l1": 0, "l24": 0, "won": 0}, {"m": 2, "label": "2026年12月", "ig": 167, "th": 200, "line": 33, "total": 400, "direct": 2, "l1": 0, "l24": 0, "won": 0}, {"m": 3, "label": "2027年1月", "ig": 250, "th": 300, "line": 50, "total": 600, "direct": 3, "l1": 0, "l24": 0, "won": 0}, {"m": 4, "label": "2027年2月", "ig": 367, "th": 450, "line": 83, "total": 900, "direct": 5, "l1": 1, "l24": 0, "won": 0}, {"m": 5, "label": "2027年3月", "ig": 483, "th": 600, "line": 117, "total": 1200, "direct": 8, "l1": 1, "l24": 0, "won": 1}, {"m": 6, "label": "2027年4月", "ig": 600, "th": 750, "line": 150, "total": 1500, "direct": 10, "l1": 2, "l24": 0, "won": 1}, {"m": 7, "label": "2027年5月", "ig": 767, "th": 950, "line": 183, "total": 1900, "direct": 14, "l1": 5, "l24": 1, "won": 1}, {"m": 8, "label": "2027年6月", "ig": 933, "th": 1150, "line": 217, "total": 2300, "direct": 18, "l1": 7, "l24": 1, "won": 2}, {"m": 9, "label": "2027年7月", "ig": 1100, "th": 1350, "line": 250, "total": 2700, "direct": 22, "l1": 10, "l24": 2, "won": 2}, {"m": 10, "label": "2027年8月", "ig": 1300, "th": 1533, "line": 300, "total": 3133, "direct": 28, "l1": 17, "l24": 6, "won": 3}, {"m": 11, "label": "2027年9月", "ig": 1500, "th": 1717, "line": 350, "total": 3567, "direct": 34, "l1": 23, "l24": 11, "won": 3}, {"m": 12, "label": "2027年10月", "ig": 1700, "th": 1900, "line": 400, "total": 4000, "direct": 40, "l1": 30, "l24": 15, "won": 4}, {"m": 13, "label": "2027年11月", "ig": 1917, "th": 2100, "line": 450, "total": 4467, "direct": 48, "l1": 47, "l24": 38, "won": 5}, {"m": 14, "label": "2027年12月", "ig": 2133, "th": 2300, "line": 500, "total": 4933, "direct": 57, "l1": 63, "l24": 60, "won": 5}, {"m": 15, "label": "2028年1月", "ig": 2350, "th": 2500, "line": 550, "total": 5400, "direct": 65, "l1": 80, "l24": 82, "won": 6}, {"m": 16, "label": "2028年2月", "ig": 2567, "th": 2700, "line": 600, "total": 5867, "direct": 73, "l1": 97, "l24": 105, "won": 7}, {"m": 17, "label": "2028年3月", "ig": 2783, "th": 2900, "line": 650, "total": 6333, "direct": 82, "l1": 113, "l24": 128, "won": 7}, {"m": 18, "label": "2028年4月", "ig": 3000, "th": 3100, "line": 700, "total": 6800, "direct": 90, "l1": 130, "l24": 150, "won": 8}, {"m": 19, "label": "2028年5月", "ig": 3250, "th": 3333, "line": 750, "total": 7333, "direct": 100, "l1": 150, "l24": 208, "won": 9}, {"m": 20, "label": "2028年6月", "ig": 3500, "th": 3567, "line": 800, "total": 7867, "direct": 110, "l1": 170, "l24": 267, "won": 9}, {"m": 21, "label": "2028年7月", "ig": 3750, "th": 3800, "line": 850, "total": 8400, "direct": 120, "l1": 190, "l24": 325, "won": 10}, {"m": 22, "label": "2028年8月", "ig": 4000, "th": 4033, "line": 900, "total": 8933, "direct": 130, "l1": 210, "l24": 383, "won": 11}, {"m": 23, "label": "2028年9月", "ig": 4250, "th": 4267, "line": 950, "total": 9467, "direct": 140, "l1": 230, "l24": 442, "won": 11}, {"m": 24, "label": "2028年10月", "ig": 4500, "th": 4500, "line": 1000, "total": 10000, "direct": 150, "l1": 250, "l24": 500, "won": 12}];
 const fmt = n => n.toLocaleString('ja-JP');
 
 (function drawChart() {
@@ -532,26 +605,74 @@ const fmt = n => n.toLocaleString('ja-JP');
   el('text', { x: L, y: H - 6, 'font-size': 11, fill: 'var(--muted)' }, '年/月（2026年11月スタート）');
 })();
 
-(function calc() {
-  const ids = ['fee-ref', 'fee-biz', 'fee-rec'];
-  const inputs = ids.map(id => document.getElementById(id));
-  try { const s = JSON.parse(localStorage.getItem('roadmap-fees') || 'null'); if (s) inputs.forEach((inp, i) => { if (s[i] != null) inp.value = s[i]; }); } catch (e) {}
-  const yen = n => '約' + Math.round(n).toLocaleString('ja-JP') + '円';
-  const run = () => {
-    const [ref, biz, rec] = inputs.map(i => Math.max(0, Number(i.value) || 0));
-    let total = 0, prevE = 0, prevW = 0;
-    MONTHS.forEach(d => { total += (d.enroll - prevE) * ref + (d.won - prevW) * biz + d.enroll * rec; prevE = d.enroll; prevW = d.won; });
-    const last6 = MONTHS.slice(18);
-    const e0 = MONTHS[17].enroll, w0 = MONTHS[17].won, e1 = MONTHS[23].enroll, w1 = MONTHS[23].won;
-    const recAvg = last6.reduce((s, d) => s + d.enroll, 0) / 6 * rec;
-    const month = ((e1 - e0) * ref + (w1 - w0) * biz) / 6 + recAvg;
-    document.getElementById('out-month').textContent = yen(month);
-    document.getElementById('out-total').textContent = yen(total);
-    document.getElementById('out-note').textContent = `2年目後半は、受講紹介 月約${((e1 - e0) / 6).toFixed(1)}人・企業成約 月約${((w1 - w0) / 6).toFixed(1)}社のペースで計算しています。目標月収が決まれば、そこから必要な人数を逆算できます。`;
-    try { localStorage.setItem('roadmap-fees', JSON.stringify(inputs.map(i => i.value))); } catch (e) {}
+(function income() {
+  const R = { dj: 0.30, dm: 0.20, sj: 0.15, sm: 0.05, pm: 0.02 }, MEM = 33000, EXP = 99000, MON = 5500;
+  const expIn = document.getElementById('exp-rate'), bizIn = document.getElementById('fee-biz');
+  try { const s = JSON.parse(localStorage.getItem('roadmap-income') || 'null'); if (s) { expIn.value = s[0]; bizIn.value = s[1]; } } catch (e) {}
+  const yen = n => Math.round(n).toLocaleString('ja-JP') + '円';
+  const man = n => '約' + (Math.round(n / 1000) / 10).toLocaleString('ja-JP') + '万円';
+  const parts = (avg, nd, D, n1, L1, P, nw, biz) => [
+    ['あなたの紹介・入会時', nd, '人/月', nd * avg * R.dj],
+    ['あなたの紹介・毎月', D, '人', D * MON * R.dm],
+    ['仲間の紹介・入会時', n1, '人/月', n1 * avg * R.sj],
+    ['仲間の紹介・毎月', L1, '人', L1 * MON * R.sm],
+    ['2〜4段階先・毎月', P, '人', P * MON * R.pm],
+    ['企業案件', nw, '件/月', nw * biz],
+  ];
+  const svg = document.getElementById('inc-chart'), ns = 'http://www.w3.org/2000/svg';
+  const el = (tag, a, t) => { const e = document.createElementNS(ns, tag); for (const k in a) e.setAttribute(k, a[k]); if (t != null) e.textContent = t; svg.appendChild(e); return e; };
+  const draw = series => {
+    svg.textContent = '';
+    const W = 720, H = 260, L = 56, Rr = 10, T = 22, B = 34, pw = W - L - Rr, ph = H - T - B;
+    const top = Math.max(600000, ...series);
+    const stepV = top > 1200000 ? 400000 : 200000;
+    const max = Math.ceil(top * 1.08 / stepV) * stepV;
+    const y = v => T + ph - (v / max) * ph;
+    for (let v = 0; v <= max; v += stepV) {
+      el('line', { x1: L, x2: W - Rr, y1: y(v), y2: y(v), stroke: 'var(--line)', 'stroke-width': 1 });
+      el('text', { x: L - 8, y: y(v) + 4, 'text-anchor': 'end', 'font-size': 11, fill: 'var(--muted)' }, (v / 10000) + '万');
+    }
+    const step = pw / series.length, bw = step - 6;
+    series.forEach((v, i) => {
+      const x = L + i * step + 3, h = Math.max(0, y(0) - y(v)), r = Math.min(4, h, bw / 2), yt = y(v);
+      el('path', { d: `M${x},${y(0)} V${yt + r} Q${x},${yt} ${x + r},${yt} H${x + bw - r} Q${x + bw},${yt} ${x + bw},${yt + r} V${y(0)} Z`, fill: 'var(--s-ig)' });
+      const m = i + 1;
+      if ([6, 12, 18, 24].includes(m)) {
+        el('text', { x: x + bw / 2, y: yt - 6, 'text-anchor': 'middle', 'font-size': 11, 'font-weight': 700, fill: 'var(--ink)' }, Math.round(v / 10000) + '万');
+        el('text', { x: x + bw / 2, y: H - B + 16, 'text-anchor': 'middle', 'font-size': 11, fill: 'var(--ink-2)' }, MONTHS[i].label.replace('年', '/').replace('月', '').slice(2));
+      }
+      const hit = el('rect', { x: L + i * step, y: T, width: step, height: ph, fill: 'transparent' });
+      const t = document.createElementNS(ns, 'title'); t.textContent = `${MONTHS[i].label}：${yen(v)}`; hit.appendChild(t);
+    });
+    el('line', { x1: L, x2: W - Rr, y1: y(500000), y2: y(500000), stroke: 'var(--gold)', 'stroke-width': 1.5, 'stroke-dasharray': '5 4' });
+    el('text', { x: L + 6, y: y(500000) - 6, 'font-size': 11, 'font-weight': 700, fill: 'var(--gold)' }, '50万円');
   };
-  inputs.forEach(i => i.addEventListener('input', run));
-  document.getElementById('calc').addEventListener('submit', e => e.preventDefault());
+  const run = () => {
+    const e = Math.min(100, Math.max(0, Number(expIn.value) || 0)) / 100, biz = Math.max(0, Number(bizIn.value) || 0);
+    const avg = MEM * (1 - e) + EXP * e;
+    let prev = { direct: 0, l1: 0, won: 0 }, total = 0, cross = null;
+    const series = MONTHS.map(d => {
+      const v = parts(avg, d.direct - prev.direct, d.direct, d.l1 - prev.l1, d.l1, d.l24, d.won - prev.won, biz).reduce((s, p) => s + p[3], 0);
+      prev = d; total += v; if (cross == null && v >= 500000) cross = d.label; return v;
+    });
+    draw(series);
+    const last = MONTHS[23], p18 = MONTHS[22];
+    const base = parts(avg, last.direct - p18.direct, last.direct, last.l1 - p18.l1, last.l1, last.l24, last.won - p18.won, biz);
+    const dream = parts(avg, 30, 400, 70, 1000, 3000, 0, 0);
+    const rows = base.map((b, i) => [b[0], b, dream[i]]).filter(r => r[0] !== '企業案件' || biz > 0);
+    const cell = p => `<td><small>${p[1].toLocaleString('ja-JP')}${p[2]}</small>${yen(p[3])}</td>`;
+    const sb = base.reduce((s, p) => s + p[3], 0), sd = dream.reduce((s, p) => s + p[3], 0);
+    document.getElementById('plan-tbl').innerHTML = '<thead><tr><th>内訳（1ヶ月分）</th><th><b>最低ライン</b>このロードマップ</th><th><b>夢</b>200万円プラン</th></tr></thead><tbody>' +
+      rows.map(r => `<tr><td>${r[0]}</td>${cell(r[1])}${cell(r[2])}</tr>`).join('') +
+      `<tr class="total"><td>合計</td><td class="sum">${man(sb)}</td><td class="sum">${man(sd)}</td></tr></tbody>`;
+    document.getElementById('out-month').textContent = man(series[23]);
+    document.getElementById('out-cross').textContent = cross || '2年以内は届かない';
+    document.getElementById('out-total').textContent = man(total);
+    const stock = last.direct * MON * R.dm + last.l1 * MON * R.sm + last.l24 * MON * R.pm;
+    document.getElementById('out-stock').textContent = `新しい紹介が止まると、2028年10月時点の毎月の報酬（${man(stock)}）だけになります。50万円を保つには、新規の紹介を続けることが前提です`;
+    try { localStorage.setItem('roadmap-income', JSON.stringify([expIn.value, bizIn.value])); } catch (e) {}
+  };
+  [expIn, bizIn].forEach(i => i.addEventListener('input', run));
   run();
 })();
 
