@@ -1,0 +1,1461 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//MOKUHYOUSETTEI//daily-plan//JA
+CALSCALE:GREGORIAN
+X-WR-CALNAME:希の毎日TODO（11月）
+BEGIN:VEVENT
+UID:27bbcea2-4ae4-53c9-897f-893e66ff8914@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261102T200000Z
+DTEND:20261102T201000Z
+SUMMARY:今日のTODO（10個）：今日の田中家：ショート「
+ 『別に』しか返ってこ…
+DESCRIPTION:・【リール】今日の田中家：ショート「『別
+ に』しか返ってこない」（今日仕上げて20:00に予約）\
+ n・【台本】午前：4本（別に・AI大丈夫・夕飯・勉強
+ しなさい）の台本に感情を盛り込む\n・【制作】午後
+ ：4本を作り、11/3〜11/6の20:00に予約する\n・【プロフ
+ ィール】第1話と紹介リールをプロフィールに固定す
+ る。LINEができたら、自己紹介の最後の行を「👇LINEで
+ 先行案内」にしてリンクを貼る\n・【設定】Instagramの
+ 設定を5つ確認する：共有と再利用（シェアをオン）
+ ／ストーリーズをアーカイブに保存／リールをグリッ
+ ドに表示／公開アカウントと検索エンジンへの表示／
+ アカウントステータス（15分）\n・【文化の日】休み
+ なら：公式LINEとオープンチャットをつくり、両SNSの
+ プロフィールにリンクを貼る\n・【文化の日】休みな
+ ら：お茶会のお店を探す\n・朝　Threads（MUSUBI）を2本
+ セット＋ストーリーズ1本\n・夜　コメント・DM・LINEに
+ 返信する\n・21:30　スマホを置く → 22:00に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（10個）：今日の田中家：ショート
+ 「『別に』しか返ってこ…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:7e27b143-d92d-5073-8cf3-e30647a9a80f@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261103T110000Z
+DTEND:20261103T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ea5bdf5b-37f7-5731-8f29-b36de0bbe836@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261103T123000Z
+DTEND:20261103T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6d6c1d4f-02da-5ea6-ad0a-aeee7c1c5244@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261103T200000Z
+DTEND:20261103T201000Z
+SUMMARY:今日のTODO（11個）：今日の田中家：ショート「
+ 子どもにAI、使わせ…
+DESCRIPTION:・【リール】今日の田中家：ショート「子ど
+ もにAI、使わせて大丈夫？」（20:00に予約済みか確認
+ ）\n・5:00　起きる\n・5:10　田中家の下ごしらえ：次に
+ 作る分の動画をKlingで生成しておく\n・5:50　Threads（MUS
+ UBI）を2本セット＋ストーリーズ1本\n・7:10　通勤中に
+ 勉強：行きはAの本編、帰りはNotebookLMの音声解説\n・8:
+ 30　コメントといいねを返す。他の人の投稿に5件コメ
+ ント\n・昼　Threadsの2本目を出す。DMに返信\n・帰宅後
+ 　コメント・DM・LINEに返信するだけ\n・帰宅後　新着
+ 動画を振り分ける：Aは「後で見る」、B・CはNotebookLM
+ へ\n・帰宅後　NotebookLMで音声解説をつくる\n・21:30　
+ スマホを置く → 22:00に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（11個）：今日の田中家：ショート
+ 「子どもにAI、使わせ…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1256ae24-3404-563f-a91e-003eb2a707c6@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261104T110000Z
+DTEND:20261104T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:53d4be5c-7939-5aa9-828a-06773587b986@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261104T123000Z
+DTEND:20261104T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:e60999cd-c19b-5cfa-8c37-adabcff5c3d7@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261104T200000Z
+DTEND:20261104T201000Z
+SUMMARY:今日のTODO（11個）：今日の田中家：ショート「
+ 夕飯で使える親子の質…
+DESCRIPTION:・【リール】今日の田中家：ショート「夕飯
+ で使える親子の質問」（20:00に予約済みか確認）\n・
+ 【ネタ】凛華ちゃんや若い人に、今よく使う言葉を3
+ つ聞く（11/11のショート用）\n・5:00　起きる\n・5:10　
+ つながりの日：AiNAを1人に個別に案内する／LINE配信を
+ 送る\n・5:50　Threads（MUSUBI）を2本セット＋ストーリー
+ ズ1本\n・7:10　通勤中に勉強：行きはAの本編、帰りはN
+ otebookLMの音声解説\n・8:30　コメントといいねを返す。
+ 他の人の投稿に5件コメント\n・昼　Threadsの2本目を出
+ す。DMに返信\n・帰宅後　コメント・DM・LINEに返信す
+ るだけ\n・帰宅後　新着動画を振り分ける：Aは「後で
+ 見る」、B・CはNotebookLMへ\n・21:30　スマホを置く → 22:
+ 00に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（11個）：今日の田中家：ショート
+ 「夕飯で使える親子の質…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:65538952-dbd1-56db-8fb5-920891efcbba@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261105T110000Z
+DTEND:20261105T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:0ef7cf1a-7d1c-5303-b755-40332abac55f@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261105T123000Z
+DTEND:20261105T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:a71694fc-9a6e-5bc5-a3d8-f6fb8d8fd2a3@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261105T200000Z
+DTEND:20261105T201000Z
+SUMMARY:今日のTODO（11個）：今日の田中家：ショート「
+ 『勉強しなさい』の言…
+DESCRIPTION:・【リール】今日の田中家：ショート「『勉
+ 強しなさい』の言いかえ」（20:00に予約済みか確認）\
+ n・5:00　起きる\n・5:10　田中家の下ごしらえ：次に作
+ る分の動画をKlingで生成しておく\n・5:50　Threads（MUSUBI
+ ）を2本セット＋ストーリーズ1本\n・7:10　通勤中に勉
+ 強：行きはAの本編、帰りはNotebookLMの音声解説\n・8:30
+ 　コメントといいねを返す。他の人の投稿に5件コメ
+ ント\n・昼　Threadsの2本目を出す。DMに返信\n・帰宅後
+ 　コメント・DM・LINEに返信するだけ\n・帰宅後　新着
+ 動画を振り分ける：Aは「後で見る」、B・CはNotebookLM
+ へ\n・帰宅後　声のネタ帳（リマインダーの「ネタ帳
+ 」）をスクショしてClaudeに送る\n・21:30　スマホを置
+ く → 22:00に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（11個）：今日の田中家：ショート
+ 「『勉強しなさい』の言…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:7e76ce1c-c525-57d6-ad20-ef401ea4c6c4@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261106T110000Z
+DTEND:20261106T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f53b256c-68d8-5ebe-984e-254faea6bc01@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261106T113000Z
+DTEND:20261106T113500Z
+SUMMARY:声のネタ帳をスクショしてClaudeへ（21:17に来週分
+ づくり）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:声のネタ帳をスクショしてClaudeへ（21:17に来
+ 週分づくり）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cc32d90f-797c-5fbd-9f7e-d76879a3aa37@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261106T123000Z
+DTEND:20261106T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:7180b5cf-e8fd-5195-8339-17a3c9309b3d@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261106T200000Z
+DTEND:20261106T201000Z
+SUMMARY:今日のTODO（4個）：午前：田中家の台本を仕上げ
+ る（いちばん大事。…
+DESCRIPTION:・【台本】午前：田中家の台本を仕上げる（
+ いちばん大事。想いが入っているか、台本の軸で確か
+ める）\n・【制作】午後：田中家の制作。来週の月〜
+ 金のうち3本を仕上げる\n・朝　Threads 1本＋ストーリー
+ ズ1本\n・一日　夜はゆっくり休む
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（4個）：午前：田中家の台本を仕
+ 上げる（いちばん大事。…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:8788deab-860f-5f4e-929a-73eb62e3929f@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261107T000000Z
+DTEND:20261107T010000Z
+SUMMARY:田中家の台本に感情を入れる（いちばん大事）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家の台本に感情を入れる（いちばん大事
+ ）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aa7c590c-51d9-59f0-996f-a800259552c0@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261107T123000Z
+DTEND:20261107T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:02da5f5d-3cde-58d2-b72f-ca93d6e32602@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261107T200000Z
+DTEND:20261107T201000Z
+SUMMARY:今日のTODO（7個）：田中家の制作：残り2本を仕
+ 上げて、月〜金の2…
+DESCRIPTION:・【制作】田中家の制作：残り2本を仕上げて
+ 、月〜金の20:00に予約する\n・【ふり返り】今週のイ
+ ンサイトをスクショしてClaudeに送る\n・朝　金曜の夜
+ に届いた来週分の投稿案を確認して直す\n・午前　Thre
+ adsとInstagramを予約投稿する\n・午前　来週の予定を確
+ 認する\n・午後　NotebookLMで音声解説をつくり、週のま
+ とめを出す\n・午後　NotebookLMのまとめと声メモをClaude
+ に送る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（7個）：田中家の制作：残り2本を
+ 仕上げて、月〜金の2…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20b967ed-b8df-572d-8677-be4f31f19fce@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261108T110000Z
+DTEND:20261108T111000Z
+SUMMARY:今週のインサイトをスクショしてClaudeへ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今週のインサイトをスクショしてClaudeへ
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:5c2dc73b-3c55-59d6-a9d5-cd8e41529401@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261108T123000Z
+DTEND:20261108T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6c7b0712-50f4-577f-836b-fdfd5c3e75e2@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261108T200000Z
+DTEND:20261108T201000Z
+SUMMARY:今日のTODO（11個）：今日の田中家：ショート「AI
+ が怖いのは、分か…
+DESCRIPTION:・【リール】今日の田中家：ショート「AIが
+ 怖いのは、分からないから」（20:00に予約済みか確認
+ ）\n・【ランチ会】申込者にお店と当日の案内を送る\
+ n・5:00　起きる\n・5:10　田中家の下ごしらえ：次に作
+ る分の動画をKlingで生成しておく\n・5:50　Threads（MUSUBI
+ ）を2本セット＋ストーリーズ1本\n・7:10　通勤中に勉
+ 強：行きはAの本編、帰りはNotebookLMの音声解説\n・8:30
+ 　コメントといいねを返す。他の人の投稿に5件コメ
+ ント\n・昼　Threadsの2本目を出す。DMに返信\n・帰宅後
+ 　コメント・DM・LINEに返信するだけ\n・帰宅後　新着
+ 動画を振り分ける：Aは「後で見る」、B・CはNotebookLM
+ へ\n・21:30　スマホを置く → 22:00に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（11個）：今日の田中家：ショート
+ 「AIが怖いのは、分か…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:23aa3d82-48c4-51d5-b12a-2c331defbb09@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261109T110000Z
+DTEND:20261109T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:460f4ab0-b8d9-5485-9f15-38f91913f63c@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261109T123000Z
+DTEND:20261109T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bbbe91c5-9241-57e9-8ab2-9912808cc6a9@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261109T200000Z
+DTEND:20261109T201000Z
+SUMMARY:今日のTODO（10個）：今日の田中家：第2話（本編
+ ）（20:00に予…
+DESCRIPTION:・【リール】今日の田中家：第2話（本編）（
+ 20:00に予約済みか確認）\n・5:00　起きる\n・5:10　カル
+ ーセルをCanvaで作って投稿\n・5:50　Threads（MUSUBI）を2
+ 本セット＋ストーリーズ1本\n・7:10　通勤中に勉強：
+ 行きはAの本編、帰りはNotebookLMの音声解説\n・8:30　コ
+ メントといいねを返す。他の人の投稿に5件コメント\n
+ ・昼　Threadsの2本目を出す。DMに返信\n・帰宅後　コメ
+ ント・DM・LINEに返信するだけ\n・帰宅後　新着動画を
+ 振り分ける：Aは「後で見る」、B・CはNotebookLMへ\n・21:
+ 30　スマホを置く → 22:00に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（10個）：今日の田中家：第2話（本
+ 編）（20:00に予…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:968eb658-16c0-55da-8b2f-e93173cf9142@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261110T110000Z
+DTEND:20261110T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:49cfc417-f524-59bb-a5aa-8e0ecfcdef5a@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261110T123000Z
+DTEND:20261110T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:a027b3f7-aa5f-5fe7-8ba7-2c44a885b680@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261110T200000Z
+DTEND:20261110T201000Z
+SUMMARY:今日のTODO（12個）：今日の田中家：ショート「
+ この言葉、意味わかる…
+DESCRIPTION:・【リール】今日の田中家：ショート「この
+ 言葉、意味わかる？」（20:00に予約済みか確認）\n・
+ 【ランチ会】明日のランチ会の前日リマインドを送る
+ \n・5:00　起きる\n・5:10　田中家の下ごしらえ：次に作
+ る分の動画をKlingで生成しておく\n・5:50　Threads（MUSUBI
+ ）を2本セット＋ストーリーズ1本\n・7:10　通勤中に勉
+ 強：行きはAの本編、帰りはNotebookLMの音声解説\n・8:30
+ 　コメントといいねを返す。他の人の投稿に5件コメ
+ ント\n・昼　Threadsの2本目を出す。DMに返信\n・帰宅後
+ 　コメント・DM・LINEに返信するだけ\n・帰宅後　新着
+ 動画を振り分ける：Aは「後で見る」、B・CはNotebookLM
+ へ\n・帰宅後　NotebookLMで音声解説をつくる\n・21:30　
+ スマホを置く → 22:00に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（12個）：今日の田中家：ショート
+ 「この言葉、意味わかる…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2a3161a9-0a9e-556d-bbfa-7c725d6e79c7@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261111T110000Z
+DTEND:20261111T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6520b4b9-e151-5b08-b419-2e2c5ed3b8e5@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261111T123000Z
+DTEND:20261111T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cf286d74-f14a-5e8b-b0b6-f317efc38563@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261111T200000Z
+DTEND:20261111T201000Z
+SUMMARY:今日のTODO（7個）：今日の田中家：ショート「宿
+ 題で使える、AIへ…
+DESCRIPTION:・【リール】今日の田中家：ショート「宿題
+ で使える、AIへのお願いの仕方」（20:00に予約済みか
+ 確認）\n・【ランチ会】第1回お役立ちランチ会（13:00
+ 〜14:30・天神近郊）。20代のAIに詳しい子と一緒に\n・
+ 【ランチ会】終わったら3行メモをClaudeに送る（誰が
+ 何を持ち寄ったか／印象に残った話／次も来たい人）
+ \n・朝　Threads（MUSUBI）を2本セット＋ストーリーズ1本\
+ n・午前　ランチ会の準備\n・夜　コメント・DM・LINEに
+ 返信する\n・21:30　スマホを置く → 22:00に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（7個）：今日の田中家：ショート
+ 「宿題で使える、AIへ…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:d1531fab-37c2-515f-9387-25c54b0a775e@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261112T110000Z
+DTEND:20261112T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:02a03e88-f1b1-58ba-b940-211af9bd3b3c@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261112T123000Z
+DTEND:20261112T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f3cb8584-cf69-50d0-a9de-5aab92b64cf1@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261112T200000Z
+DTEND:20261112T201000Z
+SUMMARY:今日のTODO（12個）：今日の田中家：ショート（11
+ /6の夜に届いた…
+DESCRIPTION:・【リール】今日の田中家：ショート（11/6の
+ 夜に届いたネタから）（20:00に予約済みか確認）\n・
+ 【ランチ会】開催レポをThreads（MUSUBI）に投稿する（Cl
+ audeがメモから作成）\n・5:00　起きる\n・5:10　田中家
+ の下ごしらえ：次に作る分の動画をKlingで生成してお
+ く\n・5:50　Threads（MUSUBI）を2本セット＋ストーリーズ1
+ 本\n・7:10　通勤中に勉強：行きはAの本編、帰りはNoteb
+ ookLMの音声解説\n・8:30　コメントといいねを返す。他
+ の人の投稿に5件コメント\n・昼　Threadsの2本目を出す
+ 。DMに返信\n・帰宅後　コメント・DM・LINEに返信する
+ だけ\n・帰宅後　新着動画を振り分ける：Aは「後で見
+ る」、B・CはNotebookLMへ\n・帰宅後　声のネタ帳（リマ
+ インダーの「ネタ帳」）をスクショしてClaudeに送る\n
+ ・21:30　スマホを置く → 22:00に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（12個）：今日の田中家：ショート
+ （11/6の夜に届いた…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:eced88b1-9aba-5e13-83f1-1d9b7c8cdeaa@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261113T110000Z
+DTEND:20261113T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:67884373-1e98-5f68-b50f-e9a87ac0e1e6@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261113T113000Z
+DTEND:20261113T113500Z
+SUMMARY:声のネタ帳をスクショしてClaudeへ（21:17に来週分
+ づくり）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:声のネタ帳をスクショしてClaudeへ（21:17に来
+ 週分づくり）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:39e7a7c9-08cd-5b69-b368-fa4b8055d75c@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261113T123000Z
+DTEND:20261113T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f47132c7-a134-5d08-ab96-0d94c39b783c@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261113T200000Z
+DTEND:20261113T201000Z
+SUMMARY:今日のTODO（4個）：午前：田中家の台本を仕上げ
+ る（いちばん大事。…
+DESCRIPTION:・【台本】午前：田中家の台本を仕上げる（
+ いちばん大事。想いが入っているか、台本の軸で確か
+ める）\n・【制作】午後：田中家の制作。来週の月〜
+ 金のうち3本を仕上げる\n・朝　Threads 1本＋ストーリー
+ ズ1本\n・一日　夜はゆっくり休む
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（4個）：午前：田中家の台本を仕
+ 上げる（いちばん大事。…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2defd012-e07c-5591-9386-ffc2c6129ef4@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261114T000000Z
+DTEND:20261114T010000Z
+SUMMARY:田中家の台本に感情を入れる（いちばん大事）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家の台本に感情を入れる（いちばん大事
+ ）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:89f4e319-7554-5f53-a0e5-4a306d6f9672@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261114T123000Z
+DTEND:20261114T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bd8dd3db-7f9a-5e4c-9c0f-38f45ac5dd8d@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261114T200000Z
+DTEND:20261114T201000Z
+SUMMARY:今日のTODO（7個）：田中家の制作：残り2本を仕
+ 上げて、月〜金の2…
+DESCRIPTION:・【制作】田中家の制作：残り2本を仕上げて
+ 、月〜金の20:00に予約する\n・【ふり返り】今週のイ
+ ンサイトをスクショしてClaudeに送る\n・朝　金曜の夜
+ に届いた来週分の投稿案を確認して直す\n・午前　Thre
+ adsとInstagramを予約投稿する\n・午前　来週の予定を確
+ 認する\n・午後　NotebookLMで音声解説をつくり、週のま
+ とめを出す\n・午後　NotebookLMのまとめと声メモをClaude
+ に送る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（7個）：田中家の制作：残り2本を
+ 仕上げて、月〜金の2…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:88c33150-d3e3-5fce-a1db-4ef1f06e7649@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261115T110000Z
+DTEND:20261115T111000Z
+SUMMARY:今週のインサイトをスクショしてClaudeへ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今週のインサイトをスクショしてClaudeへ
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:8e9a8fff-8787-578a-a6e9-1c8e1a1eb269@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261115T123000Z
+DTEND:20261115T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:51c3487e-b11d-5b48-89ea-ff90839afaca@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261115T200000Z
+DTEND:20261115T201000Z
+SUMMARY:今日のTODO（10個）：今日の田中家リール（20:00に
+ 予約済みか確…
+DESCRIPTION:・【リール】今日の田中家リール（20:00に予
+ 約済みか確認）\n・5:00　起きる\n・5:10　田中家の下ご
+ しらえ：次に作る分の動画をKlingで生成しておく\n・5:
+ 50　Threads（MUSUBI）を2本セット＋ストーリーズ1本\n・7:
+ 10　通勤中に勉強：行きはAの本編、帰りはNotebookLMの
+ 音声解説\n・8:30　コメントといいねを返す。他の人の
+ 投稿に5件コメント\n・昼　Threadsの2本目を出す。DMに
+ 返信\n・帰宅後　コメント・DM・LINEに返信するだけ\n
+ ・帰宅後　新着動画を振り分ける：Aは「後で見る」
+ 、B・CはNotebookLMへ\n・21:30　スマホを置く → 22:00に寝
+ る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（10個）：今日の田中家リール（20:0
+ 0に予約済みか確…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:135d9802-cecc-534b-80cb-8a3ffde58b7c@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261116T110000Z
+DTEND:20261116T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:40242d99-fc34-5580-b204-87ee968eb2a7@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261116T123000Z
+DTEND:20261116T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:70a22428-45f6-59d9-92b2-e3604a65d62b@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261116T200000Z
+DTEND:20261116T201000Z
+SUMMARY:今日のTODO（10個）：今日の田中家リール（20:00に
+ 予約済みか確…
+DESCRIPTION:・【リール】今日の田中家リール（20:00に予
+ 約済みか確認）\n・5:00　起きる\n・5:10　カルーセルを
+ Canvaで作って投稿\n・5:50　Threads（MUSUBI）を2本セット
+ ＋ストーリーズ1本\n・7:10　通勤中に勉強：行きはAの
+ 本編、帰りはNotebookLMの音声解説\n・8:30　コメントと
+ いいねを返す。他の人の投稿に5件コメント\n・昼　Thr
+ eadsの2本目を出す。DMに返信\n・帰宅後　コメント・DM
+ ・LINEに返信するだけ\n・帰宅後　新着動画を振り分け
+ る：Aは「後で見る」、B・CはNotebookLMへ\n・21:30　スマ
+ ホを置く → 22:00に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（10個）：今日の田中家リール（20:0
+ 0に予約済みか確…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:d3909aa3-3e77-52e2-8e9c-7ee703b52ccd@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261117T110000Z
+DTEND:20261117T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:d25bdf9a-8265-5c98-9318-17edc3585ed9@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261117T123000Z
+DTEND:20261117T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:9405ba01-55d0-59a7-8b2c-70e9b4fe8815@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261117T200000Z
+DTEND:20261117T201000Z
+SUMMARY:今日のTODO（11個）：今日の田中家リール（20:00に
+ 予約済みか確…
+DESCRIPTION:・【リール】今日の田中家リール（20:00に予
+ 約済みか確認）\n・5:00　起きる\n・5:10　田中家の下ご
+ しらえ：次に作る分の動画をKlingで生成しておく\n・5:
+ 50　Threads（MUSUBI）を2本セット＋ストーリーズ1本\n・7:
+ 10　通勤中に勉強：行きはAの本編、帰りはNotebookLMの
+ 音声解説\n・8:30　コメントといいねを返す。他の人の
+ 投稿に5件コメント\n・昼　Threadsの2本目を出す。DMに
+ 返信\n・帰宅後　コメント・DM・LINEに返信するだけ\n
+ ・帰宅後　新着動画を振り分ける：Aは「後で見る」
+ 、B・CはNotebookLMへ\n・帰宅後　NotebookLMで音声解説をつ
+ くる\n・21:30　スマホを置く → 22:00に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（11個）：今日の田中家リール（20:0
+ 0に予約済みか確…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:d686ecbc-bcb2-5502-ba73-c834592e64a9@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261118T110000Z
+DTEND:20261118T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:a43ca4f2-c477-5543-9d62-032c1c3a2120@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261118T123000Z
+DTEND:20261118T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ef54af65-ef41-5bbb-9f46-a68777e52e5a@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261118T200000Z
+DTEND:20261118T201000Z
+SUMMARY:今日のTODO（10個）：今日の田中家リール（20:00に
+ 予約済みか確…
+DESCRIPTION:・【リール】今日の田中家リール（20:00に予
+ 約済みか確認）\n・5:00　起きる\n・5:10　つながりの日
+ ：AiNAを1人に個別に案内する／LINE配信を送る\n・5:50　
+ Threads（MUSUBI）を2本セット＋ストーリーズ1本\n・7:10　
+ 通勤中に勉強：行きはAの本編、帰りはNotebookLMの音声
+ 解説\n・8:30　コメントといいねを返す。他の人の投稿
+ に5件コメント\n・昼　Threadsの2本目を出す。DMに返信\n
+ ・帰宅後　コメント・DM・LINEに返信するだけ\n・帰宅
+ 後　新着動画を振り分ける：Aは「後で見る」、B・Cは
+ NotebookLMへ\n・21:30　スマホを置く → 22:00に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（10個）：今日の田中家リール（20:0
+ 0に予約済みか確…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:4b8dea47-d6ac-5b74-9f11-22abc2aa2943@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261119T110000Z
+DTEND:20261119T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:a3aa62fd-823a-5423-9c69-6cbd674ced10@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261119T123000Z
+DTEND:20261119T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:8a8a93b5-f770-56d8-a561-8cafa2e2567f@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261119T200000Z
+DTEND:20261119T201000Z
+SUMMARY:今日のTODO（11個）：今日の田中家リール（20:00に
+ 予約済みか確…
+DESCRIPTION:・【リール】今日の田中家リール（20:00に予
+ 約済みか確認）\n・5:00　起きる\n・5:10　田中家の下ご
+ しらえ：次に作る分の動画をKlingで生成しておく\n・5:
+ 50　Threads（MUSUBI）を2本セット＋ストーリーズ1本\n・7:
+ 10　通勤中に勉強：行きはAの本編、帰りはNotebookLMの
+ 音声解説\n・8:30　コメントといいねを返す。他の人の
+ 投稿に5件コメント\n・昼　Threadsの2本目を出す。DMに
+ 返信\n・帰宅後　コメント・DM・LINEに返信するだけ\n
+ ・帰宅後　新着動画を振り分ける：Aは「後で見る」
+ 、B・CはNotebookLMへ\n・帰宅後　声のネタ帳（リマイン
+ ダーの「ネタ帳」）をスクショしてClaudeに送る\n・21:3
+ 0　スマホを置く → 22:00に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（11個）：今日の田中家リール（20:0
+ 0に予約済みか確…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bd8335be-5749-557e-a71b-8a39b93fd853@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261120T110000Z
+DTEND:20261120T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:abee0b44-9b13-51c0-ad6b-41a440a9abf1@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261120T113000Z
+DTEND:20261120T113500Z
+SUMMARY:声のネタ帳をスクショしてClaudeへ（21:17に来週分
+ づくり）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:声のネタ帳をスクショしてClaudeへ（21:17に来
+ 週分づくり）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cabdcffa-93db-50e8-b10a-dc2e6ef545c0@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261120T123000Z
+DTEND:20261120T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2af53898-4843-5374-991d-45138807c49c@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261120T200000Z
+DTEND:20261120T201000Z
+SUMMARY:今日のTODO（4個）：午前：田中家の台本を仕上げ
+ る（いちばん大事。…
+DESCRIPTION:・【台本】午前：田中家の台本を仕上げる（
+ いちばん大事。想いが入っているか、台本の軸で確か
+ める）\n・【制作】午後：田中家の制作。来週の月〜
+ 金のうち3本を仕上げる\n・朝　Threads 1本＋ストーリー
+ ズ1本\n・一日　夜はゆっくり休む
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（4個）：午前：田中家の台本を仕
+ 上げる（いちばん大事。…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:8398d41e-4356-5abe-a658-ceb308a67b6a@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261121T000000Z
+DTEND:20261121T010000Z
+SUMMARY:田中家の台本に感情を入れる（いちばん大事）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家の台本に感情を入れる（いちばん大事
+ ）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:be1ba97a-aa65-5cc4-b0d8-6f601f4c8028@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261121T123000Z
+DTEND:20261121T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:45ccab06-69aa-5979-a2ee-0980aec7b2a9@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261121T200000Z
+DTEND:20261121T201000Z
+SUMMARY:今日のTODO（7個）：田中家の制作：残り2本を仕
+ 上げて、月〜金の2…
+DESCRIPTION:・【制作】田中家の制作：残り2本を仕上げて
+ 、月〜金の20:00に予約する\n・【ふり返り】今週のイ
+ ンサイトをスクショしてClaudeに送る\n・朝　金曜の夜
+ に届いた来週分の投稿案を確認して直す\n・午前　Thre
+ adsとInstagramを予約投稿する\n・午前　来週の予定を確
+ 認する\n・午後　NotebookLMで音声解説をつくり、週のま
+ とめを出す\n・午後　NotebookLMのまとめと声メモをClaude
+ に送る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（7個）：田中家の制作：残り2本を
+ 仕上げて、月〜金の2…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:04741a10-a8f1-5f22-b4fa-89cb77869f5f@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261122T110000Z
+DTEND:20261122T111000Z
+SUMMARY:今週のインサイトをスクショしてClaudeへ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今週のインサイトをスクショしてClaudeへ
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:9d5d4e35-3062-58cf-9829-87212db6e654@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261122T123000Z
+DTEND:20261122T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:8d811d2b-4ecb-5f7e-8d14-991f44c395c9@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261122T200000Z
+DTEND:20261122T201000Z
+SUMMARY:今日のTODO（10個）：今日の田中家リール（20:00に
+ 予約済みか確…
+DESCRIPTION:・【リール】今日の田中家リール（20:00に予
+ 約済みか確認）\n・5:00　起きる\n・5:10　田中家の下ご
+ しらえ：次に作る分の動画をKlingで生成しておく\n・5:
+ 50　Threads（MUSUBI）を2本セット＋ストーリーズ1本\n・7:
+ 10　通勤中に勉強：行きはAの本編、帰りはNotebookLMの
+ 音声解説\n・8:30　コメントといいねを返す。他の人の
+ 投稿に5件コメント\n・昼　Threadsの2本目を出す。DMに
+ 返信\n・帰宅後　コメント・DM・LINEに返信するだけ\n
+ ・帰宅後　新着動画を振り分ける：Aは「後で見る」
+ 、B・CはNotebookLMへ\n・21:30　スマホを置く → 22:00に寝
+ る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（10個）：今日の田中家リール（20:0
+ 0に予約済みか確…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:7d993eba-4193-53fe-a05e-bf513ddd8760@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261123T110000Z
+DTEND:20261123T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2d2dca21-2f11-54e5-8c40-0ce2bb55ed31@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261123T123000Z
+DTEND:20261123T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bcb05a54-000e-587b-871a-f55c817751e9@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261123T200000Z
+DTEND:20261123T201000Z
+SUMMARY:今日のTODO（10個）：今日の田中家リール（20:00に
+ 予約済みか確…
+DESCRIPTION:・【リール】今日の田中家リール（20:00に予
+ 約済みか確認）\n・5:00　起きる\n・5:10　カルーセルを
+ Canvaで作って投稿\n・5:50　Threads（MUSUBI）を2本セット
+ ＋ストーリーズ1本\n・7:10　通勤中に勉強：行きはAの
+ 本編、帰りはNotebookLMの音声解説\n・8:30　コメントと
+ いいねを返す。他の人の投稿に5件コメント\n・昼　Thr
+ eadsの2本目を出す。DMに返信\n・帰宅後　コメント・DM
+ ・LINEに返信するだけ\n・帰宅後　新着動画を振り分け
+ る：Aは「後で見る」、B・CはNotebookLMへ\n・21:30　スマ
+ ホを置く → 22:00に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（10個）：今日の田中家リール（20:0
+ 0に予約済みか確…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fce1dfcb-1cb3-5318-9a39-ee71f4d551d3@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261124T110000Z
+DTEND:20261124T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:906712f5-c6b5-5fec-9c12-817ba449ecd1@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261124T123000Z
+DTEND:20261124T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:9b06e891-f472-5196-b045-558b14c53ed8@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261124T200000Z
+DTEND:20261124T201000Z
+SUMMARY:今日のTODO（11個）：今日の田中家リール（20:00に
+ 予約済みか確…
+DESCRIPTION:・【リール】今日の田中家リール（20:00に予
+ 約済みか確認）\n・5:00　起きる\n・5:10　田中家の下ご
+ しらえ：次に作る分の動画をKlingで生成しておく\n・5:
+ 50　Threads（MUSUBI）を2本セット＋ストーリーズ1本\n・7:
+ 10　通勤中に勉強：行きはAの本編、帰りはNotebookLMの
+ 音声解説\n・8:30　コメントといいねを返す。他の人の
+ 投稿に5件コメント\n・昼　Threadsの2本目を出す。DMに
+ 返信\n・帰宅後　コメント・DM・LINEに返信するだけ\n
+ ・帰宅後　新着動画を振り分ける：Aは「後で見る」
+ 、B・CはNotebookLMへ\n・帰宅後　NotebookLMで音声解説をつ
+ くる\n・21:30　スマホを置く → 22:00に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（11個）：今日の田中家リール（20:0
+ 0に予約済みか確…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:9dc30f2c-8ac3-5623-b318-16177f1f72ee@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261125T110000Z
+DTEND:20261125T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:4acc7ee7-dc8b-567d-80be-e5d86620be1e@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261125T123000Z
+DTEND:20261125T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:7ec608a3-7d71-59d8-9883-dd31fc3535cf@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261125T200000Z
+DTEND:20261125T201000Z
+SUMMARY:今日のTODO（10個）：今日の田中家リール（20:00に
+ 予約済みか確…
+DESCRIPTION:・【リール】今日の田中家リール（20:00に予
+ 約済みか確認）\n・5:00　起きる\n・5:10　つながりの日
+ ：AiNAを1人に個別に案内する／LINE配信を送る\n・5:50　
+ Threads（MUSUBI）を2本セット＋ストーリーズ1本\n・7:10　
+ 通勤中に勉強：行きはAの本編、帰りはNotebookLMの音声
+ 解説\n・8:30　コメントといいねを返す。他の人の投稿
+ に5件コメント\n・昼　Threadsの2本目を出す。DMに返信\n
+ ・帰宅後　コメント・DM・LINEに返信するだけ\n・帰宅
+ 後　新着動画を振り分ける：Aは「後で見る」、B・Cは
+ NotebookLMへ\n・21:30　スマホを置く → 22:00に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（10個）：今日の田中家リール（20:0
+ 0に予約済みか確…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:72ff2d2f-50f1-5875-ba2c-ba37ddfcf116@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261126T110000Z
+DTEND:20261126T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:c24d9991-07de-59a5-a99f-c79f8261ac56@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261126T123000Z
+DTEND:20261126T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f409316a-5d0b-5f7a-bbbb-63f565ebae48@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261126T200000Z
+DTEND:20261126T201000Z
+SUMMARY:今日のTODO（11個）：今日の田中家リール（20:00に
+ 予約済みか確…
+DESCRIPTION:・【リール】今日の田中家リール（20:00に予
+ 約済みか確認）\n・5:00　起きる\n・5:10　田中家の下ご
+ しらえ：次に作る分の動画をKlingで生成しておく\n・5:
+ 50　Threads（MUSUBI）を2本セット＋ストーリーズ1本\n・7:
+ 10　通勤中に勉強：行きはAの本編、帰りはNotebookLMの
+ 音声解説\n・8:30　コメントといいねを返す。他の人の
+ 投稿に5件コメント\n・昼　Threadsの2本目を出す。DMに
+ 返信\n・帰宅後　コメント・DM・LINEに返信するだけ\n
+ ・帰宅後　新着動画を振り分ける：Aは「後で見る」
+ 、B・CはNotebookLMへ\n・帰宅後　声のネタ帳（リマイン
+ ダーの「ネタ帳」）をスクショしてClaudeに送る\n・21:3
+ 0　スマホを置く → 22:00に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（11個）：今日の田中家リール（20:0
+ 0に予約済みか確…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:86611f2f-781d-5d6f-ad55-83612444cf4a@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261127T110000Z
+DTEND:20261127T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:7a4b74a1-1a26-515f-879b-da9293c3cb63@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261127T113000Z
+DTEND:20261127T113500Z
+SUMMARY:声のネタ帳をスクショしてClaudeへ（21:17に来週分
+ づくり）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:声のネタ帳をスクショしてClaudeへ（21:17に来
+ 週分づくり）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:9488cc8f-9f29-58ab-a53e-f2d47459945c@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261127T123000Z
+DTEND:20261127T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:078f3a8c-e785-5900-a9e8-7b48f8360bdd@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261127T200000Z
+DTEND:20261127T201000Z
+SUMMARY:今日のTODO（4個）：午前：田中家の台本を仕上げ
+ る（いちばん大事。…
+DESCRIPTION:・【台本】午前：田中家の台本を仕上げる（
+ いちばん大事。想いが入っているか、台本の軸で確か
+ める）\n・【制作】午後：田中家の制作。来週の月〜
+ 金のうち3本を仕上げる\n・朝　Threads 1本＋ストーリー
+ ズ1本\n・一日　夜はゆっくり休む
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（4個）：午前：田中家の台本を仕
+ 上げる（いちばん大事。…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:88d19ad1-2c70-5d77-ac6d-d978750f1278@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261128T000000Z
+DTEND:20261128T010000Z
+SUMMARY:田中家の台本に感情を入れる（いちばん大事）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家の台本に感情を入れる（いちばん大事
+ ）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:b937594e-67bd-5394-9e34-b7ae1fff485e@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261128T123000Z
+DTEND:20261128T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:9673bc68-abb6-5e3a-94cb-3aa8c816212f@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261128T200000Z
+DTEND:20261128T201000Z
+SUMMARY:今日のTODO（8個）：田中家の制作：残り2本を仕
+ 上げて、月〜金の2…
+DESCRIPTION:・【制作】田中家の制作：残り2本を仕上げて
+ 、月〜金の20:00に予約する\n・【ふり返り】今週のイ
+ ンサイトをスクショしてClaudeに送る\n・【月末】11月
+ の数字をKPI管理表に記録し、Claudeに貼って振り返る\n
+ ・朝　金曜の夜に届いた来週分の投稿案を確認して直
+ す\n・午前　ThreadsとInstagramを予約投稿する\n・午前　
+ 来週の予定を確認する\n・午後　NotebookLMで音声解説を
+ つくり、週のまとめを出す\n・午後　NotebookLMのまとめ
+ と声メモをClaudeに送る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（8個）：田中家の制作：残り2本を
+ 仕上げて、月〜金の2…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:5db928f2-8e7f-5bd9-89db-62b5eaa3cd7c@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261129T110000Z
+DTEND:20261129T111000Z
+SUMMARY:今週のインサイトをスクショしてClaudeへ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今週のインサイトをスクショしてClaudeへ
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:973f8283-74de-5054-983e-aedcfd12d365@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261129T123000Z
+DTEND:20261129T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:8ce6b12a-309a-5f73-b971-d0a6bdf06b2e@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261129T200000Z
+DTEND:20261129T201000Z
+SUMMARY:今日のTODO（10個）：今日の田中家リール（20:00に
+ 予約済みか確…
+DESCRIPTION:・【リール】今日の田中家リール（20:00に予
+ 約済みか確認）\n・5:00　起きる\n・5:10　田中家の下ご
+ しらえ：次に作る分の動画をKlingで生成しておく\n・5:
+ 50　Threads（MUSUBI）を2本セット＋ストーリーズ1本\n・7:
+ 10　通勤中に勉強：行きはAの本編、帰りはNotebookLMの
+ 音声解説\n・8:30　コメントといいねを返す。他の人の
+ 投稿に5件コメント\n・昼　Threadsの2本目を出す。DMに
+ 返信\n・帰宅後　コメント・DM・LINEに返信するだけ\n
+ ・帰宅後　新着動画を振り分ける：Aは「後で見る」
+ 、B・CはNotebookLMへ\n・21:30　スマホを置く → 22:00に寝
+ る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:今日のTODO（10個）：今日の田中家リール（20:0
+ 0に予約済みか確…
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1f58d7f9-1c02-5a4b-8cd6-6e8f65edbac6@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261130T110000Z
+DTEND:20261130T110500Z
+SUMMARY:田中家のリールが出ているか確認（AIラベルも）
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:田中家のリールが出ているか確認（AIラベル
+ も）
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fbc2f70e-176a-5a3f-af03-dccab25504a1@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261130T123000Z
+DTEND:20261130T123500Z
+SUMMARY:スマホを置く → 22時に寝る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:スマホを置く → 22時に寝る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:34948cd4-dff4-5139-a5a3-a1436b496237@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261111T100000Z
+DTEND:20261111T100500Z
+SUMMARY:ランチ会の前日リマインドを送る
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ランチ会の前日リマインドを送る
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:a358e015-2909-542a-b44a-3d87a938eb9d@mokuhyousettei
+DTSTAMP:20261102T120000Z
+DTSTART:20261112T040000Z
+DTEND:20261112T053000Z
+SUMMARY:お役立ちランチ会（天神近郊）
+DESCRIPTION:終わったら3行メモをClaudeへ：誰が何を持ち寄
+ ったか／印象に残った話／次も来たい人
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:お役立ちランチ会（天神近郊）
+TRIGGER:-PT60M
+END:VALARM
+END:VEVENT
+END:VCALENDAR
