@@ -128,6 +128,13 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
 .prompt p { font-size: 14px; color: var(--ink-2); user-select: all; }
 .copy { flex: none; font: inherit; font-size: 13px; color: var(--accent); background: var(--accent-soft); border: 0; border-radius: 999px; padding: 4px 12px; cursor: pointer; }
 .copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.posts { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+.posts[hidden] { display: none; }
+.posts-h { font-size: 14px; font-weight: 700; }
+.posts-h small { display: block; font-weight: 400; color: var(--muted); font-size: 12.5px; }
+.post-text { white-space: pre-wrap; overflow-wrap: anywhere; }
+.post-note { font-size: 12.5px; color: var(--muted); }
+.post-note.warn { color: var(--ink-2); background: var(--gold-soft); border-radius: 8px; padding: 6px 10px; }
 @media (max-width: 640px) { .roles, .sum { grid-template-columns: 1fr; } .today { padding: 16px; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
@@ -155,6 +162,10 @@ footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--lin
     </div>
     <ul class="tasks" id="tasks"></ul>
     <div class="progress"><span id="prog">-</span><span class="saved">チェックはこの端末に保存されます</span></div>
+    <div class="posts" id="posts" hidden>
+      <div class="posts-h">この日の投稿文<small>「コピー」を押して、そのまま貼りつけ。日付は上の「前の日・次の日」で切りかえ（予約投稿をまとめて入れるときも）</small></div>
+      <div class="prompts" id="post-list"></div>
+    </div>
   </div>
 </section>
 
@@ -545,7 +556,7 @@ const EXTRA = {
   '2026-11-05': [['予定', '予定がある日。夜は最低ライン（Threads 1本＋ストーリーズ1本）だけでOK。リールは予約済みか確認するだけ'], ['ネタ', '凛華ちゃんや若い人に、今よく使う言葉を3つ聞く（11/11のショート用。後日でもOK）']],
   '2026-11-06': [['制作', '今夜：時短AI①「今日のごはん何？」を作って20:00に投稿（AIラベルをオン）']],
   '2026-11-07': [['台本', '来週5本の台本をClaudeと決める（5本とも決定済み）。制作は明日まとめて']],
-  '2026-11-08': [['Threads', 'Threads（MUSUBI）を1日2本に戻す。11/11までの8本（投稿ライブラリ／MUSUBI_Threads／2026-11-08〜11_投稿.md）は、予約投稿でまとめて入れると楽'], ['制作', '来週の5本（11/9〜13）をまとめて作り、それぞれ20:00に予約する（AIラベルをオン）。台本は投稿ライブラリの決定稿']],
+  '2026-11-08': [['Threads', 'Threads（MUSUBI）を1日2本に戻す。投稿文はこのページの下の「この日の投稿文」からコピー。11/11までの8本を予約投稿でまとめて入れると楽'], ['制作', '来週の5本（11/9〜13）をまとめて作り、それぞれ20:00に予約する（AIラベルをオン）。台本は投稿ライブラリの決定稿']],
 };
 const OFFDAYS = { '2026-11-03': '文化の日でお休み', '2026-11-12': 'ランチ会のため仕事はお休み' };
 const inNov = k => k >= '2026-11-02' && k <= '2026-11-30';
@@ -603,7 +614,7 @@ function tasksFor(d) {
   } else if (w === 6) {
     const party = nth(d) === 3 && key(d) >= '2026-12-01';
     list = [
-      { id: 'th1', time: '朝', text: 'Threads 1本＋ストーリーズ1本', note: '日曜に予約済みならチェックだけ', min: true },
+      { id: 'th1', time: '朝', text: 'Threads 2本＋ストーリーズ1本', note: 'Threadsの投稿文は、下の「この日の投稿文」からコピー。予約済みならチェックだけ', min: true },
       { id: 'rest', time: '一日', text: party ? 'お茶会のあとは休む' : inNov(key(d)) ? '夜はゆっくり休む' : '完全オフ。休むのも計画のうち', note: '' },
     ];
   } else {
@@ -619,6 +630,148 @@ function tasksFor(d) {
   return [...sp, ...list];
 }
 
+/* POSTS:BEGIN */
+const POSTS = {
+ "2026-11-08": {
+  "threads": [
+   {
+    "label": "Threads ①",
+    "note": "ランチ会のお知らせ（これまで投稿していないので、ここで全文を出す）",
+    "text": "【11/12（木）お役立ちランチ会、はじめます🍽】\n\n誰でも、人より少しだけ詳しいことがあると思うんです。\n好きな漫画、料理のコツ、片づけ、仕事のちょっとした工夫…\n私なら腸活。今回は、20代のAIに詳しい子も一緒です。\n\nそれを持ち寄って、ランチを食べながら教え合う会です。\n人脈づくりではなく、「ちょっと役に立てた」がうれしい会にしたいと思っています。\n\n若い世代が知っている新しいことも、\n人生の先輩が積み重ねてきた暮らしの知恵も、\nどちらも誰かの「へぇ〜！」になる。\n\n📅 11/12（木）13:00〜14:30\n📍 天神近郊のカフェ（場所は申込の方にお知らせ）\n👥 4名ほど\n🍽 参加費：ご自分のランチ代のみ\n\n「私に話せることなんてないかも」という方も大歓迎。\n気になる方は、DMかコメントで☺️"
+   },
+   {
+    "label": "Threads ②",
+    "note": "",
+    "text": "寒くなってきたら、腸活は温かい汁ものから🍲\n\n味噌（発酵食品）に、きのこやごぼう（食物繊維）をたっぷり。\nお椀1杯で「菌」と「菌のごはん」がそろいます。\n\nあなたの家の、冬の定番の汁ものはなんですか？"
+   }
+  ]
+ },
+ "2026-11-09": {
+  "reel": {
+   "label": "田中家のキャプション",
+   "text": "ごはんはできた。でも、食卓がしーん…🍚\nこっそりAIに相談したら、答えじゃなくて「みんなが自分の話をしたくなるのは、どんなとき？」と聞き返された。\n思い出したのは、金曜の「肉！」「パスタ！」。\"したいこと\"なら、みんな話したくなるんだ。\n\n📝 AIへの相談の仕方（保存してね）\nじっくり考えたい日：「家族と話すきっかけになる質問を一緒に考えたい。答えをすぐ出さずに、私に質問して考えさせて」\nすぐほしい日：「家族みんなが答えたくなる、重くない質問を1つだけ出して」\n\n会話がないんじゃなくて、きっかけがなかっただけかも。\n一緒に子育てしている人に送ってね。\n\n#AIは相棒 #親子でAI #親子の会話 #思春期 #子育て",
+   "title": "ショート 夕飯で使える親子の質問"
+  },
+  "threads": [
+   {
+    "label": "Threads ①",
+    "note": "",
+    "text": "はじめましての投稿で書いた、ココ・シャネルの「道端の花の名前」の言葉。\nあれが、お役立ちランチ会を思いついたきっかけです。\n\n専門家じゃなくていい。\n人より少し知っていることを、知りたい人に教える。\nそれだけで、誰かの世界がひとつ広がる。\n\nそんな集まりを、ここから始めます🌿"
+   },
+   {
+    "label": "Threads ②",
+    "note": "",
+    "text": "腸活のコツをひとつ。\n「菌」と「菌のごはん」をセットで。\n\n菌＝納豆、ヨーグルト、味噌などの発酵食品\n菌のごはん＝野菜、海藻、きのこなどの食物繊維\n\n納豆にオクラ、ヨーグルトにバナナ。\n足し算するだけで、ぐっと腸活らしくなります🌿"
+   }
+  ]
+ },
+ "2026-11-10": {
+  "reel": {
+   "label": "田中家のキャプション",
+   "text": "夜10時。「これ明日まで」📄（あるある…）\nプリントの写真をAIに渡せば、締め切りと持ち物だけをすぐ書き出してくれます。\nそして「どうしたら明日までにならない？」と聞いたら、蒼が自分で「もらったら写真送る」と決めました。\n\nアドラー心理学の「課題の分離」。プリントの管理は、本人の課題。親は問いかけて、任せるだけ。\n\n📝 そのまま使えるお願いの文（保存してね）\n「このプリントの写真から『親が対応すべき提出物の締め切り』と『必要な持ち物・日程』だけを箇条書きにして」\n※名前や学校名は隠してから渡してね\n\n一緒に子育てしている人に送ってね。\n\n#AIは相棒 #親子でAI #時短 #プリント整理 #子育て",
+   "title": "ショート 時短AI これ明日までプリント"
+  },
+  "threads": [
+   {
+    "label": "Threads ①",
+    "note": "満席なら、最後の2行を「おかげさまで満席になりました。次回は12月の予定です」に",
+    "text": "11/12（木）のお役立ちランチ会は、こんな流れです🍽\n\n・ランチを食べながら、自己紹介\n・1人5〜10分、「ちょっと詳しいこと」をシェア\n・「実はこれで困ってて…」を、みんなで助け合う\n\n話すのが苦手な方は、聞くだけでも大丈夫です。\nまだお席あります。気になる方はDMで☺️"
+   },
+   {
+    "label": "Threads ②",
+    "note": "",
+    "text": "日本は発酵の国。\n味噌、しょうゆ、納豆、ぬか漬け、甘酒…\n毎日の食卓に、もう「菌」がたくさんいます🌿\n\nあなたの家の定番の発酵食品はなんですか？"
+   }
+  ]
+ },
+ "2026-11-11": {
+  "reel": {
+   "label": "田中家のキャプション",
+   "text": "部活の保護者LINE、お礼の一文に30分…📱\n丁寧すぎると重いし、短すぎると冷たい。わかる…。\n\n下書きはAIに。\nでも最後に「ひとこと足すなら？」と聞かれて、思い出したのは蒼のひと言でした。\n\n決まり文句の3行より、自分の言葉のひと言のほうが、ちゃんと届く。\n\n📝 そのまま使えるお願いの文（保存してね）\n「部活の保護者LINEで、送迎を代わってもらったお礼の文を作って。丁寧だけど堅苦しすぎないトーンで、3行以内で。最後に、私が自分の言葉で足すといいことを1つ質問して」\n\n一緒に子育てしている人に送ってね。\n\n#AIは相棒 #親子でAI #時短 #部活 #子育て",
+   "title": "ショート 時短AI 部活LINEのお礼文"
+  },
+  "threads": [
+   {
+    "label": "Threads ①",
+    "note": "空きがあれば：まだお席あります。今日中にDMをいただければご案内します",
+    "text": "明日はいよいよ、はじめてのお役立ちランチ会。\nどんな「ちょっと詳しい」が集まるか、今からわくわくしています☺️"
+   },
+   {
+    "label": "Threads ②",
+    "note": "",
+    "text": "「教える」って、上から伝えることじゃないと思っています。\n\n「これ、知ってると便利だったよ」と、おすそわけすること。\n\n年上から年下へ、だけじゃない。\n若い世代から教わることも、たくさんあります。\n\n明日のランチ会も、そんなおすそわけの場にしたいな🌿"
+   }
+  ]
+ },
+ "2026-11-12": {
+  "reel": {
+   "label": "田中家のキャプション",
+   "text": "宿題、AIにやらせたらズル？🤔\n\n答えを聞くだけなら、ズルかも。\nでも「答えは言わないで、ヒントだけ」とお願いすれば、AIは一緒に考える相棒になります。\n\n自分で解けたときの「わかった！」は、答えをもらうより、ずっとうれしい。\n\n📝 そのまま使えるお願いの文（保存してね）\n「小学5年生の算数の宿題です。答えは言わずに、考え方のヒントを1つずつ出してください。私が答えたら、合っているか教えてね」\n※小学生のうちは、親と一緒に使ってね（多くのAIは13歳以上が対象です）\n\n一緒に子育てしている人に送ってね。\n\n#AIは相棒 #親子でAI #宿題 #算数 #子育て",
+   "title": "ショート 宿題で使えるAIへのお願いの仕方"
+  },
+  "threads": [
+   {
+    "label": "Threads ①",
+    "note": "",
+    "text": "今日はお役立ちランチ会の日🍽 行ってきます！"
+   },
+   {
+    "label": "Threads ②",
+    "note": "【】は書きかえてから投稿",
+    "text": "【ランチ会を終えて、いちばん心に残ったことを2〜3行】"
+   }
+  ]
+ },
+ "2026-11-13": {
+  "reel": {
+   "label": "田中家のキャプション",
+   "text": "AIには話すのに、親には話してくれない…？\n\n思春期の子がAIに相談していると知ったとき、愛奈がAIに聞いたのは「どうすれば話してくれるか」。\nでもAIが聞き返したのは「愛奈さんが13歳のころ、親に話せたのは、どんなときでしたか？」でした。\n\n向かい合って聞かれると、言えなかった。並んで歩いているときは、話せた。\n聞き出すんじゃなくて、話したくなるまで、となりにいる。\n\n📝 保存してね（親子で使えるAIへのお願い）\n子ども用：「悩みを話したい。答えを決めるのではなく、私の気持ちを整理する質問を1つずつして」\n親用：「子どもが話しやすい時間をつくりたい。答えではなく、私に質問して考えさせて」\n\n💡向かい合うより、横に並ぶ時間（散歩・車・料理）のほうが、話しやすいこともあります。\n\nAIは、気持ちを整理する相棒。最後に話せる場所は、家族。\n一緒に子育てしている人に送ってね。\n\n#AIは相棒 #親子でAI #思春期 #親子の会話 #子育て",
+   "title": "第2話 AIには話すのに親には話さない"
+  },
+  "threads": [
+   {
+    "label": "Threads ①",
+    "note": "【】は書きかえてから投稿",
+    "text": "ランチ会のレポ【3行メモから：誰が何を持ち寄ったか（名前は出さない）／印象に残った話／世代をこえて教え合えたこと】"
+   },
+   {
+    "label": "Threads ②",
+    "note": "",
+    "text": "次回、ランチ会で聞いてみたいテーマはありますか？「こんなこと詳しいよ」も大歓迎です"
+   }
+  ]
+ },
+ "2026-11-14": {
+  "threads": [
+   {
+    "label": "Threads ①",
+    "note": "",
+    "text": "週末の作り置きに「みそ玉」。味噌に乾燥わかめやねぎを混ぜて丸めておくだけ。お湯を注げば一杯の味噌汁に🥣"
+   },
+   {
+    "label": "Threads ②",
+    "note": "",
+    "text": "「道端の花の名前を一日にひとつ覚える」。今日、あなたが新しく知ったことをひとつ教えてください🌼"
+   }
+  ]
+ },
+ "2026-11-15": {
+  "threads": [
+   {
+    "label": "Threads ①",
+    "note": "【】は書きかえてから投稿",
+    "text": "次回のお役立ちランチ会は12月に予定しています【日程が決まったら】。また、ちょっと詳しいことを持ち寄りましょう"
+   },
+   {
+    "label": "Threads ②",
+    "note": "【】は書きかえてから投稿",
+    "text": "今週ここで書いてみて思ったこと【希が2〜3行】"
+   }
+  ]
+ }
+};
+/* POSTS:END */
+const esc = t => t.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const state = { date: new Date(), mode: 'full' };
 const load = k => { try { return JSON.parse(localStorage.getItem('todo:' + k) || '{}') || {}; } catch (e) { return {}; } };
 const save = (k, v) => { try { localStorage.setItem('todo:' + k, JSON.stringify(v)); } catch (e) {} };
@@ -659,16 +812,21 @@ function render() {
     div.title = `${x.getMonth() + 1}/${x.getDate()}`;
     wk.appendChild(div);
   }
+  const P = POSTS[k] || {}, items = [...(P.threads || [])];
+  if (P.reel) items.push({ label: P.reel.label, note: P.reel.title + '（20:00の投稿・予約のときに貼る）', text: P.reel.text });
+  document.getElementById('posts').hidden = !items.length;
+  document.getElementById('post-list').innerHTML = items.map((it, i) => `<div class="prompt"><div class="p-head"><b>${esc(it.label)}</b><button type="button" class="copy" data-target="post-${i}">コピー</button></div>${it.note ? `<span class="post-note${it.note.includes('【】') ? ' warn' : ''}">${esc(it.note)}</span>` : ''}<p class="post-text" id="post-${i}">${esc(it.text)}</p></div>`).join('');
 }
 document.getElementById('prev').addEventListener('click', () => { state.date = addDays(state.date, -1); render(); });
 document.getElementById('next').addEventListener('click', () => { state.date = addDays(state.date, 1); render(); });
 document.getElementById('m-full').addEventListener('click', () => { state.mode = 'full'; try { localStorage.setItem('todo-mode', 'full'); } catch (e) {} render(); });
 document.getElementById('m-min').addEventListener('click', () => { state.mode = 'min'; try { localStorage.setItem('todo-mode', 'min'); } catch (e) {} render(); });
 render();
-document.querySelectorAll('.copy').forEach(btn => btn.addEventListener('click', () => {
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.copy'); if (!btn) return;
   const el = document.getElementById(btn.dataset.target);
   const done = () => { btn.textContent = 'コピーしました'; setTimeout(() => { btn.textContent = 'コピー'; }, 1800); };
   const fallback = () => { const r = document.createRange(); r.selectNodeContents(el); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); btn.textContent = '選択したのでコピーしてください'; };
   if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(el.textContent).then(done, fallback); else fallback();
-}));
+});
 </script>
