@@ -277,7 +277,7 @@ body{background:transparent;width:1200px;height:800px;margin:0}
 .skill small:before{content:'';display:inline-block;width:30px;height:2px;background:#8a6a2f;vertical-align:middle;margin-right:12px}
 .skill b{font-size:${c.blank ? 32 : 48}px;font-weight:700;letter-spacing:.1em;${c.blank ? 'color:#a39083' : ''}}
 .ring{position:absolute;left:0;top:0}
-.hana{position:absolute;left:0;right:0;bottom:36px;text-align:center;font-family:'Pinyon Script';font-size:44px;color:#7a5c2a}
+.hana{position:absolute;left:0;right:0;bottom:46px;text-align:center;font-family:'Bodoni Moda';font-weight:500;font-size:30px;letter-spacing:.18em;color:#7a5c2a}
 .rcap{position:absolute;left:740px;width:400px;top:446px;text-align:center}
 .rcap em{display:block;font-family:'Pinyon Script';font-style:normal;font-size:46px;color:#7a5c2a;line-height:1}
 .rcap span{display:block;font-size:29px;font-weight:600;letter-spacing:.16em;color:#4a3a32;margin-top:4px}
