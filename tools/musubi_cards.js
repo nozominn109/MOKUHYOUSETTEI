@@ -276,6 +276,7 @@ body{background:transparent;width:1200px;height:800px;margin:0}
 .skill small:before{content:'';display:inline-block;width:30px;height:1px;background:#b48d45;vertical-align:middle;margin-right:12px}
 .skill b{font-size:${c.blank ? 24 : 32}px;font-weight:600;letter-spacing:.14em;${c.blank ? 'color:#b9a89c' : ''}}
 .ring{position:absolute;left:0;top:0}
+.hana{position:absolute;left:0;right:0;bottom:44px;text-align:center;font-family:'Pinyon Script';font-size:28px;color:#a8854a;opacity:.9}
 .rcap{position:absolute;left:770px;width:340px;top:452px;text-align:center}
 .rcap em{display:block;font-family:'Pinyon Script';font-style:normal;font-size:30px;color:#a8854a;line-height:1}
 .rcap span{display:block;font-size:16px;letter-spacing:.3em;color:#8d7464;margin-top:4px}
@@ -285,7 +286,8 @@ body{background:transparent;width:1200px;height:800px;margin:0}
 <div class="brand">MUSUBI</div><div class="script">Member's card</div>
 <div class="no"><small>No.</small>${c.no}</div><div class="gl"></div>
 <div class="name">${c.name}</div><div class="date">入会日　<b>${c.date}</b></div>
-<div class="skill"><small>ちょっと詳しいこと</small><b>${c.skill}</b></div></div>`;
+<div class="skill"><small>ちょっと詳しいこと</small><b>${c.skill}</b></div>
+<div class="hana">So glad I met you</div></div>`;
 
 (async () => {
   const b = await chromium.launch();
