@@ -320,6 +320,42 @@ body{background:transparent;width:1200px;height:800px;margin:0}
 <div class="name">${c.name}</div><div class="date">入会日　<b>${c.date}</b></div>
 <div class="skill"><small>ちょっと詳しいこと</small><b>${c.skill}</b></div>
 <div class="hana">So glad I met you</div></div>`;
+SIZE.O = [1200, 800];
+D.O = (c) => `${FONTS3}<style>
+body{background:transparent;width:1200px;height:800px;margin:0}
+.card{position:absolute;inset:0;border-radius:36px;overflow:hidden;background:#f6f1ec;font-family:'Shippori Mincho',serif;color:#4a3a32}
+.card div{text-shadow:0 0 10px #fbf8f4,0 0 4px #fbf8f4}
+.frame{position:absolute;inset:26px;border:1.5px solid #b8944f99;border-radius:20px}
+.brand{position:absolute;left:300px;top:50px;font-family:'Bodoni Moda';font-weight:500;font-size:36px;letter-spacing:.5em;color:#8a6a2f}
+.script{position:absolute;left:300px;top:106px;font-family:'Bodoni Moda';font-weight:500;font-size:40px;letter-spacing:.2em;color:#6e543f}
+.no{position:absolute;left:96px;top:206px;font-family:'Bodoni Moda';font-weight:500;color:#4a3a32;line-height:1;font-size:210px;transform:scaleX(.8);transform-origin:left;letter-spacing:.01em}
+.no small{font-size:62px;color:#8a6a2f;margin-right:8px;letter-spacing:.04em}
+.gl{position:absolute;left:104px;top:448px;width:380px;height:2px;background:linear-gradient(90deg,#8a6a2f,#c8a06000)}
+.name{position:absolute;left:104px;top:466px;font-size:${c.blank ? 40 : 54}px;font-weight:600;letter-spacing:.2em;${c.blank ? 'color:#a39083' : ''}}
+.date{position:absolute;left:106px;top:540px;font-size:30px;font-weight:500;letter-spacing:.14em;color:#4a3a32}
+.date b{font-family:'Bodoni Moda';font-weight:500}
+.skill{position:absolute;left:104px;top:604px}
+.skill small{display:block;font-size:25px;font-weight:600;letter-spacing:.2em;color:#8a6a2f;margin-bottom:6px}
+.skill small:before{content:'';display:inline-block;width:30px;height:2px;background:#8a6a2f;vertical-align:middle;margin-right:12px}
+.skill b{font-size:${c.blank ? 32 : 48}px;font-weight:700;letter-spacing:.1em;${c.blank ? 'color:#a39083' : ''}}
+.ring{position:absolute;left:0;top:0}
+.hana{position:absolute;left:0;right:0;bottom:46px;text-align:center;font-family:'Bodoni Moda';font-weight:500;font-size:30px;letter-spacing:.18em;color:#7a5c2a}
+.rcap{position:absolute;left:740px;width:400px;top:446px;text-align:center}
+.rcap em{display:block;font-family:'Bodoni Moda';font-weight:500;font-style:normal;font-size:30px;letter-spacing:.2em;color:#7a5c2a;line-height:1.2}
+.rcap span{display:block;font-size:29px;font-weight:600;letter-spacing:.16em;color:#4a3a32;margin-top:4px}
+.brand{left:300px;top:44px;font-size:104px;font-weight:600;letter-spacing:.26em;color:#7a5c2a;line-height:1}
+.script{left:306px;top:172px;font-size:27px;letter-spacing:.16em;color:#4a3a32}
+.no{top:292px;font-size:128px;left:100px}
+.no small{font-size:44px}
+.gl{top:448px}
+</style><div class="card"><div style="position:absolute;inset:0;background:url(${BG_M}) center/cover;filter:saturate(.72) sepia(.08) brightness(1.01)"></div><div class="frame"></div>
+<svg class="ring" width="1200" height="800">${goldRing(940, 290, 140, c.no)}</svg>
+<div class="rcap"><em>the first ten</em><span>はじまりの10人</span></div>
+<div class="brand">MUSUBI</div><div class="script">Community Member's Card</div>
+<div class="no"><small>No.</small>${c.no}</div><div class="gl"></div>
+<div class="name">${c.name}</div><div class="date">入会日　<b>${c.date}</b></div>
+<div class="skill"><small>ちょっと詳しいこと</small><b>${c.skill}</b></div>
+<div class="hana">So glad I met you</div></div>`;
 SIZE.Q = [1080, 1080];
 D.Q = (c) => `${FONTS3}<style>
 body{background:transparent;width:1080px;height:1080px;margin:0}
