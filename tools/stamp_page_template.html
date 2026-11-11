@@ -66,6 +66,7 @@ input:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-
 .mc .cell p{margin:2px 0 0;font-size:20px;font-weight:600;line-height:1.35;color:#4a3a32;min-height:54px}
 .mc .cell em{display:block;margin-top:8px;font-style:normal;font-size:14px;font-weight:700;letter-spacing:.3em;padding-left:.3em;color:#8a6a2f}
 .mc .cell p.q{color:#8d7464;font-weight:500}
+.mc .tease{position:absolute;left:0;right:0;top:722px;text-align:center;font-size:22px;font-weight:600;letter-spacing:.12em;color:#7a5c2a}
 .mc .who{position:absolute;left:90px;bottom:62px;font-size:28px;font-weight:600;letter-spacing:.14em}
 .mc .who small{display:block;font-family:'Bodoni Moda',serif;font-size:22px;color:#7a5c2a;margin-bottom:2px;letter-spacing:.1em}
 </style>
@@ -154,7 +155,7 @@ function cardHTML() {
   return '<div class="mc"><div class="bg"></div><div class="frame"></div>' +
     '<div class="brand">MUSUBI</div><div class="title">お役立ちスタンプカード</div>' +
     '<div class="tag">参加するだけで、誰かのお役に立っています<br>話すたびに、誰かに新しい発見をひとつ</div>' +
-    '<div class="grid">' + cells + '</div>' + who + '</div>';
+    '<div class="grid">' + cells + '</div>' + '<div class="tease">6つそろったら、お楽しみがあるかも</div>' + who + '</div>';
 }
 
 function fit() {
