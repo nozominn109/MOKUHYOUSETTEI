@@ -1,4 +1,4 @@
-// MUSUBI「お花スタンプカード」を PNG で作る（ランチ会に参加するたびに、ちがうお花のスタンプが1つ増える）
+// MUSUBI「お役立ちスタンプカード」を PNG で作る（ランチ会に参加するたびに、ちがうお花のスタンプが1つ増える）
 // 使い方: node tools/musubi_stamp.js [出力フォルダ] [見本=sample]
 const { chromium } = require('playwright');
 const fs = require('fs');
@@ -57,7 +57,7 @@ body{margin:0;background:transparent;width:1200px;height:800px}
 .who small{display:block;font-family:'Bodoni Moda';font-size:22px;color:#7a5c2a;margin-bottom:2px;letter-spacing:.1em}
 </style>
 <div class="card"><div class="bg"></div><div class="frame"></div>
-<div class="brand">MUSUBI</div><div class="title">お花スタンプカード</div>
+<div class="brand">MUSUBI</div><div class="title">お役立ちスタンプカード</div>
 <div class="grid">${cells}</div>
 <div class="who"><small>No.${m.no}</small>${m.name}</div></div>`;
 };

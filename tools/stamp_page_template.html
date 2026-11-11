@@ -1,4 +1,4 @@
-<title>お花スタンプカード</title>
+<title>お役立ちスタンプカード</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Shippori+Mincho:wght@500;600;700&display=swap">
 <style>
@@ -71,7 +71,7 @@ input:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-
 <main class="wrap">
   <header>
     <h1>MUSUBI</h1>
-    <h2>お花スタンプカード</h2>
+    <h2>お役立ちスタンプカード</h2>
     <p class="lead">名前とスタンプの数を入れて、「画像を作る」を押します。できた画像は、長押しで保存できます。</p>
   </header>
 
@@ -97,7 +97,7 @@ input:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-
   <p class="hint" id="msg" hidden role="status"></p>
   <section class="result" id="result" hidden aria-live="polite">
     <p class="hint">↓ 画像を長押しして、「写真に追加」で保存します</p>
-    <img id="out" alt="できあがったお花スタンプカード">
+    <img id="out" alt="できあがったお役立ちスタンプカード">
   </section>
 </main>
 <div id="stage" aria-hidden="true"></div>
@@ -150,7 +150,7 @@ function cardHTML() {
   const who = (no || name)
     ? '<div class="who">' + (no ? '<small>No.' + esc(no) + '</small>' : '') + esc(name) + '</div>' : '';
   return '<div class="mc"><div class="bg"></div><div class="frame"></div>' +
-    '<div class="brand">MUSUBI</div><div class="title">お花スタンプカード</div>' +
+    '<div class="brand">MUSUBI</div><div class="title">お役立ちスタンプカード</div>' +
     '<div class="grid">' + cells + '</div>' + who + '</div>';
 }
 
