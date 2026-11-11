@@ -127,6 +127,76 @@ body{background:transparent;width:1200px;height:756px;margin:0}
 <div class="name">${c.name}</div><div class="date">入会日　${c.date}</div>
 <div class="skill"><small>ちょっと詳しいこと</small><b>${c.skill}</b></div></div>`;
 
+// カラフルな10人の輪（ひとりずつ色がちがう＝いろんな人）
+const POP = ['#ff7a59', '#ffb627', '#6cc4a1', '#4aa3df', '#a685e2', '#ff8fab', '#f25c54', '#8cc152', '#2ec4b6', '#ffd23f'];
+function popRing(cx, cy, r, no, dotR, meR, line, colors, meStroke) {
+  const n = parseInt(no, 10);
+  const p = [...Array(10)].map((_, i) => { const a = -Math.PI / 2 + i * 2 * Math.PI / 10; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; });
+  let s = '';
+  for (let i = 0; i < 10; i++) for (let j = i + 1; j < 10; j++) s += `<line x1="${p[i][0]}" y1="${p[i][1]}" x2="${p[j][0]}" y2="${p[j][1]}" stroke="${line}" stroke-width="${dotR / 6}" stroke-linecap="round"/>`;
+  p.forEach((q, i) => {
+    const me = i + 1 === n;
+    s += `<circle cx="${q[0]}" cy="${q[1]}" r="${me ? meR : dotR}" fill="${colors[i % colors.length]}" ${me ? `stroke="${meStroke}" stroke-width="${meR / 3}"` : ''}/>`;
+  });
+  return s;
+}
+const FONTS2 = `<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=M+PLUS+Rounded+1c:wght@500;700;800&family=Outfit:wght@300;500;700;800&display=block" rel="stylesheet">`;
+
+// P：ポップ（カラフルな10人の輪が主役）
+D.P = (c) => `${FONTS2}<style>
+body{background:transparent;width:1200px;height:756px;margin:0}
+.card{position:absolute;inset:0;border-radius:40px;overflow:hidden;background:#fff6e4;font-family:'M PLUS Rounded 1c',sans-serif;color:#2d2a4a}
+.blob{position:absolute;border-radius:50%}
+.logo{position:absolute;left:62px;top:52px;display:flex;align-items:center;gap:14px}
+.logo b{font-family:'Mochiy Pop One';font-size:50px;color:#ff7a59;letter-spacing:.04em}
+.pill{position:absolute;left:66px;top:132px;background:#2d2a4a;color:#fff;border-radius:999px;padding:7px 20px;font-family:'Outfit';font-weight:700;font-size:18px;letter-spacing:.2em}
+.no{position:absolute;left:58px;top:220px;font-family:'Mochiy Pop One';font-size:190px;line-height:1;color:#2d2a4a}
+.no span{font-size:60px;color:#ff7a59;margin-right:6px}
+.name{position:absolute;left:68px;bottom:112px;font-size:${c.blank ? 36 : 50}px;font-weight:800;letter-spacing:.06em;${c.blank ? 'color:#b9ae9c' : ''}}
+.date{position:absolute;left:70px;bottom:66px;font-size:21px;font-weight:700;color:#8a8199;letter-spacing:.08em}
+.ten{position:absolute;right:122px;top:418px;background:#ffb627;color:#2d2a4a;border-radius:999px;padding:9px 26px;font-weight:800;font-size:24px;transform:rotate(-3deg);box-shadow:0 4px 0 #2d2a4a}
+.skill{position:absolute;right:58px;bottom:56px;background:#fff;border:4px solid #2d2a4a;border-radius:26px;padding:12px 30px 16px;text-align:center;transform:rotate(2deg);box-shadow:6px 6px 0 #6cc4a1}
+.skill small{display:block;font-size:17px;font-weight:800;color:#ff7a59;letter-spacing:.1em}
+.skill b{font-size:${c.blank ? 26 : 38}px;font-weight:800;${c.blank ? 'color:#b9ae9c' : ''}}
+</style><div class="card">
+<div class="blob" style="width:420px;height:420px;background:#ffe0d3;right:-90px;top:-120px"></div>
+<div class="blob" style="width:260px;height:260px;background:#d9f2e6;left:-90px;bottom:-110px"></div>
+<div class="blob" style="width:120px;height:120px;background:#dceefa;left:520px;top:-50px"></div>
+<svg style="position:absolute;inset:0" width="1200" height="756">${popRing(905, 215, 150, c.no, 20, 34, '#2d2a4a22', POP, '#2d2a4a')}</svg>
+<div class="logo"><svg width="56" height="56">${popRing(28, 28, 22, 0, 5, 5, '#2d2a4a33', POP, '#000')}</svg><b>MUSUBI</b></div>
+<div class="pill">MEMBER'S CARD</div>
+<div class="no"><span>No.</span>${c.no}</div>
+<div class="ten">はじまりの10人</div>
+<div class="name">${c.name}</div><div class="date">入会日 ${c.date}</div>
+<div class="skill"><small>ちょっと詳しいこと</small><b>${c.skill}</b></div></div>`;
+
+// S：シンプルおしゃれ（ロゴが主役・ショップカード風）
+D.S = (c) => `${FONTS2}<style>
+body{background:transparent;width:1200px;height:756px;margin:0}
+.card{position:absolute;inset:0;border-radius:40px;overflow:hidden;background:#fffdf8;font-family:'M PLUS Rounded 1c',sans-serif;color:#2b2622;display:flex}
+.left{width:440px;background:#d2653f;color:#fff;position:relative}
+.mark{position:absolute;left:50%;top:77px;transform:translateX(-50%)}
+.word{position:absolute;left:0;right:0;top:400px;text-align:center;font-family:'Outfit';font-weight:800;font-size:66px;letter-spacing:.14em;padding-left:.14em}
+.sub{position:absolute;left:0;right:0;top:486px;text-align:center;font-family:'Outfit';font-weight:500;font-size:17px;letter-spacing:.34em;opacity:.85}
+.ten{position:absolute;left:0;right:0;bottom:58px;text-align:center}
+.ten span{display:inline-block;border:2px solid #fff;border-radius:999px;padding:8px 24px;font-weight:700;font-size:21px;letter-spacing:.14em}
+.right{flex:1;position:relative}
+.lab{position:absolute;left:70px;top:72px;font-family:'Outfit';font-weight:500;font-size:20px;letter-spacing:.3em;color:#d2653f}
+.no{position:absolute;left:62px;top:96px;font-family:'Outfit';font-weight:300;font-size:250px;line-height:1;letter-spacing:-.01em}
+.line{position:absolute;left:70px;right:70px;top:400px;height:2px;background:#2b2622}
+.name{position:absolute;left:70px;top:432px;font-size:${c.blank ? 34 : 48}px;font-weight:800;letter-spacing:.08em;${c.blank ? 'color:#b9ae9c' : ''}}
+.date{position:absolute;left:72px;top:${c.blank ? 492 : 504}px;font-size:19px;color:#8b8178;letter-spacing:.1em}
+.skill{position:absolute;left:70px;bottom:58px;display:flex;align-items:center;gap:18px}
+.skill small{background:#2b2622;color:#fff;border-radius:999px;padding:8px 18px;font-size:16px;font-weight:700;letter-spacing:.1em}
+.skill b{font-size:${c.blank ? 26 : 36}px;font-weight:800;${c.blank ? 'color:#b9ae9c' : 'color:#d2653f'}}
+</style><div class="card"><div class="left">
+<svg class="mark" width="300" height="300">${popRing(150, 150, 112, c.no, 13, 22, '#ffffff55', ['#fff'], '#ffd9a8')}</svg>
+<div class="word">MUSUBI</div><div class="sub">COMMUNITY MEMBER</div>
+<div class="ten"><span>はじまりの10人</span></div></div>
+<div class="right"><div class="lab">MEMBER No.</div><div class="no">${c.no}</div><div class="line"></div>
+<div class="name">${c.name}</div><div class="date">入会日 ${c.date}</div>
+<div class="skill"><small>ちょっと詳しいこと</small><b>${c.skill}</b></div></div></div>`;
+
 (async () => {
   const b = await chromium.launch();
   const p = await b.newPage({ viewport: { width: 1200, height: 756 }, deviceScaleFactor: 2 });
