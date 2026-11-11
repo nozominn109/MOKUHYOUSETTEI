@@ -61,6 +61,9 @@ input:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-
 .mc .seal small{font-size:13px;font-weight:700;letter-spacing:.04em}
 .mc .seal b{font-size:25px;font-weight:700;line-height:1.15;margin:3px 0;letter-spacing:.04em}
 .mc .seal i{font-family:'Bodoni Moda',serif;font-style:normal;font-size:12px;letter-spacing:.16em}
+.mc .seal .in.photo{position:relative;background:url(__ROSE__) center/cover;overflow:hidden}
+.mc .seal .in.photo small{position:absolute;left:50%;bottom:9px;transform:translateX(-50%);white-space:nowrap;background:#fffaf0ee;padding:1px 10px 2px;border-radius:999px;font-size:12px;text-shadow:none}
+.mc .cell em.long{letter-spacing:.12em;font-size:15px}
 .mc .seal.empty{border:2px dashed #b8944f99;background:#ffffff55;box-shadow:none;transform:none;display:flex;align-items:center;justify-content:center}
 .mc .seal.empty span{font-family:'Bodoni Moda',serif;font-size:44px;color:#b8944f99}
 .mc .cell p{margin:2px 0 0;font-size:20px;font-weight:600;line-height:1.35;color:#4a3a32;min-height:54px}
@@ -109,7 +112,7 @@ input:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-
 <script>
 // お花の一覧（回ごとに1つ）。花言葉は希が選んだもの。追加するときはここに足す
 const FLOWERS = [
-  { lines: ['5本の', 'バラ'], en: 'ROSE', word: ['あなたに出会えて', 'よかった'] },
+  { photo: true, label: '5本のバラの花言葉', lines: ['5本の', 'バラ'], en: 'ROSE', word: ['あなたに出会えて', 'よかった'] },
   { lines: ['バーベナ'], en: 'VERBENA', word: ['家族の和合・団結'] },
   { lines: ['ジャーマン', 'アイリス'], en: 'IRIS', word: ['素晴らしい出会い'] },
   { lines: ['ハーデン', 'ベルギア'], en: 'HARDENBERGIA', word: ['出会えてよかった'] },
@@ -143,6 +146,12 @@ function cardHTML() {
       const md = mdOf(dates[i]);
       const big = Math.max(...f.lines.map((l) => l.length)) > 4 ? 21 : 25;
       const small = f.en.length > 8 ? 'letter-spacing:.04em;font-size:11px' : 'letter-spacing:.16em;font-size:12px';
+      const dateTxt = '第' + (i + 1) + '回' + (md ? '　' + md : '');
+      if (f.photo) {
+        cells += '<div class="cell"><div class="seal"><div class="in photo"><small>' + dateTxt + '</small></div></div>' +
+          '<em class="long">' + f.label + '</em><p>' + f.word.join('<br>') + '</p></div>';
+        continue;
+      }
       cells += '<div class="cell"><div class="seal"><div class="in"><small>第' + (i + 1) + '回' + (md ? '　' + md : '') + '</small>' +
         '<b style="font-size:' + big + 'px">' + f.lines.join('<br>') + '</b><i style="' + small + '">' + f.en + '</i></div></div>' +
         '<em>花言葉</em><p>' + f.word.join('<br>') + '</p></div>';
