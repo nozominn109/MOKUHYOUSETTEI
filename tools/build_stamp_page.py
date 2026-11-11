@@ -1,0 +1,6 @@
+# お花スタンプカードのページ（Artifact用の1枚のHTML）を作る
+# 使い方: python3 tools/build_stamp_page.py 背景.jpg 出力.html
+import base64, sys
+bg = base64.b64encode(open(sys.argv[1], 'rb').read()).decode()
+html = open('tools/stamp_page_template.html', encoding='utf-8').read().replace('__BG__', 'data:image/jpeg;base64,' + bg)
+open(sys.argv[2], 'w', encoding='utf-8').write(html)

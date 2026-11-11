@@ -1,0 +1,221 @@
+<title>お花スタンプカード</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Shippori+Mincho:wght@500;600;700&display=swap">
+<style>
+/* 配置: 上に入力、すぐ下にカードの見た目。いちばん下で画像にする。色は大理石とバラの金・茶・クリーム */
+:root{
+  --bg:#f7f1ea; --panel:#fffaf3; --fg:#3e3029; --sub:#7d6a5d; --gold:#7a5c2a; --gold-soft:#c9a869;
+  --line:#e2d4c2; --btn:#7a5c2a; --btn-fg:#fffaf3; --focus:#a8822f;
+  --display:'Bodoni Moda','Shippori Mincho',serif; --body:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#211b17; --panel:#2b241f; --fg:#f2e8dc; --sub:#b9a898; --gold:#e0c27c; --gold-soft:#a98b4d;
+  --line:#443a31; --btn:#e0c27c; --btn-fg:#2a2118; --focus:#e0c27c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#211b17; --panel:#2b241f; --fg:#f2e8dc; --sub:#b9a898; --gold:#e0c27c; --gold-soft:#a98b4d;
+  --line:#443a31; --btn:#e0c27c; --btn-fg:#2a2118; --focus:#e0c27c; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6;
+  padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+h1{margin:0;font-family:var(--display);font-weight:500;font-size:13px;letter-spacing:.34em;color:var(--gold)}
+h2{margin:2px 0 0;font-size:26px;font-weight:700;letter-spacing:.12em;text-wrap:balance}
+.lead{margin:0;color:var(--sub);font-size:15px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field>label,.field>span.lbl{font-size:15px;font-weight:600;color:var(--sub);letter-spacing:.06em}
+input[type=text],input[type=date]{font:inherit;font-size:18px;color:var(--fg);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;min-height:50px;width:100%;min-width:0}
+input:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.seg button{font:inherit;font-size:20px;font-weight:700;min-height:52px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--btn);color:var(--btn-fg);border-color:var(--btn)}
+.dates{display:flex;flex-direction:column;gap:10px}
+.dates .d{display:grid;grid-template-columns:5.5em 1fr;gap:10px;align-items:center}
+.dates .d span{font-size:15px;color:var(--sub)}
+.note{font-size:14px;color:var(--sub);margin:0}
+.preview{width:100%;overflow:hidden;border-radius:14px;box-shadow:0 6px 22px rgba(80,55,30,.18)}
+.prev-in{width:1200px;height:800px;transform-origin:top left}
+.go{font:inherit;font-size:20px;font-weight:700;letter-spacing:.1em;min-height:58px;border:0;border-radius:14px;background:var(--btn);color:var(--btn-fg);cursor:pointer}
+.go[disabled]{opacity:.6}
+.result[hidden],#msg[hidden]{display:none}
+.result{display:flex;flex-direction:column;gap:10px}
+.result img{width:100%;border-radius:14px;display:block}
+.hint{font-size:16px;font-weight:600;color:var(--gold);margin:0;text-align:center}
+#stage{position:fixed;left:-10000px;top:0;width:1200px;height:800px}
+
+/* ===== カード本体（1200×800 固定。見た目はスタンプカードの見本と同じ） ===== */
+.mc{position:relative;width:1200px;height:800px;border-radius:36px;overflow:hidden;background:#f6f1ec;font-family:'Shippori Mincho',serif;color:#4a3a32}
+.mc *{box-sizing:border-box}
+.mc .bg{position:absolute;inset:0;background:url(__BG__) center/cover}
+.mc div,.mc p,.mc b{text-shadow:0 0 10px #fbf8f4,0 0 4px #fbf8f4}
+.mc .frame{position:absolute;inset:26px;border:1.5px solid #b8944f99;border-radius:20px}
+.mc .brand{position:absolute;left:0;right:0;top:44px;text-align:center;font-family:'Bodoni Moda',serif;font-weight:600;font-size:64px;letter-spacing:.3em;padding-left:.3em;color:#7a5c2a;line-height:1}
+.mc .title{position:absolute;left:0;right:0;top:124px;text-align:center;font-size:30px;font-weight:700;letter-spacing:.3em;padding-left:.3em}
+.mc .grid{position:absolute;left:310px;top:204px;width:640px;display:grid;grid-template-columns:repeat(3,1fr);row-gap:14px}
+.mc .cell{text-align:center}
+.mc .seal{width:150px;height:150px;margin:0 auto;border-radius:50%;border:3px solid #a8822f;background:#fffaf0cc;padding:6px;box-shadow:0 2px 10px #7a5c2a30;transform:rotate(-3deg)}
+.mc .cell:nth-child(2n) .seal{transform:rotate(3deg)}
+.mc .seal .in{width:100%;height:100%;border-radius:50%;border:1.5px solid #a8822f;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#7a5c2a}
+.mc .seal small{font-size:13px;font-weight:700;letter-spacing:.04em}
+.mc .seal b{font-size:25px;font-weight:700;line-height:1.15;margin:3px 0;letter-spacing:.04em}
+.mc .seal i{font-family:'Bodoni Moda',serif;font-style:normal;font-size:12px;letter-spacing:.16em}
+.mc .seal.empty{border:2px dashed #b8944f99;background:#ffffff55;box-shadow:none;transform:none;display:flex;align-items:center;justify-content:center}
+.mc .seal.empty span{font-family:'Bodoni Moda',serif;font-size:44px;color:#b8944f99}
+.mc .cell p{margin:8px 0 0;font-size:20px;font-weight:600;line-height:1.35;color:#4a3a32;min-height:54px}
+.mc .cell p.q{color:#8d7464;font-weight:500}
+.mc .who{position:absolute;left:90px;bottom:62px;font-size:28px;font-weight:600;letter-spacing:.14em}
+.mc .who small{display:block;font-family:'Bodoni Moda',serif;font-size:22px;color:#7a5c2a;margin-bottom:2px;letter-spacing:.1em}
+</style>
+
+<main class="wrap">
+  <header>
+    <h1>MUSUBI</h1>
+    <h2>お花スタンプカード</h2>
+    <p class="lead">名前とスタンプの数を入れて、「画像を作る」を押します。できた画像は、長押しで保存できます。</p>
+  </header>
+
+  <section class="panel" aria-label="入力">
+    <div class="row">
+      <div class="field"><label for="name">名前</label><input id="name" type="text" autocomplete="off" placeholder="ニックネーム"></div>
+      <div class="field"><label for="no">会員番号</label><input id="no" type="text" inputmode="numeric" autocomplete="off" placeholder="例：001"></div>
+    </div>
+    <div class="field">
+      <span class="lbl" id="cnt-lbl">スタンプの数</span>
+      <div class="seg" id="seg" role="group" aria-labelledby="cnt-lbl"></div>
+    </div>
+    <div class="field">
+      <span class="lbl">参加した日</span>
+      <div class="dates" id="dates"></div>
+      <p class="note">日付をあけておくと、日付なしのスタンプになります。5つ目からのお花は、決まったら足します。</p>
+    </div>
+  </section>
+
+  <div class="preview" id="preview" aria-label="カードの見た目"><div class="prev-in" id="prev"></div></div>
+
+  <button class="go" id="go" type="button">画像を作る</button>
+  <p class="hint" id="msg" hidden role="status"></p>
+  <section class="result" id="result" hidden aria-live="polite">
+    <p class="hint">↓ 画像を長押しして、「写真に追加」で保存します</p>
+    <img id="out" alt="できあがったお花スタンプカード">
+  </section>
+</main>
+<div id="stage" aria-hidden="true"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+// お花の一覧（回ごとに1つ）。花言葉は希が選んだもの。追加するときはここに足す
+const FLOWERS = [
+  { lines: ['5本の', 'バラ'], en: 'ROSE', word: ['あなたに出会えて', 'よかった'] },
+  { lines: ['バーベナ'], en: 'VERBENA', word: ['家族の和合・団結'] },
+  { lines: ['ジャーマン', 'アイリス'], en: 'IRIS', word: ['素晴らしい出会い'] },
+  { lines: ['ハーデン', 'ベルギア'], en: 'HARDENBERGIA', word: ['出会えてよかった'] },
+];
+const SLOTS = 6;
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+function todayISO() {
+  const d = new Date();
+  const p = (n) => String(n).padStart(2, '0');
+  return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+}
+function mdOf(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+  return m ? Number(m[2]) + '/' + Number(m[3]) : '';
+}
+
+let count = 1;
+const dates = FLOWERS.map(() => '');
+dates[0] = todayISO();
+
+function cardHTML() {
+  const name = $('name').value.trim();
+  const raw = $('no').value.replace(/\D/g, '');
+  const no = raw ? raw.padStart(3, '0').slice(-3) : '';
+  let cells = '';
+  for (let i = 0; i < SLOTS; i++) {
+    if (i < count) {
+      const f = FLOWERS[i];
+      const md = mdOf(dates[i]);
+      const big = Math.max(...f.lines.map((l) => l.length)) > 4 ? 21 : 25;
+      const small = f.en.length > 8 ? 'letter-spacing:.04em;font-size:11px' : 'letter-spacing:.16em;font-size:12px';
+      cells += '<div class="cell"><div class="seal"><div class="in"><small>第' + (i + 1) + '回' + (md ? '　' + md : '') + '</small>' +
+        '<b style="font-size:' + big + 'px">' + f.lines.join('<br>') + '</b><i style="' + small + '">' + f.en + '</i></div></div>' +
+        '<p>' + f.word.join('<br>') + '</p></div>';
+    } else {
+      cells += '<div class="cell"><div class="seal empty"><span>' + (i + 1) + '</span></div><p class="q">次のお花は？</p></div>';
+    }
+  }
+  const who = (no || name)
+    ? '<div class="who">' + (no ? '<small>No.' + esc(no) + '</small>' : '') + esc(name) + '</div>' : '';
+  return '<div class="mc"><div class="bg"></div><div class="frame"></div>' +
+    '<div class="brand">MUSUBI</div><div class="title">お花スタンプカード</div>' +
+    '<div class="grid">' + cells + '</div>' + who + '</div>';
+}
+
+function fit() {
+  const box = $('preview');
+  const s = box.clientWidth / 1200;
+  $('prev').style.transform = 'scale(' + s + ')';
+  box.style.height = 800 * s + 'px';
+}
+function renderPreview() { $('prev').innerHTML = cardHTML(); fit(); }
+
+function renderSeg() {
+  const seg = $('seg');
+  seg.innerHTML = '';
+  FLOWERS.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = String(i + 1);
+    b.setAttribute('aria-pressed', String(i + 1 === count));
+    b.setAttribute('aria-label', 'スタンプ' + (i + 1) + '個');
+    b.addEventListener('click', () => {
+      count = i + 1;
+      if (!dates[count - 1]) dates[count - 1] = todayISO();
+      renderSeg(); renderDates(); renderPreview();
+    });
+    seg.appendChild(b);
+  });
+}
+function renderDates() {
+  const box = $('dates');
+  box.innerHTML = '';
+  for (let i = 0; i < count; i++) {
+    const row = document.createElement('div');
+    row.className = 'd';
+    const id = 'date' + i;
+    row.innerHTML = '<span>第' + (i + 1) + '回</span><input type="date" id="' + id + '" value="' + dates[i] + '">';
+    row.querySelector('input').addEventListener('input', (e) => { dates[i] = e.target.value; renderPreview(); });
+    box.appendChild(row);
+  }
+}
+
+$('name').addEventListener('input', renderPreview);
+$('no').addEventListener('input', renderPreview);
+window.addEventListener('resize', fit);
+
+$('go').addEventListener('click', async () => {
+  const btn = $('go');
+  btn.disabled = true; btn.textContent = '作っています…';
+  try {
+    await document.fonts.ready;
+    $('stage').innerHTML = cardHTML();
+    const canvas = await html2canvas($('stage').firstElementChild, { scale: 2, backgroundColor: null, useCORS: true, logging: false });
+    $('msg').hidden = true;
+    $('out').src = canvas.toDataURL('image/png');
+    $('result').hidden = false;
+    $('out').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } catch (e) {
+    $('msg').textContent = '画像を作れませんでした。もう一度押してください。';
+    $('msg').hidden = false;
+  } finally {
+    btn.disabled = false; btn.textContent = '画像を作る';
+    $('stage').innerHTML = '';
+  }
+});
+
+renderSeg(); renderDates(); renderPreview();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(renderPreview);
+</script>
