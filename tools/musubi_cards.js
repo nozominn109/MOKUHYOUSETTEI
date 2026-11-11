@@ -288,6 +288,36 @@ body{background:transparent;width:1200px;height:800px;margin:0}
 <div class="name">${c.name}</div><div class="date">入会日　<b>${c.date}</b></div>
 <div class="skill"><small>ちょっと詳しいこと</small><b>${c.skill}</b></div>
 <div class="hana">So glad I met you</div></div>`;
+SIZE.Q = [1080, 1080];
+D.Q = (c) => `${FONTS3}<style>
+body{background:transparent;width:1080px;height:1080px;margin:0}
+.card{position:absolute;inset:0;border-radius:36px;overflow:hidden;background:#f6f1ec;font-family:'Shippori Mincho',serif;color:#6e5a50}
+.frame{position:absolute;inset:26px;border:1px solid #c8a8607a;border-radius:20px}
+.brand{position:absolute;left:310px;top:84px;font-family:'Bodoni Moda';font-size:26px;letter-spacing:.55em;color:#a8854a}
+.script{position:absolute;left:306px;top:114px;font-family:'Pinyon Script';font-size:52px;color:#9c7b5e}
+.no{position:absolute;left:92px;top:270px;font-family:'Bodoni Moda';color:#5f4d44;line-height:1;font-size:200px;transform:scaleX(.78);transform-origin:left;letter-spacing:.01em}
+.no small{font-size:58px;color:#a8854a;margin-right:8px;letter-spacing:.04em}
+.gl{position:absolute;left:100px;top:540px;width:360px;height:1px;background:linear-gradient(90deg,#b48d45,#e2c68200)}
+.name{position:absolute;left:100px;top:566px;font-size:${c.blank ? 32 : 42}px;font-weight:500;letter-spacing:.28em;${c.blank ? 'color:#b9a89c' : ''}}
+.date{position:absolute;left:102px;top:628px;font-size:18px;letter-spacing:.24em;color:#9a877b}
+.date b{font-family:'Bodoni Moda';font-weight:400}
+.skill{position:absolute;left:100px;top:710px}
+.skill small{display:block;font-size:15px;letter-spacing:.34em;color:#a8854a;margin-bottom:8px}
+.skill small:before{content:'';display:inline-block;width:30px;height:1px;background:#b48d45;vertical-align:middle;margin-right:12px}
+.skill b{font-size:${c.blank ? 24 : 32}px;font-weight:600;letter-spacing:.14em;${c.blank ? 'color:#b9a89c' : ''}}
+.ring{position:absolute;left:0;top:0}
+.hana{position:absolute;left:0;right:0;bottom:44px;text-align:center;font-family:'Pinyon Script';font-size:28px;color:#a8854a;opacity:.9}
+.rcap{position:absolute;left:640px;width:320px;top:540px;text-align:center}
+.rcap em{display:block;font-family:'Pinyon Script';font-style:normal;font-size:30px;color:#a8854a;line-height:1}
+.rcap span{display:block;font-size:16px;letter-spacing:.3em;color:#8d7464;margin-top:4px}
+</style><div class="card"><div style="position:absolute;inset:0;background:url(${BG_M}) center/cover;filter:saturate(.72) sepia(.08) brightness(1.01)"></div><div class="frame"></div>
+<svg class="ring" width="1080" height="1080">${goldRing(800, 400, 115, c.no)}</svg>
+<div class="rcap"><em>the first ten</em><span>はじまりの10人</span></div>
+<div class="brand">MUSUBI</div><div class="script">Member's card</div>
+<div class="no"><small>No.</small>${c.no}</div><div class="gl"></div>
+<div class="name">${c.name}</div><div class="date">入会日　<b>${c.date}</b></div>
+<div class="skill"><small>ちょっと詳しいこと</small><b>${c.skill}</b></div>
+<div class="hana">So glad I met you</div></div>`;
 
 (async () => {
   const b = await chromium.launch();
