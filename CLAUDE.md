@@ -12,6 +12,7 @@
 - docs/musubi-core.md：Threadsの軸、希の腸活の考え
 - docs/insights-log.md：インサイトの記録
 - docs/weekly-routine.md：毎週金曜の自動作業の手順
+- docs/musubi-card.md：MUSUBIの会員カードとスタンプカード（作り方・決まったこと）
 - 投稿ライブラリ/README.md：投稿の一覧と状態
 - ネタ帳：docs/parenting-ideas.md、docs/jitan-ai-series.md
 
