@@ -4,6 +4,7 @@ const { chromium } = require('playwright');
 const path = require('path');
 
 const DESIGN = process.argv[2] || 'A';
+const OUT_LIB = path.join(__dirname, '..', '投稿ライブラリ', 'MUSUBI_会員カード');
 const OUT = process.argv[3] || path.join(__dirname, '..', '投稿ライブラリ', 'MUSUBI_会員カード');
 const CARDS = [
   { file: 'No001_NOZOMI', name: 'NOZOMI', no: '001', date: '2026.11.11', skill: '腸活の人' },
@@ -242,6 +243,49 @@ body{background:transparent;width:1080px;height:${H}px;margin:0}
 
 D.W = (c) => wc(c, 1080, { brand: 118, no: 300, name: 640, skill: 800, ten: 92 });
 D.T = (c) => wc(c, 1920, { brand: 430, no: 740, name: 1200, skill: 1410, ten: 210 });
+
+// M：白〜ベージュの大理石とピオニー（ChatGPTで作った背景）＋金の輪
+SIZE.M = [1200, 800];
+const BG_M = 'data:image/webp;base64,' + require('fs').readFileSync(path.join(OUT_LIB, '背景_大理石とピオニー.webp')).toString('base64');
+function goldRing(cx, cy, r, no) {
+  const n = parseInt(no, 10);
+  const p = [...Array(10)].map((_, i) => { const a = -Math.PI / 2 + i * 2 * Math.PI / 10; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; });
+  let s = `<defs><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2c682"/><stop offset=".5" stop-color="#b48d45"/><stop offset="1" stop-color="#d7b66a"/></linearGradient></defs>`;
+  for (let i = 0; i < 10; i++) for (let j = i + 1; j < 10; j++) s += `<line x1="${p[i][0]}" y1="${p[i][1]}" x2="${p[j][0]}" y2="${p[j][1]}" stroke="url(#gold)" stroke-width="1" opacity=".6"/>`;
+  p.forEach((q, i) => {
+    s += i + 1 === n
+      ? `<circle cx="${q[0]}" cy="${q[1]}" r="17" fill="none" stroke="url(#gold)" stroke-width="1.4"/><circle cx="${q[0]}" cy="${q[1]}" r="11" fill="url(#gold)"/>`
+      : `<circle cx="${q[0]}" cy="${q[1]}" r="6" fill="url(#gold)"/>`;
+  });
+  return s;
+}
+D.M = (c) => `${FONTS3}<style>
+body{background:transparent;width:1200px;height:800px;margin:0}
+.card{position:absolute;inset:0;border-radius:36px;overflow:hidden;background:#f6f1ec url(${BG_M}) center/cover;font-family:'Shippori Mincho',serif;color:#6e5a50}
+.frame{position:absolute;inset:26px;border:1px solid #c8a8607a;border-radius:20px}
+.brand{position:absolute;left:300px;top:70px;font-family:'Bodoni Moda';font-size:26px;letter-spacing:.55em;color:#a8854a}
+.script{position:absolute;left:296px;top:100px;font-family:'Pinyon Script';font-size:52px;color:#9c7b5e}
+.no{position:absolute;left:96px;top:228px;font-family:'Bodoni Moda';color:#5f4d44;line-height:1;font-size:210px;transform:scaleX(.78);transform-origin:left;letter-spacing:.01em}
+.no small{font-size:58px;color:#a8854a;margin-right:8px;letter-spacing:.04em}
+.gl{position:absolute;left:104px;top:470px;width:360px;height:1px;background:linear-gradient(90deg,#b48d45,#e2c68200)}
+.name{position:absolute;left:104px;top:494px;font-size:${c.blank ? 32 : 42}px;font-weight:500;letter-spacing:.28em;${c.blank ? 'color:#b9a89c' : ''}}
+.date{position:absolute;left:106px;top:556px;font-size:18px;letter-spacing:.24em;color:#9a877b}
+.date b{font-family:'Bodoni Moda';font-weight:400}
+.skill{position:absolute;left:104px;top:628px}
+.skill small{display:block;font-size:15px;letter-spacing:.34em;color:#a8854a;margin-bottom:8px}
+.skill small:before{content:'';display:inline-block;width:30px;height:1px;background:#b48d45;vertical-align:middle;margin-right:12px}
+.skill b{font-size:${c.blank ? 24 : 32}px;font-weight:600;letter-spacing:.14em;${c.blank ? 'color:#b9a89c' : ''}}
+.ring{position:absolute;left:0;top:0}
+.rcap{position:absolute;left:770px;width:340px;top:452px;text-align:center}
+.rcap em{display:block;font-family:'Pinyon Script';font-style:normal;font-size:30px;color:#a8854a;line-height:1}
+.rcap span{display:block;font-size:16px;letter-spacing:.3em;color:#8d7464;margin-top:4px}
+</style><div class="card"><div class="frame"></div>
+<svg class="ring" width="1200" height="800">${goldRing(940, 290, 140, c.no)}</svg>
+<div class="rcap"><em>the first ten</em><span>はじまりの10人</span></div>
+<div class="brand">MUSUBI</div><div class="script">Member's card</div>
+<div class="no"><small>No.</small>${c.no}</div><div class="gl"></div>
+<div class="name">${c.name}</div><div class="date">入会日　<b>${c.date}</b></div>
+<div class="skill"><small>ちょっと詳しいこと</small><b>${c.skill}</b></div></div>`;
 
 (async () => {
   const b = await chromium.launch();
