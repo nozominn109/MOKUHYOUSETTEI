@@ -52,7 +52,8 @@ input:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-
 .mc .frame{position:absolute;inset:26px;border:1.5px solid #b8944f99;border-radius:20px}
 .mc .brand{position:absolute;left:0;right:0;top:44px;text-align:center;font-family:'Bodoni Moda',serif;font-weight:600;font-size:64px;letter-spacing:.3em;padding-left:.3em;color:#7a5c2a;line-height:1}
 .mc .title{position:absolute;left:0;right:0;top:124px;text-align:center;font-size:30px;font-weight:700;letter-spacing:.3em;padding-left:.3em}
-.mc .grid{position:absolute;left:310px;top:204px;width:640px;display:grid;grid-template-columns:repeat(3,1fr);row-gap:14px}
+.mc .tag{position:absolute;left:0;right:0;top:172px;text-align:center;font-size:23px;font-weight:600;letter-spacing:.1em;color:#6e543f}
+.mc .grid{position:absolute;left:310px;top:236px;width:640px;display:grid;grid-template-columns:repeat(3,1fr);row-gap:14px}
 .mc .cell{text-align:center}
 .mc .seal{width:150px;height:150px;margin:0 auto;border-radius:50%;border:3px solid #a8822f;background:#fffaf0cc;padding:6px;box-shadow:0 2px 10px #7a5c2a30;transform:rotate(-3deg)}
 .mc .cell:nth-child(2n) .seal{transform:rotate(3deg)}
@@ -62,7 +63,8 @@ input:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-
 .mc .seal i{font-family:'Bodoni Moda',serif;font-style:normal;font-size:12px;letter-spacing:.16em}
 .mc .seal.empty{border:2px dashed #b8944f99;background:#ffffff55;box-shadow:none;transform:none;display:flex;align-items:center;justify-content:center}
 .mc .seal.empty span{font-family:'Bodoni Moda',serif;font-size:44px;color:#b8944f99}
-.mc .cell p{margin:8px 0 0;font-size:20px;font-weight:600;line-height:1.35;color:#4a3a32;min-height:54px}
+.mc .cell p{margin:2px 0 0;font-size:20px;font-weight:600;line-height:1.35;color:#4a3a32;min-height:54px}
+.mc .cell em{display:block;margin-top:8px;font-style:normal;font-size:14px;font-weight:700;letter-spacing:.3em;padding-left:.3em;color:#8a6a2f}
 .mc .cell p.q{color:#8d7464;font-weight:500}
 .mc .who{position:absolute;left:90px;bottom:62px;font-size:28px;font-weight:600;letter-spacing:.14em}
 .mc .who small{display:block;font-family:'Bodoni Moda',serif;font-size:22px;color:#7a5c2a;margin-bottom:2px;letter-spacing:.1em}
@@ -142,15 +144,16 @@ function cardHTML() {
       const small = f.en.length > 8 ? 'letter-spacing:.04em;font-size:11px' : 'letter-spacing:.16em;font-size:12px';
       cells += '<div class="cell"><div class="seal"><div class="in"><small>第' + (i + 1) + '回' + (md ? '　' + md : '') + '</small>' +
         '<b style="font-size:' + big + 'px">' + f.lines.join('<br>') + '</b><i style="' + small + '">' + f.en + '</i></div></div>' +
-        '<p>' + f.word.join('<br>') + '</p></div>';
+        '<em>花言葉</em><p>' + f.word.join('<br>') + '</p></div>';
     } else {
-      cells += '<div class="cell"><div class="seal empty"><span>' + (i + 1) + '</span></div><p class="q">次のお花は？</p></div>';
+      cells += '<div class="cell"><div class="seal empty"><span>' + (i + 1) + '</span></div><em>花言葉</em><p class="q">次のお花は？</p></div>';
     }
   }
   const who = (no || name)
     ? '<div class="who">' + (no ? '<small>No.' + esc(no) + '</small>' : '') + esc(name) + '</div>' : '';
   return '<div class="mc"><div class="bg"></div><div class="frame"></div>' +
     '<div class="brand">MUSUBI</div><div class="title">お役立ちスタンプカード</div>' +
+    '<div class="tag">あなたのひと言が、誰かの世界をひとつ広げます</div>' +
     '<div class="grid">' + cells + '</div>' + who + '</div>';
 }
 
