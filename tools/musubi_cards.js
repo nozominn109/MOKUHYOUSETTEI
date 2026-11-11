@@ -198,35 +198,35 @@ body{background:transparent;width:1200px;height:756px;margin:0}
 <div class="skill"><small>ちょっと詳しいこと</small><b>${c.skill}</b></div></div></div>`;
 
 // W：くすみピンクベージュの水彩・正方形（希の見本から）
-const SIZE = { W: [1080, 1080] };
+const SIZE = { W: [1080, 1080], T: [1080, 1920] };
 const FONTS3 = `<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Pinyon+Script&family=Shippori+Mincho:wght@400;500;600&display=block" rel="stylesheet">`;
-D.W = (c) => `${FONTS3}<style>
-body{background:transparent;width:1080px;height:1080px;margin:0}
+const wc = (c, H, y) => `${FONTS3}<style>
+body{background:transparent;width:1080px;height:${H}px;margin:0}
 .card{position:absolute;inset:0;overflow:hidden;background:#f3e6df;font-family:'Shippori Mincho',serif;color:#8a6a66}
 .wash{position:absolute;inset:-80px;filter:url(#wc)}
 .wash i{position:absolute;border-radius:50%;filter:blur(40px)}
 .grain{position:absolute;inset:0;filter:url(#grain);opacity:.55}
 .frame{position:absolute;inset:44px;border:1px solid #ffffffcc}
-.brand{position:absolute;top:118px;left:0;right:0;text-align:center;font-family:'Bodoni Moda';font-size:30px;letter-spacing:.6em;padding-left:.6em;color:#9c7a74}
-.script{position:absolute;top:158px;left:0;right:0;text-align:center;font-family:'Pinyon Script';font-size:64px;color:#b98d86}
-.no{position:absolute;top:300px;left:0;right:0;text-align:center;font-family:'Bodoni Moda';font-weight:400;color:#fff;line-height:1;
+.brand{position:absolute;top:${y.brand}px;left:0;right:0;text-align:center;font-family:'Bodoni Moda';font-size:30px;letter-spacing:.6em;padding-left:.6em;color:#9c7a74}
+.script{position:absolute;top:${y.brand+40}px;left:0;right:0;text-align:center;font-family:'Pinyon Script';font-size:64px;color:#b98d86}
+.no{position:absolute;top:${y.no}px;left:0;right:0;text-align:center;font-family:'Bodoni Moda';font-weight:400;color:#fff;line-height:1;
   font-size:260px;transform:scaleX(.72);letter-spacing:.02em;text-shadow:0 2px 30px #a0706a55}
 .no small{font-size:70px;letter-spacing:.06em;margin-right:6px}
-.name{position:absolute;top:640px;left:0;right:0;text-align:center;font-size:${c.blank ? 34 : 44}px;font-weight:500;letter-spacing:.32em;padding-left:.32em;${c.blank ? 'color:#c4aaa3' : ''}}
-.date{position:absolute;top:710px;left:0;right:0;text-align:center;font-family:'Bodoni Moda';font-size:20px;letter-spacing:.3em;color:#a8908b}
+.name{position:absolute;top:${y.name}px;left:0;right:0;text-align:center;font-size:${c.blank ? 34 : 44}px;font-weight:500;letter-spacing:.32em;padding-left:.32em;${c.blank ? 'color:#c4aaa3' : ''}}
+.date{position:absolute;top:${y.name+70}px;left:0;right:0;text-align:center;font-family:'Bodoni Moda';font-size:20px;letter-spacing:.3em;color:#a8908b}
 .date span{font-family:'Shippori Mincho';letter-spacing:.2em;margin-right:12px}
-.skill{position:absolute;top:800px;left:0;right:0;text-align:center}
+.skill{position:absolute;top:${y.skill}px;left:0;right:0;text-align:center}
 .skill small{display:block;font-size:17px;letter-spacing:.4em;color:#b48f88;margin-bottom:12px}
 .skill small:before,.skill small:after{content:'';display:inline-block;width:40px;height:1px;background:#c9aaa3;vertical-align:middle;margin:0 16px}
 .skill b{font-size:${c.blank ? 26 : 34}px;font-weight:600;letter-spacing:.16em;${c.blank ? 'color:#c4aaa3' : ''}}
-.ten{position:absolute;right:92px;top:92px;width:132px;height:132px;border-radius:50%;border:1px solid #fff;background:#ffffff38;
+.ten{position:absolute;right:92px;top:${y.ten}px;width:132px;height:132px;border-radius:50%;border:1px solid #fff;background:#ffffff38;
   display:flex;flex-direction:column;align-items:center;justify-content:center;color:#9c7a74}
 .ten em{font-family:'Pinyon Script';font-style:normal;font-size:30px;line-height:1}
 .ten span{font-size:15px;letter-spacing:.14em;margin-top:6px}
 </style>
 <svg width="0" height="0" style="position:absolute"><filter id="wc"><feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="3" seed="4"/><feDisplacementMap in="SourceGraphic" scale="160"/></filter>
 <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="2" seed="9"/><feColorMatrix values="0 0 0 0 .6  0 0 0 0 .45  0 0 0 0 .42  0 0 0 .12 0"/></filter></svg>
-<div class="card"><div class="wash">
+<div class="card"><div class="wash" style="transform:scaleY(${H/1080});transform-origin:top">
 <i style="width:640px;height:520px;left:-60px;top:-40px;background:#ead0c8"></i>
 <i style="width:560px;height:620px;right:-80px;top:120px;background:#e6c4bd"></i>
 <i style="width:700px;height:420px;left:120px;bottom:-60px;background:#efdcd2"></i>
@@ -239,6 +239,9 @@ body{background:transparent;width:1080px;height:1080px;margin:0}
 <div class="name">${c.name}</div>
 <div class="date"><span>入会日</span>${c.date}</div>
 <div class="skill"><small>ちょっと詳しいこと</small><b>${c.skill}</b></div></div>`;
+
+D.W = (c) => wc(c, 1080, { brand: 118, no: 300, name: 640, skill: 800, ten: 92 });
+D.T = (c) => wc(c, 1920, { brand: 430, no: 740, name: 1200, skill: 1410, ten: 210 });
 
 (async () => {
   const b = await chromium.launch();
