@@ -246,7 +246,7 @@ D.T = (c) => wc(c, 1920, { brand: 430, no: 740, name: 1200, skill: 1410, ten: 21
 
 // M：白〜ベージュの大理石とピオニー（ChatGPTで作った背景）＋金の輪
 SIZE.M = [1200, 800];
-const BG_M = 'data:image/webp;base64,' + require('fs').readFileSync(path.join(OUT_LIB, '背景_大理石とピオニー.webp')).toString('base64');
+const BG_M = 'data:image/webp;base64,' + require('fs').readFileSync(path.join(OUT_LIB, '背景_大理石と5本のバラ.webp')).toString('base64');
 function goldRing(cx, cy, r, no) {
   const n = parseInt(no, 10);
   const p = [...Array(10)].map((_, i) => { const a = -Math.PI / 2 + i * 2 * Math.PI / 10; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; });
@@ -261,7 +261,7 @@ function goldRing(cx, cy, r, no) {
 }
 D.M = (c) => `${FONTS3}<style>
 body{background:transparent;width:1200px;height:800px;margin:0}
-.card{position:absolute;inset:0;border-radius:36px;overflow:hidden;background:#f6f1ec url(${BG_M}) center/cover;font-family:'Shippori Mincho',serif;color:#6e5a50}
+.card{position:absolute;inset:0;border-radius:36px;overflow:hidden;background:#f6f1ec;font-family:'Shippori Mincho',serif;color:#6e5a50}
 .frame{position:absolute;inset:26px;border:1px solid #c8a8607a;border-radius:20px}
 .brand{position:absolute;left:300px;top:70px;font-family:'Bodoni Moda';font-size:26px;letter-spacing:.55em;color:#a8854a}
 .script{position:absolute;left:296px;top:100px;font-family:'Pinyon Script';font-size:52px;color:#9c7b5e}
@@ -280,7 +280,7 @@ body{background:transparent;width:1200px;height:800px;margin:0}
 .rcap{position:absolute;left:770px;width:340px;top:452px;text-align:center}
 .rcap em{display:block;font-family:'Pinyon Script';font-style:normal;font-size:30px;color:#a8854a;line-height:1}
 .rcap span{display:block;font-size:16px;letter-spacing:.3em;color:#8d7464;margin-top:4px}
-</style><div class="card"><div class="frame"></div>
+</style><div class="card"><div style="position:absolute;inset:0;background:url(${BG_M}) center/cover;filter:saturate(.72) sepia(.08) brightness(1.01)"></div><div class="frame"></div>
 <svg class="ring" width="1200" height="800">${goldRing(940, 290, 140, c.no)}</svg>
 <div class="rcap"><em>the first ten</em><span>はじまりの10人</span></div>
 <div class="brand">MUSUBI</div><div class="script">Member's card</div>
