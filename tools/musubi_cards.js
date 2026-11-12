@@ -9,7 +9,7 @@ const OUT = process.argv[3] || path.join(__dirname, '..', '投稿ライブラリ
 const CARDS = [
   { file: 'No001_NOZOMI', name: 'NOZOMI', no: '001', date: '2026.11.11', skill: '腸活の人' },
   { file: 'No002_RINKA',  name: 'RINKA',  no: '002', date: '2026.11.11', skill: 'AIの人' },
-  { file: 'No003_未記入', name: '【ニックネーム】', no: '003', date: '2026.11.12', skill: '【ちょっと詳しいこと】', blank: true },
+  { file: 'No003_SAYAKA', name: 'SAYAKA', no: '003', date: '2026.11.12', skill: '自分を生きる人' },
 ];
 
 // 結び目（水引のような3重の紐）を描く
