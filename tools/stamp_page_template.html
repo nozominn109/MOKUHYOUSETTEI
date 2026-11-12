@@ -38,10 +38,14 @@ input:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-
 .prev-in{width:1200px;height:800px;transform-origin:top left}
 .go{font:inherit;font-size:20px;font-weight:700;letter-spacing:.1em;min-height:58px;border:0;border-radius:14px;background:var(--btn);color:var(--btn-fg);cursor:pointer}
 .go[disabled]{opacity:.6}
-.result[hidden],#msg[hidden]{display:none}
+.result[hidden],#msg[hidden],.full[hidden]{display:none}
 .result{display:flex;flex-direction:column;gap:10px}
 .result img{width:100%;border-radius:14px;display:block}
 .hint{font-size:16px;font-weight:600;color:var(--gold);margin:0;text-align:center}
+.go2{font:inherit;font-size:18px;font-weight:700;min-height:54px;border-radius:14px;border:2px solid var(--btn);background:transparent;color:var(--gold);cursor:pointer}
+.full{position:fixed;inset:0;z-index:50;background:#14100d;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.full img{width:100%;height:auto;max-height:100%;object-fit:contain;display:block}
+.full .tip{position:absolute;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 16px);margin:0;padding:0 16px;text-align:center;color:#f2e8dc;font-size:15px;line-height:1.5;transition:opacity .8s}
 #stage{position:fixed;left:-10000px;top:0;width:1200px;height:800px}
 
 /* ===== カード本体（1200×800 固定。見た目はスタンプカードの見本と同じ） ===== */
@@ -103,9 +107,11 @@ input:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-
   <button class="go" id="go" type="button">画像を作る</button>
   <p class="hint" id="msg" hidden role="status"></p>
   <section class="result" id="result" hidden aria-live="polite">
-    <p class="hint">↓ 画像を長押しして、「写真に追加」で保存します</p>
+    <p class="hint">↓ 保存できないときは、下の「大きく表示する」を押して、スクリーンショットを撮ります</p>
     <img id="out" alt="できあがったお役立ちスタンプカード">
+    <button class="go2" id="big" type="button">大きく表示する（スクリーンショット用）</button>
   </section>
+  <div class="full" id="full" hidden><p class="tip" id="tip">スクリーンショットを撮ってください。画面をタップすると戻ります。</p><img id="fullimg" alt="お役立ちスタンプカード"></div>
 </main>
 <div id="stage" aria-hidden="true"></div>
 
@@ -208,6 +214,17 @@ function renderDates() {
 
 $('name').addEventListener('input', renderPreview);
 $('no').addEventListener('input', renderPreview);
+let tipTimer;
+function openFull() {
+  $('fullimg').src = $('out').src;
+  $('tip').style.opacity = '1';
+  $('full').hidden = false;
+  clearTimeout(tipTimer);
+  tipTimer = setTimeout(() => { $('tip').style.opacity = '0'; }, 3500);
+}
+$('big').addEventListener('click', openFull);
+$('out').addEventListener('click', openFull);
+$('full').addEventListener('click', () => { $('full').hidden = true; });
 window.addEventListener('resize', fit);
 
 $('go').addEventListener('click', async () => {
