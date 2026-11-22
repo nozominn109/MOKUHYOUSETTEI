@@ -1,0 +1,319 @@
+<title>MUSUBI会員カード</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Shippori+Mincho:wght@500;600;700&display=swap">
+<style>
+/* 配置: 上に会員数と次の番号、入力、カードの見た目、画像を作るボタン、いちばん下に会員リスト。色は大理石とバラの金・茶・クリーム */
+:root{
+  --bg:#f7f1ea; --panel:#fffaf3; --fg:#3e3029; --sub:#7d6a5d; --gold:#7a5c2a; --line:#e2d4c2;
+  --btn:#7a5c2a; --btn-fg:#fffaf3; --focus:#a8822f; --warn:#9a4a2b;
+  --display:'Bodoni Moda','Shippori Mincho',serif; --body:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#211b17; --panel:#2b241f; --fg:#f2e8dc; --sub:#b9a898; --gold:#e0c27c; --line:#443a31;
+  --btn:#e0c27c; --btn-fg:#2a2118; --focus:#e0c27c; --warn:#f0a07a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#211b17; --panel:#2b241f; --fg:#f2e8dc; --sub:#b9a898; --gold:#e0c27c; --line:#443a31;
+  --btn:#e0c27c; --btn-fg:#2a2118; --focus:#e0c27c; --warn:#f0a07a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6;
+  padding-block:20px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+h1{margin:0;font-family:var(--display);font-weight:500;font-size:13px;letter-spacing:.34em;color:var(--gold)}
+h2{margin:2px 0 0;font-size:26px;font-weight:700;letter-spacing:.12em;text-wrap:balance}
+h3{margin:0;font-size:19px;font-weight:700;letter-spacing:.1em}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:12px 16px}
+.stat small{display:block;font-size:14px;color:var(--sub);letter-spacing:.08em}
+.stat b{font-family:var(--display);font-size:30px;font-weight:500;color:var(--gold);line-height:1.2;font-variant-numeric:tabular-nums}
+.stat b span{font-family:var(--body);font-size:16px;margin-left:4px;color:var(--fg)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field>label{font-size:15px;font-weight:600;color:var(--sub);letter-spacing:.06em}
+input[type=text],input[type=date]{font:inherit;font-size:18px;color:var(--fg);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;min-height:50px;width:100%;min-width:0}
+input:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.note{font-size:14px;color:var(--sub);margin:0}
+.preview{width:100%;overflow:hidden;border-radius:14px;box-shadow:0 6px 22px rgba(80,55,30,.18)}
+.prev-in{width:1200px;height:800px;transform-origin:top left}
+.btns{display:flex;flex-direction:column;gap:10px}
+.go{font:inherit;font-size:19px;font-weight:700;letter-spacing:.08em;min-height:58px;border:0;border-radius:14px;background:var(--btn);color:var(--btn-fg);cursor:pointer}
+.go[disabled]{opacity:.6}
+.go2{font:inherit;font-size:17px;font-weight:700;min-height:50px;border-radius:14px;border:2px solid var(--btn);background:transparent;color:var(--gold);cursor:pointer}
+.msg{margin:0;font-size:16px;font-weight:600;color:var(--gold);text-align:center}
+.msg.warn{color:var(--warn)}
+.ask{border:2px solid var(--warn);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.ask p{margin:0;font-weight:600}
+.ask .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.result{display:flex;flex-direction:column;gap:10px}
+.result img{width:100%;border-radius:14px;display:block}
+.list{display:flex;flex-direction:column;gap:8px}
+.m{display:grid;grid-template-columns:3.4em 1fr;gap:2px 12px;align-items:baseline;width:100%;text-align:left;font:inherit;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer}
+.m .n{font-family:var(--display);font-size:20px;color:var(--gold);font-variant-numeric:tabular-nums;grid-row:1 / span 3}
+.m .nm,.m .sk,.m .dt{grid-column:2}
+.m .nm{font-size:18px;font-weight:700;letter-spacing:.06em;overflow-wrap:anywhere}
+.m .sk{font-size:16px;color:var(--fg);overflow-wrap:anywhere}
+.m .dt{font-size:13px;color:var(--sub)}
+.empty{margin:0;color:var(--sub);font-size:15px}
+.full{position:fixed;inset:0;z-index:50;background:#14100d;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.full img{width:100%;height:auto;max-height:100%;object-fit:contain;display:block}
+.full .tip{position:absolute;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 16px);margin:0;padding:0 16px;text-align:center;color:#f2e8dc;font-size:15px;line-height:1.5;transition:opacity .8s}
+.result[hidden],.msg[hidden],.full[hidden],.ask[hidden]{display:none}
+#stage{position:fixed;left:-10000px;top:0;width:1200px;height:800px}
+
+/* ===== カード本体（1200×800 固定） ===== */
+.mc{position:relative;width:1200px;height:800px;border-radius:36px;overflow:hidden;background:#f6f1ec;font-family:'Shippori Mincho',serif;color:#4a3a32}
+.mc *{box-sizing:border-box}
+.mc .bg{position:absolute;inset:0;background:url(__BG__) center/cover}
+.mc div{text-shadow:0 0 10px #fbf8f4,0 0 4px #fbf8f4}
+.mc .frame{position:absolute;inset:26px;border:1.5px solid #b8944f99;border-radius:20px}
+.mc .ringimg{position:absolute;left:0;top:0;width:1200px;height:800px}
+.mc .brand{position:absolute;left:300px;top:44px;font-family:'Bodoni Moda',serif;font-weight:600;font-size:104px;letter-spacing:.26em;color:#7a5c2a;line-height:1}
+.mc .script{position:absolute;left:306px;top:172px;font-family:'Bodoni Moda',serif;font-weight:500;font-size:27px;letter-spacing:.16em;color:#4a3a32}
+.mc .no{position:absolute;left:100px;top:292px;font-family:'Bodoni Moda',serif;font-weight:500;color:#4a3a32;line-height:1;font-size:128px;transform:scaleX(.8);transform-origin:left;letter-spacing:.01em}
+.mc .no small{font-size:44px;color:#8a6a2f;margin-right:8px;letter-spacing:.04em}
+.mc .gl{position:absolute;left:104px;top:448px;width:380px;height:2px;background:linear-gradient(90deg,#8a6a2f,#c8a06000)}
+.mc .name{position:absolute;left:104px;top:466px;font-weight:600;letter-spacing:.2em;white-space:nowrap}
+.mc .date{position:absolute;left:106px;top:540px;font-size:30px;font-weight:500;letter-spacing:.14em;color:#4a3a32}
+.mc .date b{font-family:'Bodoni Moda',serif;font-weight:500}
+.mc .skill{position:absolute;left:104px;top:604px}
+.mc .skill small{display:block;font-size:25px;font-weight:600;letter-spacing:.2em;color:#8a6a2f;margin-bottom:6px}
+.mc .skill small:before{content:'';display:inline-block;width:30px;height:2px;background:#8a6a2f;vertical-align:middle;margin-right:12px}
+.mc .skill b{font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.mc .hana{position:absolute;left:0;right:0;bottom:46px;text-align:center;font-family:'Bodoni Moda',serif;font-weight:500;font-size:30px;letter-spacing:.18em;color:#7a5c2a}
+.mc .rcap{position:absolute;left:740px;width:400px;top:446px;text-align:center}
+.mc .rcap em{display:block;font-family:'Bodoni Moda',serif;font-weight:500;font-style:normal;font-size:30px;letter-spacing:.2em;color:#7a5c2a;line-height:1.2}
+.mc .rcap span{display:block;font-size:29px;font-weight:600;letter-spacing:.16em;color:#4a3a32;margin-top:4px}
+</style>
+
+<main class="wrap">
+  <header>
+    <h1>MUSUBI</h1>
+    <h2>会員カードと会員リスト</h2>
+  </header>
+
+  <section class="stats" aria-label="会員の数">
+    <div class="stat"><small>会員</small><b id="cnt">0<span>人</span></b></div>
+    <div class="stat"><small>次の番号</small><b id="nxt">No.001</b></div>
+  </section>
+  <p class="note" id="first10"></p>
+
+  <section class="panel" aria-label="入力">
+    <div class="row">
+      <div class="field"><label for="name">名前</label><input id="name" type="text" autocomplete="off" placeholder="ニックネーム"></div>
+      <div class="field"><label for="no">会員番号</label><input id="no" type="text" inputmode="numeric" autocomplete="off"></div>
+    </div>
+    <div class="field"><label for="skill">ちょっと詳しいこと</label><input id="skill" type="text" autocomplete="off" placeholder="例：自分を生きる人"></div>
+    <div class="field"><label for="date">入会日</label><input id="date" type="date"></div>
+    <p class="note">会員番号は、リストの続きの番号が自動で入ります。</p>
+  </section>
+
+  <div class="preview" id="preview" aria-label="カードの見た目"><div class="prev-in" id="prev"></div></div>
+  <p class="note" id="over10" hidden>11番目からは、「はじまりの10人」の輪が出ません。デザインが決まったら足します。</p>
+
+  <div class="btns">
+    <button class="go" id="go" type="button">カードを作って、リストに登録</button>
+    <button class="go2" id="next" type="button">次の人へ（入力を空にする）</button>
+  </div>
+  <div class="ask" id="ask" hidden>
+    <p id="askmsg"></p>
+    <div class="two"><button class="go" id="askyes" type="button">上書きする</button><button class="go2" id="askno" type="button">やめる</button></div>
+  </div>
+  <p class="msg" id="msg" role="status" hidden></p>
+
+  <section class="result" id="result" hidden aria-live="polite">
+    <img id="out" alt="できあがった会員カード">
+    <button class="go2" id="big" type="button">大きく表示する（スクリーンショット用）</button>
+    <p class="note">アプリで画像を保存できないときは、ブラウザ（Safariなど）でこのページを開いて、画像を長押しします。</p>
+  </section>
+
+  <section class="list" aria-label="会員リスト">
+    <h3>会員リスト</h3>
+    <p class="note">タップすると、入力に読みこめます（カードの作り直しに使えます）。</p>
+    <div id="members" class="list"></div>
+  </section>
+</main>
+<div class="full" id="full" hidden><p class="tip" id="tip">スクリーンショットを撮ってください。画面をタップすると戻ります。</p><img id="fullimg" alt="会員カード"></div>
+<div id="stage" aria-hidden="true"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const pad3 = (n) => String(n).padStart(3, '0');
+
+let members = [];      // [{no, name, skill, date}]
+let db = null;         // 会員リストの保存先（取れないときは null）
+let noTouched = false; // 会員番号を手で直したか
+
+function todayISO() {
+  const d = new Date(), p = (n) => String(n).padStart(2, '0');
+  return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+}
+const isoToDots = (iso) => (iso || '').replace(/-/g, '.');
+const dotsToIso = (s) => (s || '').replace(/\./g, '-');
+function nextNo() {
+  const nums = members.map((m) => parseInt(m.no, 10)).filter((n) => !isNaN(n));
+  return pad3((nums.length ? Math.max(...nums) : 0) + 1);
+}
+function curNo() {
+  const raw = $('no').value.replace(/\D/g, '');
+  return raw ? pad3(parseInt(raw, 10)) : '';
+}
+
+// ---- 金の輪（<img>にして書き出す。<svg>のままだと画像にならないことがあるため）
+function ringDataUri(no) {
+  const n = parseInt(no, 10), cx = 940, cy = 290, r = 140;
+  const p = [...Array(10)].map((_, i) => { const a = -Math.PI / 2 + i * 2 * Math.PI / 10; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; });
+  let s = '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2c682"/><stop offset=".5" stop-color="#b48d45"/><stop offset="1" stop-color="#d7b66a"/></linearGradient></defs>';
+  for (let i = 0; i < 10; i++) for (let j = i + 1; j < 10; j++) s += '<line x1="' + p[i][0] + '" y1="' + p[i][1] + '" x2="' + p[j][0] + '" y2="' + p[j][1] + '" stroke="url(#g)" stroke-width="1.4" opacity=".75"/>';
+  p.forEach((q, i) => {
+    s += i + 1 === n
+      ? '<circle cx="' + q[0] + '" cy="' + q[1] + '" r="17" fill="none" stroke="url(#g)" stroke-width="1.4"/><circle cx="' + q[0] + '" cy="' + q[1] + '" r="11" fill="url(#g)"/>'
+      : '<circle cx="' + q[0] + '" cy="' + q[1] + '" r="6" fill="url(#g)"/>';
+  });
+  return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(s + '</svg>');
+}
+
+function cardHTML() {
+  const name = $('name').value.trim(), skill = $('skill').value.trim(), no = curNo();
+  const date = isoToDots($('date').value);
+  const inRing = no && parseInt(no, 10) >= 1 && parseInt(no, 10) <= 10;
+  const nameSize = name.length > 12 ? 34 : name.length > 8 ? 44 : 54;
+  const skillSize = skill.length > 14 ? 30 : skill.length > 9 ? 38 : 48;
+  return '<div class="mc"><div class="bg"></div><div class="frame"></div>' +
+    (inRing ? '<img class="ringimg" alt="" src="' + ringDataUri(no) + '"><div class="rcap"><em>the first ten</em><span>はじまりの10人</span></div>' : '') +
+    '<div class="brand">MUSUBI</div><div class="script">Community Member\'s Card</div>' +
+    '<div class="no"><small>No.</small>' + esc(no || '---') + '</div><div class="gl"></div>' +
+    '<div class="name" style="font-size:' + nameSize + 'px">' + esc(name) + '</div>' +
+    (date ? '<div class="date">入会日　<b>' + esc(date) + '</b></div>' : '') +
+    (skill ? '<div class="skill"><small>ちょっと詳しいこと</small><b style="font-size:' + skillSize + 'px">' + esc(skill) + '</b></div>' : '') +
+    '<div class="hana">So glad I met you</div></div>';
+}
+
+function fit() {
+  const box = $('preview'), s = box.clientWidth / 1200;
+  $('prev').style.transform = 'scale(' + s + ')';
+  box.style.height = 800 * s + 'px';
+}
+function renderPreview() {
+  $('prev').innerHTML = cardHTML(); fit();
+  const no = curNo();
+  $('over10').hidden = !(no && parseInt(no, 10) > 10);
+}
+
+// ---- 会員リスト
+function renderList() {
+  members.sort((a, b) => parseInt(a.no, 10) - parseInt(b.no, 10));
+  $('cnt').innerHTML = members.length + '<span>人</span>';
+  $('nxt').textContent = 'No.' + nextNo();
+  const left = Math.max(0, 10 - members.length);
+  $('first10').textContent = left > 0 ? '「はじまりの10人」まで、あと' + left + '人です。' : '「はじまりの10人」は、そろいました。';
+  const box = $('members');
+  box.innerHTML = '';
+  if (!members.length) {
+    const p = document.createElement('p'); p.className = 'empty';
+    p.textContent = db ? 'まだ登録がありません。最初のカードを作ると、ここに入ります。' : '会員リストを読みこめませんでした。希さんのアカウントで開き直してください。';
+    box.appendChild(p); return;
+  }
+  members.forEach((m) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'm';
+    const n = document.createElement('span'); n.className = 'n'; n.textContent = m.no;
+    const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = m.name || '';
+    const sk = document.createElement('span'); sk.className = 'sk'; sk.textContent = m.skill || '';
+    const dt = document.createElement('span'); dt.className = 'dt'; dt.textContent = '入会日 ' + (m.date || '');
+    b.append(n, nm, sk, dt);
+    b.addEventListener('click', () => loadMember(m));
+    box.appendChild(b);
+  });
+}
+function loadMember(m) {
+  $('name').value = m.name || ''; $('skill').value = m.skill || '';
+  $('date').value = dotsToIso(m.date) || todayISO(); $('no').value = m.no; noTouched = true;
+  hideAsk(); showMsg('No.' + m.no + '（' + (m.name || '') + '）を読みこみました。直して「カードを作って、リストに登録」を押すと、リストも直ります。');
+  renderPreview(); window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function setNextNumberIfFree() { if (!noTouched) { $('no').value = nextNo(); renderPreview(); } }
+
+function showMsg(t, warn) { const m = $('msg'); m.textContent = t; m.className = 'msg' + (warn ? ' warn' : ''); m.hidden = false; }
+function hideMsg() { $('msg').hidden = true; }
+function hideAsk() { $('ask').hidden = true; pendingOverwrite = null; }
+let pendingOverwrite = null;
+
+// ---- 画像を作る → リストに登録
+async function makeImage() {
+  await document.fonts.ready;
+  $('stage').innerHTML = cardHTML();
+  try {
+    const c = await html2canvas($('stage').firstElementChild, { scale: 2, backgroundColor: null, useCORS: true, logging: false });
+    return c.toDataURL('image/png');
+  } finally { $('stage').innerHTML = ''; }
+}
+async function run(force) {
+  const name = $('name').value.trim(), no = curNo();
+  hideMsg();
+  if (!name) { showMsg('名前を入れてください。', true); return; }
+  if (!no) { showMsg('会員番号を入れてください。', true); return; }
+  const old = members.find((m) => m.no === no);
+  if (old && old.name !== name && !force) {
+    pendingOverwrite = true;
+    $('askmsg').textContent = 'No.' + no + ' は「' + old.name + '」さんで登録ずみです。「' + name + '」さんで上書きしますか？';
+    $('ask').hidden = false; return;
+  }
+  hideAsk();
+  const btn = $('go'); btn.disabled = true; btn.textContent = '作っています…';
+  try {
+    let url;
+    try { url = await makeImage(); } catch (e) { showMsg('画像を作れませんでした。もう一度押してください。', true); return; }
+    $('out').src = url; $('result').hidden = false;
+    if (!db) { showMsg('カードはできましたが、会員リストには登録できませんでした。', true); return; }
+    noTouched = true; // 登録のあとも、この人の番号のままにする（次の人へ、で続きの番号に戻る）
+    try {
+      await db.doc('members/' + no).set({ no, name, skill: $('skill').value.trim(), date: isoToDots($('date').value) });
+      showMsg(old ? 'No.' + no + ' を更新しました。' : 'No.' + no + '（' + name + '）を、会員リストに登録しました。');
+    } catch (e) {
+      showMsg('カードはできましたが、会員リストに登録できませんでした。もう一度押してください。', true);
+    }
+    $('out').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } finally { btn.disabled = false; btn.textContent = 'カードを作って、リストに登録'; }
+}
+
+let tipTimer;
+function openFull() {
+  $('fullimg').src = $('out').src; $('tip').style.opacity = '1'; $('full').hidden = false;
+  clearTimeout(tipTimer); tipTimer = setTimeout(() => { $('tip').style.opacity = '0'; }, 3500);
+}
+
+['name', 'skill', 'date'].forEach((id) => $(id).addEventListener('input', renderPreview));
+$('no').addEventListener('input', () => { noTouched = true; renderPreview(); });
+$('go').addEventListener('click', () => run(false));
+$('askyes').addEventListener('click', () => run(true));
+$('askno').addEventListener('click', hideAsk);
+$('next').addEventListener('click', () => {
+  $('name').value = ''; $('skill').value = ''; $('date').value = todayISO(); noTouched = false;
+  $('no').value = nextNo(); hideAsk(); hideMsg(); $('result').hidden = true; renderPreview();
+});
+$('big').addEventListener('click', openFull);
+$('out').addEventListener('click', openFull);
+$('full').addEventListener('click', () => { $('full').hidden = true; });
+window.addEventListener('resize', fit);
+
+// ---- はじめ
+$('date').value = todayISO();
+$('no').value = nextNo();
+renderList(); renderPreview();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(renderPreview);
+
+(async () => {
+  try {
+    db = window.claude && window.claude.use ? await window.claude.use('db') : null;
+  } catch (e) { db = null; }
+  if (!db) { renderList(); return; }
+  let timer = setTimeout(() => { if (!members.length) showMsg('会員リストを読みこめていません。少し待ってください。', true); }, 10000);
+  db.collection('members').onSnapshot((snap) => {
+    clearTimeout(timer);
+    members = snap.docs.map((d) => d.data()).filter((m) => m && m.no);
+    renderList(); setNextNumberIfFree();
+  }, () => { clearTimeout(timer); showMsg('会員リストを読みこめませんでした。', true); });
+})();
+</script>

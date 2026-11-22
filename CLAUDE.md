@@ -14,6 +14,7 @@
 - docs/insights-log.md：インサイトの記録
 - docs/weekly-routine.md：毎週金曜の自動作業の手順
 - docs/musubi-card.md：MUSUBIの会員カードとスタンプカード（作り方・決まったこと）
+- docs/musubi-members.md：MUSUBIの会員リスト（番号・名前・ちょっと詳しいこと・入会日）
 - 投稿ライブラリ/README.md：投稿の一覧と状態
 - ネタ帳：docs/parenting-ideas.md、docs/jitan-ai-series.md
 
