@@ -108,7 +108,6 @@ input:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-
   </section>
 
   <div class="preview" id="preview" aria-label="カードの見た目"><div class="prev-in" id="prev"></div></div>
-  <p class="note" id="over10" hidden>11番目からは、「はじまりの10人」の輪が出ません。デザインが決まったら足します。</p>
 
   <div class="btns">
     <button class="go" id="go" type="button">カードを作って、リストに登録</button>
@@ -198,7 +197,6 @@ function fit() {
 function renderPreview() {
   $('prev').innerHTML = cardHTML(); fit();
   const no = curNo();
-  $('over10').hidden = !(no && parseInt(no, 10) > 10);
 }
 
 // ---- 会員リスト
