@@ -1,11 +1,19 @@
 # MUSUBI 会員カードと「お役立ちスタンプカード」
 
+## 会員カードのページ（11/22〜・番号は自動で続きの番号）
+- ページ：https://claude.ai/artifact/CUqoqKxxt3RXDCcZ8W3MTQ （希だけが開ける）
+- 名前・ちょっと詳しいこと・入会日を入れて「カードを作って、リストに登録」を押すと、カード画像ができて、会員リストに登録される。番号は、リストの続き（次は005）
+- 会員リストは、ページの中の保存先（db）が本物。コピーは docs/musubi-members.md。Claudeは ArtifactData でページのリストを読める
+- 元ファイル：`tools/member_page_template.html`。作り直しは `python3 tools/build_member_page.py 背景.jpg 出力.html`（背景はスタンプカードのページと同じ）。公開は、dbのルール（root read/write = admin）を付けて Artifact で公開し直す
+- 11番目からは「はじまりの10人」の輪と文字を出さない（希が決定・11/22）。番号・名前・入会日・ちょっと詳しいことだけのカードになる
+
 ## 会員カード（横長 3:2・大理石とバラの背景）
 - 作り方：`node tools/musubi_cards.js O`（`tools/musubi_cards.js` の `CARDS` に名前・番号・入会日・「ちょっと詳しいこと」を書く）
-- 保存先：`投稿ライブラリ/MUSUBI_会員カード/`（No001_NOZOMI／No002_RINKA／No003_SAYAKA）
+- 保存先：`投稿ライブラリ/MUSUBI_会員カード/`（No001_NOZOMI／No002_RINKA／No003_SAYAKA／No004_MARI）
 - 形：「MUSUBI」を大きく、会員番号は小さめ。「Community Member's Card」、金の「はじまりの10人」の輪（その人の番号の点だけ金の丸で囲む）、下に「So glad I met you」（5本のバラの花言葉）
 - 背景：ChatGPTで作った画像 `背景_大理石と5本のバラ.webp`
 - No.003：SAYAKA、入会日 2026.11.12、ちょっと詳しいこと「自分を生きる人」（第1回ランチ会 11/12で入会）
+- No.004：MARI、入会日 2026.11.22、ちょっと詳しいこと「健康・お金の人」
 - 名前入りのカードは本人にだけ渡す。Threads（MUSUBI）には載せない
 
 ## お役立ちスタンプカード
