@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="きょうのひとつ">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#1f6b4f">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="manifest" href="manifest.json">
+<title>きょうのひとつ</title>
+<style>
+/* VOICE everyday: calm practice notebook for one adult, 12 weeks
+   IDEA a 12-week practice card (like a radio-exercise stamp card) that fills one cell per day
+   PICTURE today's single action, large; on review, the 12x7 stamp grid and before/after check
+   COLOUR pure white, deep leaf green leads, pale green fields, coral marks "today"
+   TYPE iPhone system Japanese (Hiragino Sans), large sizes for presbyopia
+   LAYOUT one column max 560px; sticky header, fixed bottom tabs; phone first */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1813);--ink:light-dark(#14211a,#eef5f0);--muted:light-dark(#4e5f56,#a8b9af);--green:light-dark(#1f6b4f,#5cc596);--green-ink:light-dark(#ffffff,#08140e);--soft:light-dark(#e5f2ea,#173324);--card:light-dark(#f3f8f5,#14231b);--line:light-dark(#cfded5,#2a4034);--coral:light-dark(#d9482e,#ff8a6e);--miss:light-dark(#9aa8a0,#6f8077)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+html{font-size:18px;height:100%}
+html.xl{font-size:21px}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:1rem/1.6 -apple-system,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;overflow-x:clip;-webkit-text-size-adjust:100%}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.wrap{max-width:560px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;align-items:center;gap:12px;min-height:56px}
+.brand{font-weight:700;font-size:1rem;flex:1}
+.brand small{display:block;font-weight:500;color:var(--muted);font-size:.78rem;line-height:1.3}
+.gear{border:1px solid var(--line);background:var(--card);border-radius:12px;min-height:44px;padding:0 14px;font-size:.85rem}
+main{padding-block:18px calc(110px + env(safe-area-inset-bottom,0px))}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav.tabs .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding-block:6px}
+nav.tabs button{border:0;background:none;border-radius:14px;min-height:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:.8rem;color:var(--muted)}
+nav.tabs button svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+nav.tabs button[aria-current=page]{color:var(--green);background:var(--soft);font-weight:700}
+h2{font-size:1.35rem;line-height:1.3;margin:0 0 12px}
+h3{font-size:1.05rem;margin:28px 0 10px}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:.85rem}
+.goal{border-left:4px solid var(--green);padding:4px 0 4px 14px;margin:0 0 18px}
+.goal span{display:block;font-size:.8rem;color:var(--muted)}
+.goal b{font-size:1.05rem;font-weight:600}
+.action{background:var(--green);color:var(--green-ink);border-radius:22px;padding:22px 20px 20px;margin-bottom:14px}
+.action .lab{font-size:.85rem;opacity:.85;margin-bottom:6px}
+.action .txt{font-size:1.6rem;line-height:1.4;font-weight:700;letter-spacing:.01em}
+.action .force{margin-top:14px;font-size:.8rem;opacity:.85}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;border-radius:16px;border:2px solid var(--green);background:var(--bg);color:var(--green);font-weight:700;font-size:1rem;padding:8px 14px;text-align:center}
+.btn.solid{background:var(--green);color:var(--green-ink)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn+.btn{margin-top:10px}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.row2 .btn+.btn{margin-top:0}
+.status{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-top:14px}
+.mini{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px;margin:6px 0 4px}
+.mini i{display:block;aspect-ratio:1;border-radius:3px;background:var(--line)}
+.mini i.d{background:var(--green)}
+.mini i.t{outline:2px solid var(--coral);outline-offset:1px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:14px;padding:3px;gap:3px;margin-bottom:16px;background:var(--card)}
+.seg button{border:0;background:none;border-radius:11px;min-height:44px;padding:0 18px;font-size:.9rem}
+.seg button[aria-pressed=true]{background:var(--bg);font-weight:700;box-shadow:0 0 0 1px var(--line)}
+.big2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0}
+.big2 button{min-height:120px;border-radius:20px;border:2px solid var(--line);background:var(--card);font-size:1.15rem;font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.big2 button svg{width:40px;height:40px;fill:none;stroke-width:3;stroke:currentColor;stroke-linecap:round}
+.big2 button.yes[aria-pressed=true]{background:var(--green);border-color:var(--green);color:var(--green-ink)}
+.big2 button.no[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+label.f{display:block;font-weight:600;margin:6px 0 6px}
+textarea,input[type=text]{width:100%;font-size:1rem;border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--bg);line-height:1.5}
+textarea{min-height:96px;resize:vertical}
+textarea:focus,input:focus{outline:2px solid var(--green);outline-offset:1px}
+.hint{font-size:.8rem;color:var(--muted);margin-top:6px}
+.wk{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.wk button{min-width:48px;min-height:48px;border-radius:14px;border:1px solid var(--line);background:var(--card);font-size:1.2rem}
+.wk b{text-align:center;font-size:1rem;line-height:1.35}
+.week7{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-bottom:14px}
+.week7 div{text-align:center;font-size:.8rem;color:var(--muted)}
+.week7 i{display:flex;align-items:center;justify-content:center;aspect-ratio:1;border-radius:50%;margin-top:4px;border:2px solid var(--line);font-style:normal;font-weight:700;font-size:1rem}
+.week7 i.d{background:var(--green);border-color:var(--green);color:var(--green-ink)}
+.week7 i.m{border-color:var(--miss);color:var(--miss)}
+.week7 i.t{box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--coral)}
+.fb{background:var(--soft);border-radius:18px;padding:16px 18px;margin-bottom:14px}
+.fb p:last-child{margin:0}
+.memo{border-top:1px solid var(--line);padding:10px 0}
+.memo:last-child{border-bottom:1px solid var(--line)}
+.memo .d{font-size:.8rem;color:var(--muted)}
+.grid12{display:grid;grid-template-columns:3em repeat(7,minmax(0,1fr)) 3em;gap:4px;align-items:center;font-size:.8rem}
+.grid12 i{display:block;aspect-ratio:1;border-radius:4px;background:var(--card);border:1px solid var(--line)}
+.grid12 i.d{background:var(--green);border-color:var(--green)}
+.grid12 i.m{background:transparent;border:2px solid var(--miss)}
+.grid12 i.f{background:transparent;border:1px dashed var(--line)}
+.grid12 i.t{outline:2px solid var(--coral);outline-offset:1px}
+.grid12 .n{text-align:right;color:var(--muted);white-space:nowrap}
+.grid12 .c{font-variant-numeric:tabular-nums;white-space:nowrap}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.8rem;color:var(--muted);margin-top:10px}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:5px;border:1px solid var(--line)}
+.q{padding:12px 0;border-top:1px solid var(--line)}
+.q .t{font-size:.95rem;margin-bottom:8px}
+.track{position:relative;height:28px;margin:0 10px}
+.track::before{content:"";position:absolute;left:0;right:0;top:13px;height:2px;background:var(--line)}
+.track .bar{position:absolute;top:11px;height:6px;border-radius:3px;background:var(--green);opacity:.35}
+.track .dot{position:absolute;top:5px;width:18px;height:18px;margin-left:-9px;border-radius:50%}
+.track .s{background:var(--bg);border:3px solid var(--miss)}
+.track .e{background:var(--green);border:2px solid var(--bg)}
+.scale{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin:0 4px}
+.tot{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5em,1fr));gap:10px;margin:8px 0 14px}
+.tot div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px}
+.tot b{display:block;font-size:1.6rem;line-height:1.2;font-variant-numeric:tabular-nums}
+.tot span{font-size:.8rem;color:var(--muted)}
+.likert{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.likert button{min-height:52px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);font-size:1.1rem;font-weight:700}
+.likert button[aria-pressed=true]{background:var(--green);border-color:var(--green);color:var(--green-ink)}
+.ends{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-top:4px}
+.forces{display:grid;gap:10px;margin:12px 0}
+.forces button{text-align:left;border:2px solid var(--line);background:var(--card);border-radius:18px;padding:14px 16px;min-height:64px}
+.forces button b{display:block;font-size:1.15rem}
+.forces button span{font-size:.85rem;color:var(--muted)}
+.forces button[aria-pressed=true]{border-color:var(--green);background:var(--soft)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.chips button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 14px;font-size:.85rem;min-height:44px;text-align:left}
+.overlay{position:fixed;inset:0;z-index:20;background:var(--bg);overflow-y:auto;padding-top:env(safe-area-inset-top,0px);padding-bottom:calc(30px + env(safe-area-inset-bottom,0px))}
+.overlay .top{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:56px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.steps{font-size:.8rem;color:var(--muted)}
+.note{border:1px solid var(--line);border-radius:16px;padding:14px 16px;font-size:.9rem;margin:14px 0;background:var(--card)}
+.note b{display:block;margin-bottom:4px}
+.banner{background:var(--coral);color:#fff;border-radius:14px;padding:10px 14px;font-size:.85rem;margin-bottom:14px;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.banner button{border:1px solid #fff;background:none;color:#fff;border-radius:10px;min-height:40px;padding:0 12px;font-size:.85rem}
+.set h3{border-top:1px solid var(--line);padding-top:18px}
+.set ol,.set ul{padding-left:1.3em;margin:0 0 12px}
+.set li{margin-bottom:6px}
+.src{font-size:.85rem}
+.src li{margin-bottom:10px}
+.confirm{background:var(--card);border:2px solid var(--coral);border-radius:16px;padding:14px 16px;margin-top:10px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);border-radius:12px;padding:10px 16px;font-size:.9rem;z-index:30;max-width:90vw}
+.saved{font-size:.8rem;color:var(--green);min-height:1.4em;margin-top:4px}
+details summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600}
+@media (prefers-reduced-motion:no-preference){.action{animation:rise .35s ease-out}@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="brand" id="brand">きょうのひとつ<small id="sub">12週間の練習</small></div><button class="gear" id="gear" type="button">設定</button></div></header>
+<main><div class="wrap" id="view"></div></main>
+<nav class="tabs" aria-label="画面"><div class="wrap">
+<button type="button" data-tab="today"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>今日の行動</button>
+<button type="button" data-tab="night"><svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>夜の記録</button>
+<button type="button" data-tab="review"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>振り返り</button>
+</div></nav>
+<div id="ov"></div>
+<script>
+{
+const KEY='kyou-no-hitotsu.v1', DAYS=84;
+const FORCES={
+kinben:{name:'勤勉性',lead:'決めたことを、計画を立ててコツコツやる力',ex:['やると決めたことを、小さく毎日進める自分','後回しにせず、先に手をつける自分','計画を立ててから、落ち着いて動く自分'],acts:['今日やることを3つだけ書き出す','いちばん面倒なことに、午前中に5分だけ手をつける','机の上を1か所だけ片づける','明日の朝の準備を、寝る前に1つしておく','返信を1つ、その場で済ませる','始める時刻を決めて、その時刻に始める','5分タイマーをかけて、1つの作業だけをする','終わったことに「済」の印をつける','先のばしにしていることの、最初の一歩だけやる','約束の5分前に準備を終える','使った物を、その場で元に戻す（1回でOK）','今週の予定を3分だけ見直す','頼まれごとを1つ、期限より早く出す','書類か写真を1つだけ整理する','今日の終わりに、明日の最初の1つを決める']},
+jiko:{name:'自己管理',lead:'気持ちや誘惑に流されず、行動を選ぶ力',ex:['イラッとしても、ひと呼吸おいて返せる自分','やめると決めたことを、やめられる自分','自分の時間と体力を、上手に配分できる自分'],acts:['スマホを見る前に、深呼吸を3回する','イラッとしたら、返事の前に6秒待つ','寝る30分前にスマホを置く','何か食べたくなったら、まず水を1杯飲む','「今日はやめておく」ことを1つ決めて守る','疲れたら、3分だけ目を閉じて休む','買う前に「本当に必要？」と一度考える','予定にない動画やSNSは、10分タイマーで止める','決めた時刻に、寝る準備を始める','今の気持ちを、ひと言で書いてみる','迷ったら「少し考えます」と言って時間をとる','朝いちばんに、今日の調子を10点満点でつける','あとでやることは、メモに書いて頭から出す']},
+yarinuku:{name:'やり抜く力',lead:'うまくいかなくても、あきらめずに続ける力',ex:['うまくいかなくても、やり方を変えて続ける自分','長い目標を、一歩ずつ進められる自分','途中でやめたくなっても、もう少し続けられる自分'],acts:['目標に向けた作業を、10分だけする','うまくいかなかったことを1つ、やり方を変えてもう一度','「なぜこれをやりたいか」を1行で書く','昨日の続きを、1つだけ進める','苦手なことを、5分だけ練習する','今日できたことを、小さくても1つ書き残す','やめたくなったら、あと1分だけ続ける','目標を「次の一歩」に小さく分けて書く','うまくいかなかったことから、わかったことを1つ書く','学んだことを、誰かに1つ話す','毎日続けていることを、今日も1回やる','尊敬する人ならどうするかを考えて、1つ動く','1年後の自分に、ひと言メッセージを書く']},
+seijitsu:{name:'誠実さ',lead:'約束を守り、正直にふるまう力',ex:['小さな約束も、言ったとおりに守る自分','まちがえたら、すぐ正直に言える自分','人の話を最後まで聞ける自分'],acts:['小さな約束を1つ、言ったとおりに守る','「ありがとう」を、理由をつけて1回伝える','まちがえたら、すぐに「ごめんなさい」と言う','約束の時刻を、1つ守る','人の話を、最後までさえぎらずに聞く','できないことは、早めに正直に伝える','借りた物か、頼まれた物を1つ届ける','自分で決めたルールを1つ守る','誰も見ていないところで、よいことを1つする','頼まれたことは、メモしてから引き受ける','その場にいない人の悪口を言わない日にする','夜に「言ったこととしたことが同じだったか」を振り返る']}
+};
+const QS=[['やると決めたことは、最後までやり終えるほうだ','kinben'],['予定や計画を立ててから動くほうだ','kinben'],['気持ちが乱れても、落ち着いて行動を選べる','jiko'],['目の前の誘惑より、先の目標を優先できる','jiko'],['うまくいかなくても、あきらめずに続けられる','yarinuku'],['時間がかかる目標にも、興味を持ち続けられる','yarinuku'],['人との約束や、自分との約束を守っている','seijitsu'],['ミスや苦手なことも、正直に認められる','seijitsu']];
+const WD='日月火水木金土';
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad=n=>String(n).padStart(2,'0');
+const ymd=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const pd=s=>{const[a,b,c]=s.split('-').map(Number);return new Date(a,b-1,c)};
+const add=(s,n)=>{const d=pd(s);d.setDate(d.getDate()+n);return ymd(d)};
+const diff=(a,b)=>Math.round((pd(b)-pd(a))/864e5);
+const today=()=>ymd(new Date());
+const md=s=>{const d=pd(s);return (d.getMonth()+1)+'/'+d.getDate()};
+const jp=s=>{const d=pd(s);return (d.getMonth()+1)+'月'+d.getDate()+'日（'+WD[d.getDay()]+'）'};
+let S=load(), tab=new Date().getHours()>=15?'night':'today', nightDate=null, reviewWeek=null, setup=null, sheet=false, confirmKind=null;
+function load(){try{const r=localStorage.getItem(KEY);if(r){const o=JSON.parse(r);if(o&&Array.isArray(o.cycles))return o}}catch(e){}return{v:1,cycles:[],cur:-1,big:false,lastBackup:null}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){toast('保存できませんでした。バックアップをおすすめします')}}
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+const C=()=>S.cycles[S.cur];
+const dayNo=c=>diff(c.start,today())+1;
+const weekOf=(c,d)=>Math.floor(diff(c.start,d)/7)+1;
+const wdates=(c,w)=>Array.from({length:7},(_,i)=>add(c.start,(w-1)*7+i));
+function toast(t){const el=document.createElement('div');el.className='toast';el.textContent=t;document.body.appendChild(el);setTimeout(()=>el.remove(),2200)}
+function pick(c,date,ex){const n=FORCES[c.force].acts.length,used=new Set();for(let i=1;i<=10;i++){const r=c.days[add(date,-i)];if(r&&r.a!=null)used.add(r.a)}if(ex!=null)used.add(ex);let pool=[...Array(n).keys()].filter(i=>!used.has(i));if(!pool.length)pool=[...Array(n).keys()].filter(i=>i!==ex);return pool[Math.floor(Math.random()*pool.length)]}
+function rec(c,date,make){let r=c.days[date];if(!r&&make){r=c.days[date]={}}if(r&&make&&r.a==null){r.a=pick(c,date);save()}return r}
+const actText=(c,r)=>r&&r.a!=null?FORCES[c.force].acts[r.a]:null;
+
+function render(){
+  document.documentElement.classList.toggle('xl',!!S.big);
+  document.querySelectorAll('nav.tabs button').forEach(b=>b.setAttribute('aria-current',b.dataset.tab===tab?'page':'false'));
+  const c=C();
+  if(!c){$('#sub').textContent='12週間の練習';$('#view').innerHTML='';renderSetup();return}
+  const n=dayNo(c);
+  $('#sub').textContent=n>DAYS?'12週間が終わりました':`第${Math.ceil(n/7)}週・${n}日目／84日`;
+  const ban=c.sample?`<div class="banner"><span>見本のデータを表示しています</span><button type="button" id="clearSample">見本を消して始める</button></div>`:'';
+  $('#view').innerHTML=ban+(tab==='today'?vToday(c):tab==='night'?vNight(c):vReview(c));
+  bind(c);
+  renderOverlay();
+}
+function miniGrid(c){const t=today();let h='';for(let i=0;i<DAYS;i++){const d=add(c.start,i),r=c.days[d];h+=`<i class="${r&&r.done===true?'d':''}${d===t?' t':''}"></i>`}return `<div class="mini" aria-hidden="true">${h}</div>`}
+function vToday(c){
+  const t=today(),r=rec(c,t,true),f=FORCES[c.force],n=dayNo(c);
+  const done=Object.values(c.days).filter(x=>x.done===true).length;
+  let st='';
+  if(r.done===true)st='<div class="status"><b>今夜の記録：できた</b><p class="small muted" style="margin:4px 0 0">記録ずみです。おつかれさまでした。</p></div>';
+  else if(r.done===false)st='<div class="status"><b>今夜の記録：できなかった</b><p class="small muted" style="margin:4px 0 0">記録できたことも一歩です。</p></div>';
+  const end=n>=DAYS&&!c.post?`<div class="status"><b>12週目になりました</b><p class="small" style="margin:4px 0 10px">最後の自己チェックをして、開始時と比べましょう。</p><button class="btn solid" type="button" data-go="post">自己チェックをする</button></div>`:'';
+  return `${end}<div class="goal"><span>なりたい自分</span><b>${esc(c.goal)}</b></div>
+  <div class="action"><div class="lab">${jp(t)}　今日のひとつ</div><div class="txt">${esc(actText(c,r))}</div><div class="force">伸ばしたい力：${f.name}</div></div>
+  <button class="btn" type="button" id="swap" ${r.sw?'disabled':''}>${r.sw?'今日は変更ずみです':'別の行動にする（1日1回）'}</button>
+  ${st}
+  <h3>12週間の練習カード</h3>${miniGrid(c)}<p class="small muted">できた日：${done}日　／　84日中 ${Math.min(n,DAYS)}日目</p>
+  <p class="small muted">夜に「夜の記録」で、できたかどうかをタップしてください。</p>`;
+}
+function vNight(c){
+  const t=today(),y=add(t,-1),canY=y>=c.start;
+  if(!nightDate||(nightDate!==t&&nightDate!==y))nightDate=t;
+  if(!canY)nightDate=t;
+  const d=nightDate,r=rec(c,d,d===t)||{},a=actText(c,r);
+  const seg=canY?`<div class="seg" role="group"><button type="button" data-nd="${t}" aria-pressed="${d===t}">今日</button><button type="button" data-nd="${y}" aria-pressed="${d===y}">昨日${c.days[y]&&c.days[y].done!=null?'':'（未記録）'}</button></div>`:'';
+  const msg=r.done===true?'おつかれさまでした。明日も小さく続けましょう。':r.done===false?'記録できたことが一歩です。明日また。':'';
+  return `${seg}<h2>${jp(d)}の記録</h2>
+  <p class="muted small" style="margin-bottom:4px">${d===t?'今日':'この日'}の行動</p>
+  <p style="font-size:1.15rem;font-weight:700">${a?esc(a):'（この日は行動が出ていませんでした）'}</p>
+  <div class="big2" role="group" aria-label="できたかどうか">
+  <button type="button" class="yes" data-done="1" aria-pressed="${r.done===true}"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14"/></svg>できた</button>
+  <button type="button" class="no" data-done="0" aria-pressed="${r.done===false}"><svg viewBox="0 0 40 40"><path d="M9 9l22 22M31 9L9 31"/></svg>できなかった</button></div>
+  <p class="small" style="min-height:1.6em">${msg}</p>
+  <label class="f" for="memo">ひとことメモ（なくてもOK）</label>
+  <textarea id="memo" placeholder="例：朝のうちにできた／時間がなかった">${esc(r.memo||'')}</textarea>
+  <div class="hint">キーボードのマイクのボタンを押すと、話して入力できます。</div><div class="saved" id="saved"></div>`;
+}
+function feedback(c,w){
+  const ds=wdates(c,w),t=today(),past=ds.filter(d=>d<=t),rs=ds.map(d=>c.days[d]||{});
+  const done=rs.filter(r=>r.done===true).length,no=rs.filter(r=>r.done===false).length,cnt=done+no,L=[];
+  if(!past.length)return['この週はまだ始まっていません。'];
+  if(cnt===0)L.push('この週は記録がありませんでした。夜に「できた／できなかった」をタップするだけで十分です。まずはそこから。');
+  else if(done>=6)L.push(`${done}日できました。よく続いています。行動の大きさは、今くらいがちょうどよさそうです。`);
+  else if(done>=4)L.push(`${done}日できました。半分以上できています。`);
+  else if(done>=1)L.push(`${done}日できました。できた日があったことが大切です。大きすぎると感じたら、もっと小さくしてOKです。`);
+  else L.push('できた日はありませんでしたが、記録は続けられました。来週は「別の行動にする」で、やりやすいものを選んでみましょう。');
+  const miss=past.length-cnt;if(cnt>0&&miss>=3)L.push(`記録がない日が${miss}日ありました。夜のリマインダーの時刻を見直すのも一つの方法です。`);
+  const wk=ds.filter((d,i)=>{const x=pd(d).getDay();return x>0&&x<6&&rs[i].done!=null}),we=ds.filter((d,i)=>{const x=pd(d).getDay();return(x===0||x===6)&&rs[i].done!=null});
+  const rate=a=>a.length?a.filter(d=>c.days[d].done===true).length/a.length:null,a1=rate(wk),a2=rate(we);
+  if(a1!=null&&a2!=null&&Math.abs(a1-a2)>=.5)L.push(a1>a2?'平日のほうができていました。週末は、行動をさらに小さくしてもよさそうです。':'週末のほうができていました。平日は、朝のうちに済ませる工夫ができそうです。');
+  if(rs.filter(r=>r.sw).length>=3)L.push('「別の行動にする」を何度か使いました。続けやすい行動を探すのも練習のうちです。');
+  if(w>1){const pr=wdates(c,w-1).filter(d=>c.days[d]&&c.days[d].done===true).length;if(done>pr&&pr>0)L.push(`先週（${pr}日）より増えました。`)}
+  return L;
+}
+function vReview(c){
+  const n=dayNo(c),cw=Math.min(12,Math.max(1,Math.ceil(n/7)));
+  if(reviewWeek==null)reviewWeek=cw;
+  const w=reviewWeek,ds=wdates(c,w),t=today();
+  const cells=ds.map(d=>{const r=c.days[d],cl=r&&r.done===true?'d':r&&r.done===false?'m':'';return `<div>${WD[pd(d).getDay()]}<i class="${cl}${d===t?' t':''}">${cl==='d'?'○':cl==='m'?'×':''}</i></div>`}).join('');
+  const memos=ds.filter(d=>c.days[d]&&(c.days[d].done!=null||c.days[d].memo)).map(d=>{const r=c.days[d];return `<div class="memo"><div class="d">${jp(d)}　${r.done===true?'できた':r.done===false?'できなかった':'未記録'}</div><div>${esc(actText(c,r)||'')}</div>${r.memo?`<div class="muted">「${esc(r.memo)}」</div>`:''}</div>`}).join('');
+  const goodActs=[...new Set(ds.map(d=>c.days[d]).filter(r=>r&&r.done===true).map(r=>actText(c,r)))];
+  const fb=feedback(c,w).map(x=>`<p>${esc(x)}</p>`).join('')+(goodActs.length?`<p class="small"><b>できた行動：</b>${goodActs.map(esc).join('、')}</p>`:'');
+  const wn=(c.weeks&&c.weeks[w])||'';
+  let g='';for(let k=1;k<=12;k++){const dd=wdates(c,k);let cnt=0;g+=`<span class="n">${k}週</span>`+dd.map(d=>{const r=c.days[d];if(r&&r.done===true)cnt++;const cl=d>t?'f':r&&r.done===true?'d':r&&r.done===false?'m':'';return `<i class="${cl}${d===t?' t':''}" title="${md(d)}"></i>`}).join('')+`<span class="c">${dd[0]>t?'':cnt+'/7'}</span>`}
+  const bk=!S.lastBackup||diff(S.lastBackup.slice(0,10),t)>=7?`<div class="note"><b>バックアップをおすすめします</b>${S.lastBackup?'前回のバックアップから1週間以上たちました。':'まだバックアップがありません。'}<button class="btn" type="button" id="bk2" style="margin-top:10px">いまバックアップする</button></div>`:'';
+  return `<div class="wk"><button type="button" id="pw" aria-label="前の週" ${w<=1?'disabled':''}>‹</button><b>第${w}週<br><span class="small muted">${jp(ds[0])}〜${md(ds[6])}</span></b><button type="button" id="nw" aria-label="次の週" ${w>=12?'disabled':''}>›</button></div>
+  <div class="week7">${cells}</div>
+  <div class="fb"><p class="small muted" style="margin-bottom:6px">今週のフィードバック</p>${fb}</div>
+  <label class="f" for="wnote">なりたい自分に、少し近づいた場面は？（なくてもOK）</label>
+  <input type="text" id="wnote" value="${esc(wn)}" placeholder="ひと言で"><div class="saved" id="saved2"></div>
+  ${memos?`<h3>この週のメモ</h3>${memos}`:''}
+  <h3>12週間の記録</h3>
+  <div class="grid12">${g}</div>
+  <div class="legend"><span><i style="background:var(--green);border-color:var(--green)"></i>できた</span><span><i style="border:2px solid var(--miss)"></i>できなかった</span><span><i></i>未記録</span><span><i style="border-style:dashed"></i>これから</span></div>
+  ${vCheck(c,n)}${bk}`;
+}
+function vCheck(c,n){
+  const pre=c.pre||[],post=c.post,sum=a=>a.reduce((x,y)=>x+y,0),fs=a=>QS.reduce((x,q,i)=>x+(q[1]===c.force?a[i]:0),0);
+  const rows=QS.map((q,i)=>{const s=pre[i],e=post?post[i]:null,p=v=>((v-1)/4*100)+'%';const lo=e!=null?Math.min(s,e):s,hi=e!=null?Math.max(s,e):s;return `<div class="q"><div class="t">${q[1]===c.force?'<b>':''}${esc(q[0])}${q[1]===c.force?'</b>':''}　<span class="muted small" style="white-space:nowrap">${s}${e!=null?' → '+e:''}</span></div><div class="track">${e!=null?`<div class="bar" style="left:${p(lo)};width:calc(${p(hi)} - ${p(lo)})"></div>`:''}<div class="dot s" style="left:${p(s)}"></div>${e!=null?`<div class="dot e" style="left:${p(e)}"></div>`:''}</div></div>`}).join('');
+  const d=post?sum(post)-sum(pre):0,df=post?fs(post)-fs(pre):0,sg=v=>v>0?'+'+v:String(v);
+  const tot=`<div class="tot"><div><span>全体（40点満点）</span><b>${sum(pre)}${post?' → '+sum(post):''}</b>${post?`<span>変化 ${sg(d)}</span>`:'<span>開始時</span>'}</div><div><span>${FORCES[c.force].name}の2問（10点満点）</span><b>${fs(pre)}${post?' → '+fs(post):''}</b>${post?`<span>変化 ${sg(df)}</span>`:'<span>開始時</span>'}</div></div>`;
+  const btn=!post?(n>=DAYS?'<button class="btn solid" type="button" data-go="post">12週後の自己チェックをする</button>':`<p class="small muted">12週後（${jp(add(c.start,DAYS-1))}）に、同じ質問にもう一度答えて比べます。</p>`):'<button class="btn" type="button" id="newc">次のクール（12週間）を始める</button>';
+  return `<h3>自己チェック</h3>${tot}<div class="legend" style="margin:0 0 4px"><span><i style="border:3px solid var(--miss);border-radius:50%"></i>開始時</span>${post?'<span><i style="background:var(--green);border-color:var(--green);border-radius:50%"></i>12週後</span>':''}</div>${rows}<div class="scale"><span>1 あてはまらない</span><span>5 とてもあてはまる</span></div>
+  <p class="small muted" style="margin-top:12px">この質問はこのアプリのために作ったもので、研究で検証された尺度ではありません。変化は自分の目安として見てください。</p>${btn}`;
+}
+function bind(c){
+  const on=(s,f,e='click')=>{const el=$(s);if(el)el.addEventListener(e,f)};
+  on('#clearSample',()=>{S.cycles=[];S.cur=-1;save();setup={step:0,pre:[]};render()});
+  on('#swap',()=>{const r=rec(c,today(),true);if(r.sw)return;r.a=pick(c,today(),r.a);r.sw=true;save();render()});
+  document.querySelectorAll('[data-nd]').forEach(b=>b.onclick=()=>{nightDate=b.dataset.nd;render()});
+  document.querySelectorAll('[data-done]').forEach(b=>b.onclick=()=>{const d=nightDate,r=c.days[d]||(c.days[d]={});const v=b.dataset.done==='1';r.done=r.done===v?null:v;if(r.done==null)delete r.done;save();render()});
+  let tm;on('#memo',e=>{clearTimeout(tm);tm=setTimeout(()=>{const d=nightDate,r=c.days[d]||(c.days[d]={});r.memo=e.target.value.trim();save();const s=$('#saved');if(s)s.textContent='保存しました'},500)},'input');
+  on('#wnote',e=>{clearTimeout(tm);tm=setTimeout(()=>{c.weeks=c.weeks||{};c.weeks[reviewWeek]=e.target.value.trim();save();const s=$('#saved2');if(s)s.textContent='保存しました'},500)},'input');
+  on('#pw',()=>{reviewWeek=Math.max(1,reviewWeek-1);render()});
+  on('#nw',()=>{reviewWeek=Math.min(12,reviewWeek+1);render()});
+  document.querySelectorAll('[data-go=post]').forEach(b=>b.onclick=()=>{setup={step:'post',pre:[]};renderOverlay()});
+  on('#newc',()=>{setup={step:1,pre:[],again:true};renderOverlay()});
+  on('#bk2',exportData);
+}
+/* ---------- setup / overlays ---------- */
+function renderSetup(){if(!setup)setup={step:0,pre:[]};renderOverlay()}
+function renderOverlay(){
+  const ov=$('#ov');
+  if(sheet){ov.innerHTML=`<div class="overlay"><div class="wrap">${vSettings()}</div></div>`;bindSettings();return}
+  if(!setup){ov.innerHTML='';return}
+  const s=setup;let h='';
+  const top=(lab,close)=>`<div class="top"><span class="steps">${lab}</span>${close?'<button class="gear" type="button" id="cls">閉じる</button>':''}</div>`;
+  if(s.step===0)h=top('はじめに')+`<h2>きょうのひとつ</h2><p>伸ばしたい力を1つ決めて、毎日ひとつ小さな行動をする、12週間の練習帳です。</p>
+  <div class="note"><b>使い方</b>朝：「今日の行動」を見る<br>夜：「できた／できなかった」をタップ<br>週に1回：「振り返り」を見る</div>
+  <div class="note"><b>大切なこと</b>このアプリは医療や診断のためのものではありません。記録はこのiPhoneの中だけに保存され、外には送られません。</div>
+  <button class="btn solid" type="button" id="nx">始める</button><button class="btn" type="button" id="sample">見本のデータで試してみる</button>`;
+  else if(s.step===1)h=top('1／3　伸ばしたい力',s.again)+`<h2>伸ばしたい力を、1つだけ選んでください</h2><div class="forces">${Object.entries(FORCES).map(([k,f])=>`<button type="button" data-f="${k}" aria-pressed="${s.force===k}"><b>${f.name}</b><span>${f.lead}</span></button>`).join('')}</div><p class="small muted">いくつも同時には選びません。12週間、1つに集中します。</p><button class="btn solid" type="button" id="nx" ${s.force?'':'disabled'}>次へ</button>`;
+  else if(s.step===2){const f=FORCES[s.force];h=top('2／3　なりたい自分',s.again)+`<h2>「${f.name}」について、なりたい自分を一文で</h2><label class="f" for="goal">なりたい自分</label><textarea id="goal" placeholder="例：${esc(f.ex[0])}">${esc(s.goal||'')}</textarea><div class="hint">マイクで話して入力もできます。下の例を選んで、書きかえてもOKです。</div><div class="chips">${f.ex.map(x=>`<button type="button" data-ex="${esc(x)}">${esc(x)}</button>`).join('')}</div><div class="row2"><button class="btn" type="button" id="bk">戻る</button><button class="btn solid" type="button" id="nx">次へ</button></div>`}
+  else if(s.step===3||s.step==='post'){const post=s.step==='post';h=top(post?'12週後の自己チェック':'3／3　はじめの自己チェック',true)+`<h2>${post?'12週間おつかれさまでした':'今の自分に、どれくらいあてはまりますか'}</h2><p class="small">${post?'はじめと同じ質問です。':''}最近1週間の自分を思い浮かべて、1〜5で答えてください。</p>${QS.map((q,i)=>`<div class="q"><div class="t">${i+1}．${esc(q[0])}</div><div class="likert">${[1,2,3,4,5].map(v=>`<button type="button" data-q="${i}" data-v="${v}" aria-pressed="${s.pre[i]===v}">${v}</button>`).join('')}</div><div class="ends"><span>あてはまらない</span><span>とてもあてはまる</span></div></div>`).join('')}<p class="small muted">この質問はこのアプリのために作ったもので、研究で検証された尺度ではありません。</p>${post?'':'<div class="row2"><button class="btn" type="button" id="bk">戻る</button>'}<button class="btn solid" type="button" id="fin" ${s.pre.filter(Boolean).length===8?'':'disabled'}>${post?'結果を見る':'12週間を始める'}</button>${post?'':'</div>'}`}
+  ov.innerHTML=`<div class="overlay"><div class="wrap">${h}</div></div>`;
+  const on=(q,f)=>{const el=ov.querySelector(q);if(el)el.onclick=f};
+  on('#cls',()=>{setup=C()?null:{step:0,pre:[]};render()});
+  on('#nx',()=>{if(s.step===2){const g=$('#goal').value.trim();if(!g){toast('一文だけ書いてください');return}s.goal=g}s.step=s.step+1;renderOverlay();ov.firstChild.scrollTop=0});
+  on('#bk',()=>{if(s.step===2)s.goal=$('#goal').value;s.step--;renderOverlay()});
+  on('#sample',makeSample);
+  ov.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{s.force=b.dataset.f;renderOverlay()});
+  ov.querySelectorAll('[data-ex]').forEach(b=>b.onclick=()=>{$('#goal').value=b.dataset.ex});
+  ov.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{const y=ov.firstChild.scrollTop;s.pre[+b.dataset.q]=+b.dataset.v;renderOverlay();ov.firstChild.scrollTop=y});
+  on('#fin',()=>{if(s.step==='post'){C().post=s.pre.slice();C().postDate=today();save();setup=null;tab='review';reviewWeek=12;render();return}
+    S.cycles.push({force:s.force,goal:s.goal,start:today(),pre:s.pre.slice(),days:{},weeks:{}});S.cur=S.cycles.length-1;save();setup=null;tab='today';reviewWeek=null;render()});
+}
+function makeSample(){
+  const st=add(today(),-17),c={force:'kinben',goal:'やると決めたことを、小さく毎日進める自分',start:st,pre:[3,2,3,2,3,3,4,3],days:{},weeks:{1:'見本：朝に手をつけられた日があった'},sample:true};
+  let seed=7;const rnd=()=>(seed=seed*16807%2147483647)/2147483647;const n=FORCES.kinben.acts.length;
+  const memos=['見本：朝のうちにできた','見本：時間がなかった','','見本：5分だけでも進んだ','',''];
+  for(let i=0;i<17;i++){const d=add(st,i),x=rnd();c.days[d]={a:Math.floor(rnd()*n)};if(x<.68)c.days[d].done=true;else if(x<.88)c.days[d].done=false;if(c.days[d].done!=null&&rnd()<.5)c.days[d].memo=memos[i%6]}
+  S.cycles=[c];S.cur=0;save();setup=null;tab='today';render();
+}
+/* ---------- settings ---------- */
+function vSettings(){
+  const c=C();
+  return `<div class="top"><span class="steps">設定と説明</span><button class="gear" type="button" id="cls2">閉じる</button></div><div class="set">
+  <h2>設定</h2>
+  <label class="f">文字の大きさ</label><div class="seg" role="group"><button type="button" data-big="0" aria-pressed="${!S.big}">大</button><button type="button" data-big="1" aria-pressed="${!!S.big}">特大</button></div>
+  ${c?`<label class="f" for="goal2">なりたい自分（${FORCES[c.force].name}）</label><textarea id="goal2">${esc(c.goal)}</textarea><button class="btn" type="button" id="sg" style="margin-top:8px">なりたい自分を保存</button>`:''}
+  <h3>朝と夜の通知（iPhoneのリマインダー）</h3>
+  <ol><li>iPhoneの「リマインダー」を開いて、新しい項目を作る</li><li>名前「きょうのひとつを見る」、日時をオン、時刻 6:30、繰り返し「毎日」</li><li>もう1つ「夜の記録をつける」、時刻 21:00、繰り返し「毎日」</li><li>通知が来たら、ホーム画面の「きょうのひとつ」を開く</li></ol>
+  <p class="small muted">時刻はあとから変えられます。通知はこの2つだけにします。</p>
+  <h3>バックアップ</h3>
+  <p class="small">記録はこのiPhoneの中だけにあります。週に1回、ファイルに書き出しておくと安心です。書き出したら「ファイルに保存」でiPhoneに保存してください。</p>
+  <p class="small muted">前回：${S.lastBackup?jp(S.lastBackup.slice(0,10)):'まだありません'}</p>
+  <button class="btn solid" type="button" id="ex">バックアップを書き出す</button>
+  <label class="btn" for="imp" style="margin-top:10px;cursor:pointer">バックアップから戻す</label><input type="file" id="imp" accept=".json,application/json" hidden>
+  <div id="cf"></div>
+  <details style="margin-top:10px"><summary>書き出しができないとき（テキストで写す）</summary><textarea id="raw" readonly style="min-height:120px;font-size:.8rem"></textarea><button class="btn" type="button" id="cp" style="margin-top:8px">テキストをコピー</button></details>
+  <h3>ホーム画面に追加するには</h3>
+  <ol><li>Safariでこのページを開く</li><li>下の共有ボタン（四角から矢印）を押す</li><li>「ホーム画面に追加」を押す</li></ol>
+  <h3>このアプリについて</h3>
+  <p>このアプリは医療や診断のためのものではありません。効果を約束するものでもありません。自分で12週間使って、続けやすさと変化を確かめるための試作です。</p>
+  <p><b>もとにした考え方</b></p>
+  <ul class="src">
+  <li>TBS「news23」2026年10月9日放送（中室牧子さんのインタビュー）：スマホアプリで大人の非認知能力が伸びたという研究が紹介されました。「なりたい自分を決める → 合った行動が毎日提案される → くり返すうちに身につく」という仕組みです。</li>
+  <li>Conscientiousness Coach の研究（Journal of Neurology 2025年、DOI: 10.1007/s00415-025-13320-9）：スマホアプリと定期的なコーチングを組み合わせた12週間のランダム化比較試験で、介入群の勤勉性が向上したと報告されています（効果量 d=0.93）。構成要素は「価値の明確化」「SMART目標」「スマホでの記録」「定期的なコーチング」です。</li>
+  <li>中室牧子『「学力」の経済学』：非認知能力は大人になっても変わるものが少なくなく、自制心は継続と反復、計画・記録・達成度の管理で鍛えられる、と書かれています。</li>
+  <li>PIVOT「非認知能力は中年にこそ重要である」：追跡研究では、非認知能力が収入に与える影響は40〜60歳で最も大きくなると紹介されています。</li></ul>
+  <p><b>研究との違い</b></p>
+  <p class="small">研究はアプリと人によるコーチングがセットでした。このアプリにはコーチがいないので、週1回の「振り返り」で代わりにしています。研究と同じ効果が出るとは言えません。「なりたい自分」は価値の明確化、毎日の小さな行動は目標づくり、夜の記録はスマホでの記録にあたります。自己チェックの質問はこのアプリのために作ったもので、研究で検証された尺度ではありません。</p>
+  <h3>データを消す</h3>
+  <button class="btn" type="button" id="del" style="border-color:var(--coral);color:var(--coral)">すべての記録を消す</button><div id="cf2"></div>
+  </div>`;
+}
+function bindSettings(){
+  const ov=$('#ov'),on=(q,f)=>{const el=ov.querySelector(q);if(el)el.onclick=f};
+  on('#cls2',()=>{sheet=false;render()});
+  ov.querySelectorAll('[data-big]').forEach(b=>b.onclick=()=>{S.big=b.dataset.big==='1';save();render()});
+  on('#sg',()=>{const g=$('#goal2').value.trim();if(g){C().goal=g;save();toast('保存しました')}});
+  on('#ex',exportData);
+  on('#cp',async()=>{try{await navigator.clipboard.writeText($('#raw').value);markBackup();toast('コピーしました。メモなどに貼って保存してください')}catch(e){$('#raw').select();toast('テキストを長押しでコピーしてください')}});
+  const raw=$('#raw');if(raw)raw.value=JSON.stringify(S);
+  const imp=$('#imp');if(imp)imp.onchange=()=>{const f=imp.files[0];if(!f)return;f.text().then(t=>{let o;try{o=JSON.parse(t)}catch(e){}if(!o||!Array.isArray(o.cycles)){toast('このファイルは読みこめませんでした');return}
+    $('#cf').innerHTML=`<div class="confirm"><p>今の記録を、このバックアップ（${o.cycles.length}クール分）で置きかえますか？</p><div class="row2"><button class="btn" type="button" id="no1">やめる</button><button class="btn solid" type="button" id="ok1">置きかえる</button></div></div>`;
+    on('#no1',()=>{$('#cf').innerHTML=''});on('#ok1',()=>{S=o;save();sheet=false;setup=null;reviewWeek=null;render();toast('もとに戻しました')})})};
+  on('#del',()=>{$('#cf2').innerHTML=`<div class="confirm"><p>すべての記録を消します。もとに戻せません。先にバックアップをおすすめします。</p><div class="row2"><button class="btn" type="button" id="no2">やめる</button><button class="btn solid" type="button" id="ok2" style="background:var(--coral);border-color:var(--coral)">消す</button></div></div>`;
+    on('#no2',()=>{$('#cf2').innerHTML=''});on('#ok2',()=>{S={v:1,cycles:[],cur:-1,big:S.big,lastBackup:null};save();sheet=false;setup={step:0,pre:[]};reviewWeek=null;render()})});
+}
+function markBackup(){S.lastBackup=new Date().toISOString().slice(0,10);save()}
+async function exportData(){
+  const name='kyou-no-hitotsu-backup-'+today()+'.json',file=new File([JSON.stringify(S)],name,{type:'application/json'});
+  try{if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file]});markBackup();toast('書き出しました');render();return}}catch(e){if(e&&e.name==='AbortError')return}
+  try{const a=document.createElement('a');a.href=URL.createObjectURL(file);a.download=name;document.body.appendChild(a);a.click();a.remove();markBackup();toast('書き出しました');render()}catch(e){toast('書き出せませんでした。テキストで写す方法を使ってください')}
+}
+document.querySelectorAll('nav.tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;if(tab==='night')nightDate=null;window.scrollTo(0,0);render()});
+$('#gear').onclick=()=>{sheet=true;renderOverlay()};
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!sheet&&!setup)render()});
+render();
+try{if('serviceWorker' in navigator&&location.protocol==='https:'&&!/claude/.test(location.hostname))navigator.serviceWorker.register('sw.js').catch(()=>{})}catch(e){}
+}
+</script>
+</body>
+</html>
